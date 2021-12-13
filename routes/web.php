@@ -17,14 +17,8 @@ Route::get('/','trangchuController@index');
 Route::get('/admin','AdminController@index');
 
 
-
-
-
-
-
-
-
-
+Route::get('/add-category-product','CategoryProduct@add_category_product');
+Route::get('/all-category-product','CategoryProduct@all_category_product');
 
 //shipper
 Route::get('/shipper','ShipperController@index');
