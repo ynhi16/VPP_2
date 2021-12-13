@@ -16,7 +16,7 @@ Route::get('/','trangchuController@index');
 //end
 Route::get('/admin','AdminController@index');
 
-
+Route::get('/dashboard','AdminController@show_dashboard');
 Route::get('/add-category-product','CategoryProduct@add_category_product');
 Route::get('/all-category-product','CategoryProduct@all_category_product');
 
