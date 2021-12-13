@@ -24,10 +24,18 @@
                     <a href="#"><span class="fa fa-user"></span> Quản lý tài khoản</a>
                 </li>
                 <li>
-                <a href="#"><span class="fa fa-tasks" aria-hidden="true"></span>Quản lý sản phẩm</a>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="">
+                        <span class="fa fa-tasks" aria-hidden="true"></span>Quản lý sản phẩm</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="{{URL::to('/add-product')}}">Thêm danh mục sản phẩm</a>
+                        </li>
+                        <li>
+                            <a href="{{URL::to('/all-category-product')}}">Liệt kê danh mục sản phẩm</a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
-                   
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="">
                         <span class="fa fa-book" aria-hidden="true"></span>Quản lý danh mục </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
@@ -58,7 +66,7 @@
                         <i class="fa fa-bars"></i>
                         <span class="sr-only">Toggle Menu</span>
                     </button>
-                    
+
 
                 </div>
             </nav>

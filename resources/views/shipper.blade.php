@@ -105,13 +105,18 @@
         <p class="p_DonHang">Đơn hàng</p>
         <div class="phan1">
             <p class="p_DonHang HoaDon">Tất cả hóa đơn</p>
+<<<<<<< HEAD
             <!-- <table>
+=======
+            <table>
+>>>>>>> 2d49743920e89e0444c228831563e5762e193caa
                 <tr>
                     <td>Ngày bắt đầu</td>
                     <td>Ngày kết thúc</td>
                     <td>Trạng thái</td>
                     <td>Tỉnh thành</td>
                 </tr>
+<<<<<<< HEAD
                 <tr>
                     <a href="" class="btn_Exit">
                           <span>
@@ -126,6 +131,9 @@
             <ul>
                 <li></li>
             </ul>
+=======
+            </table>
+>>>>>>> 2d49743920e89e0444c228831563e5762e193caa
         </div>
     </div>
     </div>
