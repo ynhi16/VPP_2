@@ -20,3 +20,5 @@ Route::get('/dashboard','AdminController@show_dashboard');
 //Category
 Route::get('/add-category-product','CategoryProduct@add_category_product');
 Route::get('/all-category-product','CategoryProduct@all_category_product');
+//Product
+Route::get('/add-product','ProductController@add_product');
