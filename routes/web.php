@@ -15,3 +15,7 @@ Route::get('/','trangchuController@index');
 
 //end
 Route::get('/admin','AdminController@index');
+
+//shipper
+Route::get('/shipper','ShipperController@index');
+
