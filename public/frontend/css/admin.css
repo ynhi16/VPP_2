@@ -130,3 +130,10 @@ a[data-toggle="collapse"] {
   transition: all 0.3s; }
 
 
+.table {
+  width: 50%;
+  text-align: center; 
+}
+.form-control {
+  width: 50%;
+}
