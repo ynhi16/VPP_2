@@ -1,6 +1,5 @@
 @extends('admin')
 @section('content')
-
 <div class="container">
     <div class="row justify-content-center">
        <div class="col-8">
@@ -25,12 +24,13 @@
                 <label for="exampleFormControlInput1" class="form-label">Hình ảnh</label>
                 <input type="file" class="form-control" id="exampleFormControlInput1">
             </div>
-            <select class="form-select mb-3" aria-label="Default select example">
-                <option selected>Mã danh mục</option>
+            <select class="form-select mb-4" aria-label="Default select example">
+                <option selected>Tên danh mục</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
             </select>
+            <button type="button" class="btn btn-success">Thêm Sản Phẩm</button>
         </div>
     </div>
 </div>

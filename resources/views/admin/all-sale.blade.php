@@ -1,7 +1,7 @@
 @extends('admin')
 @section('content')
 <div>
-    <h3 class="title-section">Tất cả tài khoản</h3>
+    <h3 class="title-section">Tất cả khuyến mãi</h3>
     <div class="bg-light mb-2">
         <nav class="navbar navbar-light mb-2">
             <div class="container-fluid">
@@ -19,13 +19,11 @@
         <table class="table align-middle">
             <thead>
                 <tr>
-                    <th scope="col">Mã người dùng</th>
-                    <th scope="col">Họ Tên</th>
-                    <th scope="col">Tài khoản</th>
-                    <th scope="col">SĐT</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Giới Tính</th>
-                    <th scope="col">Trạng thái</th>
+                    <th scope="col">Mã Khyến Mãi</th>
+                    <th scope="col">Tên Khuyến Mãi</th>
+                    <th scope="col">Ngày Bắt Đầu</th>
+                    <th scope="col">Ngày kết thúc</th>
+                    <th scope="col">Têm Sản Phẩm</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -36,16 +34,16 @@
                     <td>Calendar</td>
                     <td>Calendar</td>
                     <td>Calendar</td>
-                    <td>Calendar</td>
-                    <td>Calendar</td>
-
                     <td>
-                        <button type="button" class="btn btn-outline-success me-2"><a href="#">Xem chi tiết</a></button>
+                        <button type="button" class="btn btn-outline-success me-2">Xem</button>
+                        <button type="button" class="btn btn-outline-warning ms-2">Sửa</button>
                         <button type="button" class="btn btn-outline-danger ms-2">Xóa</button>
                     </td>
                 </tr>
             </tbody>
         </table>
+
+        </nav>
     </div>
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-end">

@@ -51,7 +51,16 @@
                     <a href="{{URL::to('/all-bill')}}"><span class="fa fa-sticky-note" aria-hidden="true"></span>Xét duyệt hóa đơn</a>
                 </li>
                 <li>
-                    <a href="#"><span class="fa fa-percent" aria-hidden="true"></span> Quản lý khuyến mãi</a>
+                    <a href="#sale" data-toggle="collapse" aria-expanded="false" class="">
+                        <span class="fa fa-percent" aria-hidden="true"></span>Quản lý khuyến mãi</a>
+                    <ul class="collapse list-unstyled" id="sale">
+                        <li>
+                            <a href="{{URL::to('/add-sale')}}">Thêm khuyến mãi</a>
+                        </li>
+                        <li>
+                            <a href="{{URL::to('/all-sale')}}">Liệt kê khuyến mãi</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
