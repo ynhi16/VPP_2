@@ -7,6 +7,13 @@
     <link rel="stylesheet" type="text/css" href="{{('public/frontend/font/fontawesome-free-5.15.4/css/all.min.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script> 
+
     <style type="text/css"> 
         .avatar {
             width: 36px;
@@ -56,8 +63,7 @@
             border: solid 1px black;
             width: 1200px;
         }
-        .p_DonHang {
-          
+        .p_DonHang {         
             font-weight: bold;
             font-size: 22px;
         }
@@ -65,8 +71,27 @@
             color: #F08080;
             font-weight: normal;
         }
-        td {
+        .th li {
            padding-right: 50px;
+        }
+        .input-group {
+           width: 150px;
+        }
+        .form-control {
+            background: #5663D6;
+            color: white;
+        }
+        .phan1 {
+            background: rgba(255, 228, 225, 0.5);
+        }
+        .input-group-text {
+            background: #5663D6;
+            color: white;
+
+        }
+        .btn {
+            margin-top: -20px;
+            margin-left: 10px;
         }
     </style>
 </head>
@@ -105,38 +130,56 @@
         <p class="p_DonHang">Đơn hàng</p>
         <div class="phan1">
             <p class="p_DonHang HoaDon">Tất cả hóa đơn</p>
-<<<<<<< HEAD
-            <!-- <table>
-=======
-            <table>
->>>>>>> 2d49743920e89e0444c228831563e5762e193caa
-                <tr>
-                    <td>Ngày bắt đầu</td>
-                    <td>Ngày kết thúc</td>
-                    <td>Trạng thái</td>
-                    <td>Tỉnh thành</td>
-                </tr>
-<<<<<<< HEAD
-                <tr>
-                    <a href="" class="btn_Exit">
-                          <span>
-                              Đăng xuất
-                          </span>
-                          <span class="sp_exit">
-                              <i class="fas fa-sign-out-alt"></i>
-                          </span>
-                        </a>
-                </tr>
-            </table> -->
-            <ul>
-                <li></li>
+            <ul class="th">
+                <li>Ngày bắt đầu</li>
+                <li>Ngày kết thúc</li>
+                <li>Trạng thái</li>
+                <li>Tỉnh thành</li>
             </ul>
-=======
-            </table>
->>>>>>> 2d49743920e89e0444c228831563e5762e193caa
+            <ul class="btn">
+                <li>
+                    <div class="col-sm-4">
+                        <div class="input-group date" id="datepicker">
+                            <input type="text" class="form-control">
+                            <span class="input-group-append">
+                                <span class="input-group-text d-block">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="col-sm-4">
+                        <div class="input-group date" id="datepicker2">
+                            <input type="text" class="form-control">
+                            <span class="input-group-append">
+                                <span class="input-group-text d-block">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <select>
+                            <option>Chờ duyệt</option>
+                            <option>Đang giao</option>
+                            <option>Đã giao</option>
+                        </select>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
-    </div>
-    
+    <script type="text/javascript">
+        $(function() {
+            $('#datepicker').datepicker();
+        });
+        $(function() {
+            $('#datepicker2').datepicker();
+        });
+    </script>
 </body>
 </html>

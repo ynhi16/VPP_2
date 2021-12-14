@@ -1,0 +1,78 @@
+.avatar {
+    width: 36px;
+    height: 36px;
+    /*border: solid 1px black;*/
+}
+.bell{
+    color: black;
+    margin-bottom: 5px;
+    /*border: solid 1px black;*/
+    width: 36px;
+    height: 36px;
+}
+.btn_Exit {
+    background: #F9A5A9;
+    padding: 10px 15px;
+    border-radius: 20px;
+    color: white;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+li {
+    display: inline-block;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0 3rem;
+}  
+.title {
+    font-family: 'Hello Day', sans-serif;
+}
+.container-fluid {
+    color: black;
+}
+.sp_exit {
+    padding-left: 10px;
+}
+.noidung{
+    background: #FCFAFE;
+
+}
+.container {
+    border: solid 1px black;
+    width: 1200px;
+}
+.p_DonHang {         
+    font-weight: bold;
+    font-size: 22px;
+}
+.HoaDon {
+    color: #F08080;
+    font-weight: normal;
+}
+.th li {
+   padding-right: 50px;
+}
+.input-group {
+   width: 150px;
+}
+.form-control {
+    background: #5663D6;
+    color: white;
+}
+.phan1 {
+    background: rgba(255, 228, 225, 0.5);
+}
+.input-group-text {
+    background: #5663D6;
+    color: white;
+
+}
+.btn {
+    margin-top: -20px;
+    margin-left: 10px;
+}
