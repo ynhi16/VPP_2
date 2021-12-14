@@ -1,4 +1,4 @@
 @extends('admin')
-@section('dashboard')
+@section('content')
 <div>Admin</div>
 @endsection
