@@ -21,17 +21,17 @@
                     <a href="{{URL::to('/dashboard')}}"><span class="fa fa-home"></span> Dashboard</a>
                 </li>
                 <li>
-                    <a href="#"><span class="fa fa-user"></span> Quản lý tài khoản</a>
+                    <a href="{{URL::to('/account')}}"><span class="fa fa-user"></span> Quản lý tài khoản</a>
                 </li>
                 <li>
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="">
+                    <a href="#product" data-toggle="collapse" aria-expanded="false" class="">
                         <span class="fa fa-tasks" aria-hidden="true"></span>Quản lý sản phẩm</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <ul class="collapse list-unstyled" id="product">
                         <li>
-                            <a href="{{URL::to('/add-product')}}">Thêm danh mục sản phẩm</a>
+                            <a href="{{URL::to('/add-product')}}">Thêm sản phẩm</a>
                         </li>
                         <li>
-                            <a href="{{URL::to('/all-category-product')}}">Liệt kê danh mục sản phẩm</a>
+                            <a href="{{URL::to('/all-product')}}">Liệt kê sản phẩm</a>
                         </li>
                     </ul>
                 </li>
@@ -48,7 +48,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><span class="fa fa-sticky-note" aria-hidden="true"></span>Xét duyệt hóa đơn</a>
+                    <a href="{{URL::to('/all-bill')}}"><span class="fa fa-sticky-note" aria-hidden="true"></span>Xét duyệt hóa đơn</a>
                 </li>
                 <li>
                     <a href="#"><span class="fa fa-percent" aria-hidden="true"></span> Quản lý khuyến mãi</a>
@@ -70,10 +70,9 @@
 
                 </div>
             </nav>
-            <div class="mt-3">
-                @yield('dashboard')
-                @yield('addcategory')
-                @yield('allcategory')
+            <div class="mt-4">
+                @yield('content')
+               
             </div>
 
         </div>
