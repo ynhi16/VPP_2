@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <h3 class="title-section">Tất cả danh mục</h3>
-        <div class="col-8 bg-light" >                  
+        <div class="col-8 bg-light">
             <table class="table mx-auto align-middle">
                 <thead>
                     <tr>
@@ -13,29 +13,28 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($all_category as $key => $cate)
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Calendar/ Schedule</td>
+                        <th scope="row">{{$cate -> maDM}}</th>
+                        <td>{{$cate -> tenDM}}</td>
                         <td>
-                            
-                            <button type="button" class="btn btn-outline-warning me-2">Sửa</button>
-                            <button type="button" class="btn btn-outline-danger me-2">Xóa</button>
+
+                            <button type="submit" class="btn btn-outline-warning me-2"><a href="{{URL::to('/edit-category/'.$cate->maDM)}}">  Sửa </a></button>
+                            <button type="submit" class="btn btn-outline-danger me-2"><a href="{{URL::to('/del-category/'.$cate->maDM)}}">Xóa</a></button>
                         </td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Calendar/ Schedule</td>
-                        <td>
-                            
-                            <button type="button" class="btn btn-outline-warning me-2">Sửa</button>
-                            <button type="button" class="btn btn-outline-danger me-2">Xóa</button>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
-
-            </nav>
         </div>
     </div>
+    <?php
+    $message = Session::get('message');
+    if ($message) {
+        echo '<p>' . $message . '<p>';
+        Session::put('message', null);
+    }
+    ?>
 </div>
 @endsection
+ 
