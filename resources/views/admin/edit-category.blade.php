@@ -6,7 +6,7 @@
             <h3 class="title-section">Thêm danh mục</h3>
             <div>
                 @foreach($edit_category as $key => $value)
-                <form action="{{URL::to('/update-category/.$value->maDM')}}" method="post">
+                <form action="{{URL::to('/update-category/'.$value->maDM)}}" method="post">
                     {{csrf_field()}}
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Tên danh mục</label>
