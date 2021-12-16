@@ -20,7 +20,11 @@ Route::get('/dashboard','AdminController@show_dashboard');
 
 //Category
 Route::get('/add-category-product','CategoryProduct@add_category_product');
+Route::get('/edit-category/{maDM}','CategoryProduct@edit_category');
+Route::get('/del-category/{maDM}','CategoryProduct@del_category');
 Route::get('/all-category-product','CategoryProduct@all_category_product');
+Route::post('/save-category','CategoryProduct@save_category');
+Route::post('/update-category/{maDM}','CategoryProduct@update_category');
 //Product
 Route::get('/add-product','ProductController@add_product');
 Route::get('/all-product','ProductController@all_product');
