@@ -40,4 +40,9 @@ class CategoryProduct extends Controller
         Session::put('message','Cập nhật danh mục sản phẩm thành công');
         return Redirect::to('all-category-product');
     }
+    public function del_category($maDM) {
+        DB::table('danhmuc')-> where('maDM',$maDM)->delete();
+        Session::put('message','Xóa danh mục sản phẩm thành công');
+        return Redirect::to('all-category-product');
+    }
 }

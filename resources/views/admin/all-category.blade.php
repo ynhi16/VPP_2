@@ -20,7 +20,7 @@
                         <td>
 
                             <button type="submit" class="btn btn-outline-warning me-2"><a href="{{URL::to('/edit-category/'.$cate->maDM)}}">  Sửa </a></button>
-                            <button type="submit" class="btn btn-outline-danger me-2"><a href="{{URL::to('/del-category/'.$cate->maDM)}}">Xóa</a></button>
+                            <button type="submit" class="btn btn-outline-danger me-2"><a onclick="return confirm('Bạn có chắc chắn muốn xóa danh muc này?')" href="{{URL::to('/del-category/'.$cate->maDM)}}">Xóa</a></button>
                         </td>
                     </tr>
                     @endforeach
