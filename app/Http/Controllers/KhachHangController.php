@@ -7,12 +7,14 @@ use DB;
 use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
+
 session_start();
 
 class KhachHangController extends Controller
 {
     //
-    public function index() {
+    public function index()
+    {
 
         return view('page.khachhang_home');
     }
@@ -21,21 +23,23 @@ class KhachHangController extends Controller
     //     return view('page.khachhang_home');
     // }
 
-    public function giohang() {
+    public function giohang()
+    {
         return view('khachhang.giohang');
     }
 
-    public function canhan() {
+    public function canhan()
+    {
 
-        // $maND = Session::get('nguoidung_id');
-        $maND = 1;
+        $maND = Session::get('nguoidung_id');
 
         $nguoidung = DB::table('nguoidung')->where('maND', $maND)->get();
 
         return view('khachhang.canhan')->with('nguoidung', $nguoidung);
     }
     //cập nhật thông tin cá nhân
-    public function capnhat_thongtincanhan(Request $request) {
+    public function capnhat_ttcn(Request $request)
+    {
         $data = array();
 
         $data['maND'] = $request->maND;
@@ -51,12 +55,48 @@ class KhachHangController extends Controller
         $data['vaiTro'] = $request->vaiTro;
         $data['maQuyen'] = $request->maQuyen;
 
-        DB::table('nguoidung')-> where('maND', $$request->maND)->update($data);
+        DB::table('nguoidung')->where('maND', $request->maND)->update($data);
         return Redirect::to('canhan');
-
     }
-    public function matkhau() {
+    public function matkhau()
+    {
         return view('khachhang.doimatkhau');
     }
-}
+    //đổi mật khẩu
+    public function capnhat_mk(Request $request)
+    {
+        $mkcu = $request->mkcu;
+        $mkmoi = $request->mkmoi;
+        $mkmoi2 = $request->mkmoi2;
 
+        $maND = Session::get('nguoidung_id');
+        $nguoidung = DB::table('nguoidung')->where('maND', $maND)->first();
+        $matKhau = $nguoidung->matKhau;
+
+        if ($mkmoi !== $mkmoi2 || $mkcu == '' || $mkmoi == '' || $mkmoi2 == '' || $mkcu !== $matKhau) {
+
+            Session::put('capnhat', "Thông tin không hợp lệ!");
+            return Redirect::to('matkhau');
+        } else {
+             
+            $data = array();
+
+            $data['maND'] = $nguoidung->maND;
+            $data['tenND'] = $nguoidung->tenND;
+            $data['gioiTinh'] = $nguoidung->gioiTinh;
+            $data['ngaySinh'] = $nguoidung->ngaySinh;
+            $data['SDT'] = $nguoidung->SDT;
+            $data['email'] = $nguoidung->email;
+            $data['diaChi'] = $nguoidung->diaChi;
+            $data['taiKhoan'] = $nguoidung->taiKhoan;
+            $data['matKhau'] = $mkmoi;
+            $data['maPX'] = $nguoidung->maPX;
+            $data['vaiTro'] = $nguoidung->vaiTro;
+            $data['maQuyen'] = $nguoidung->maQuyen;
+
+            DB::table('nguoidung')->where('maND', $request->maND)->update($data);
+
+            return Redirect::to('canhan');
+        }
+    }
+}

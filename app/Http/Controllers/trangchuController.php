@@ -37,10 +37,10 @@ class trangchuController extends Controller
 
             if ($quyen ==3) {
 
-                return Redirect::to('/dangnhap');
+                return Redirect::to('/khachhang');
             } else {
 
-                return Redirect::to('/khachhang');
+                return Redirect::to('/dangnhap');
             }
         } else {
 

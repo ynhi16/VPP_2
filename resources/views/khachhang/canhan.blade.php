@@ -4,17 +4,8 @@
 
 <div class="container">
 
-
-
-
 	<h2>Thiết lập tài khoản</h2>
 
-	<?php
-	$id = Session::get('nguoidung_id');
-	if ($id)
-		echo $id;
-	else echo "nguuuuu";
-	?>
 
 	<!-- bắt đầu menu ngang -->
 	<div class="row" style="margin-top: 70px;">
@@ -42,28 +33,29 @@
 	</div> <!-- kết thúc avatar -->
 
 	<!-- bắt đầu phần thông tin cá nhân -->
-	<form action="{{URL::to('/capnhat-thongtincanhan')}}" method="post">
+	<form action="{{URL::to('/capnhat-ttcn')}}" method="post">
+		@csrf
 		<div class="row inf-canhan">
 			@foreach($nguoidung as $key => $value)
 			<label for="pwd"><strong>Họ tên</strong></label>
-			<input type="text" class="form-control input-canhan" value="{{$value->tenND}}">
+			<input type="text" class="form-control input-canhan" value="{{$value->tenND}}" name="tenND">
 			<label for="pwd"><strong>Giới tính</strong></label>
-			<input type="text" class="form-control input-canhan" value="{{$value->gioiTinh}}">
+			<input type="text" class="form-control input-canhan" value="{{$value->gioiTinh}}" name="gioiTinh">
 			<label for="pwd"><strong>Ngày sinh</strong></label>
-			<input type="date" class="form-control input-canhan" value="{{$value->ngaySinh}}">
+			<input type="date" class="form-control input-canhan" value="{{$value->ngaySinh}}" name="ngaySinh">
 			<label for="pwd"><strong>Email</strong></label>
-			<input type="text" class="form-control input-canhan" value="{{$value->email}}">
+			<input type="text" class="form-control input-canhan" value="{{$value->email}}" name="email">
 			<label for="pwd"><strong>Số điện thoại</strong></label>
-			<input type="text" class="form-control input-canhan" value="{{$value->SDT}}">
+			<input type="text" class="form-control input-canhan" value="{{$value->SDT}}" name="SDT">
 			<label for="pwd"><strong>Địa chỉ</strong></label>
-			<input type="text" class="form-control input-canhan" value="{{$value->diaChi}}">
+			<input type="text" class="form-control input-canhan" value="{{$value->diaChi}}" name="diaChi">
 
-			<input type="hidden"  value="{{$value->maND}}">
-			<input type="hidden"  value="{{$value->taiKhoan}}">
-			<input type="hidden"  value="{{$value->matKhau}}">
-			<input type="hidden"  value="{{$value->maPX}}">
-			<input type="hidden"  value="{{$value->vaiTro}}">
-			<input type="hidden"  value="{{$value->maQuyen}}">
+			<input type="hidden"  value="{{$value->maND}}" name="maND">
+			<input type="hidden"  value="{{$value->taiKhoan}}" name="taiKhoan">
+			<input type="hidden"  value="{{$value->matKhau}}" name="matKhau">
+			<input type="hidden"  value="{{$value->maPX}}" name="maPX">
+			<input type="hidden"  value="{{$value->vaiTro}}" name="vaiTro">
+			<input type="hidden"  value="{{$value->maQuyen}}" name="maQuyen">
 			@endforeach
 		</div> 
 
