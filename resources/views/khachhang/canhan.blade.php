@@ -2,51 +2,75 @@
 @section('khachhang_content')
 
 
-	<div class="container">
-		<h2>Thiết lập tài khoản</h2>
+<div class="container">
 
-		<!-- bắt đầu menu ngang -->
-		<div class="row" style="margin-top: 70px;">
-			<a class="btn-xanh tab-duocchon" href="{{URL::to('/canhan')}}">Thông tin cá nhân</a>
-			<a class="tab-khongchon" href="{{URL::to('/matkhau')}}">Đổi mật khẩu</a>
-		</div> <!-- kết thúc menu ngang -->
-		<hr>
 
-		<h4 style="margin-top: 70px;">Avatar</h4>
 
-		<!-- bắt đầu avatar -->
-		<div class="row" style="margin-top: 30px;">
-			<div class="col-md-2" style="padding: 0px;">
-				<img src="{{('public/frontend/img/avtkhachhang.png')}}" alt="loi">
+
+	<h2>Thiết lập tài khoản</h2>
+
+	<?php
+	$id = Session::get('nguoidung_id');
+	if ($id)
+		echo $id;
+	else echo "nguuuuu";
+	?>
+
+	<!-- bắt đầu menu ngang -->
+	<div class="row" style="margin-top: 70px;">
+		<a class="btn-xanh tab-duocchon" href="{{URL::to('/canhan')}}">Thông tin cá nhân</a>
+		<a class="tab-khongchon" href="{{URL::to('/matkhau')}}">Đổi mật khẩu</a>
+	</div> <!-- kết thúc menu ngang -->
+	<hr>
+
+	<h4 style="margin-top: 70px;">Avatar</h4>
+
+	<!-- bắt đầu avatar -->
+	<div class="row" style="margin-top: 30px;">
+		<div class="col-md-2" style="padding: 0px;">
+			<img src="{{('public/frontend/img/avtkhachhang.png')}}" alt="loi">
+		</div>
+		<div class="col-md-10">
+			<div class="row">
+				<p><strong>hangu</strong></p>
 			</div>
-			<div class="col-md-10">
-				<div class="row"><p><strong>hangu</strong></p></div>
-				<div class="row">
-					<button class="btn-xanh" style="width: 80px; height: 35px;">Update</button>
-					<button class="btn-trang" style="margin-left: 10px;width: 80px; height: 35px;">Delete</button>
-				</div>
+			<div class="row">
+				<button class="btn-xanh" style="width: 80px; height: 35px;">Update</button>
+				<button class="btn-trang" style="margin-left: 10px;width: 80px; height: 35px;">Delete</button>
 			</div>
-		</div> <!-- kết thúc avatar -->
+		</div>
+	</div> <!-- kết thúc avatar -->
 
-		<!-- bắt đầu phần thông tin cá nhân -->
+	<!-- bắt đầu phần thông tin cá nhân -->
+	<form action="{{URL::to('/capnhat-thongtincanhan')}}" method="post">
 		<div class="row inf-canhan">
+			@foreach($nguoidung as $key => $value)
 			<label for="pwd"><strong>Họ tên</strong></label>
-            <input type="text" class="form-control input-canhan">
-            <label for="pwd"><strong>Giới tính</strong></label>
-            <input type="text" class="form-control input-canhan">
-            <label for="pwd"><strong>Ngày sinh</strong></label>
-            <input type="text" class="form-control input-canhan">
-            <label for="pwd"><strong>Email</strong></label>
-            <input type="text" class="form-control input-canhan">
-            <label for="pwd"><strong>Số điện thoại</strong></label>
-            <input type="text" class="form-control input-canhan">
-            <label for="pwd"><strong>Địa chỉ</strong></label>
-            <input type="text" class="form-control input-canhan">
-		</div> <!-- kết thúc phần thông tin cá nhân -->
+			<input type="text" class="form-control input-canhan" value="{{$value->tenND}}">
+			<label for="pwd"><strong>Giới tính</strong></label>
+			<input type="text" class="form-control input-canhan" value="{{$value->gioiTinh}}">
+			<label for="pwd"><strong>Ngày sinh</strong></label>
+			<input type="date" class="form-control input-canhan" value="{{$value->ngaySinh}}">
+			<label for="pwd"><strong>Email</strong></label>
+			<input type="text" class="form-control input-canhan" value="{{$value->email}}">
+			<label for="pwd"><strong>Số điện thoại</strong></label>
+			<input type="text" class="form-control input-canhan" value="{{$value->SDT}}">
+			<label for="pwd"><strong>Địa chỉ</strong></label>
+			<input type="text" class="form-control input-canhan" value="{{$value->diaChi}}">
+
+			<input type="hidden"  value="{{$value->maND}}">
+			<input type="hidden"  value="{{$value->taiKhoan}}">
+			<input type="hidden"  value="{{$value->matKhau}}">
+			<input type="hidden"  value="{{$value->maPX}}">
+			<input type="hidden"  value="{{$value->vaiTro}}">
+			<input type="hidden"  value="{{$value->maQuyen}}">
+			@endforeach
+		</div> 
 
 		<div class="row" style="margin-top: 100px;">
-			<button class="btn-xanh btn-luu">Lưu thay đổi</button> 
+			<input type="submit" class="btn-xanh btn-luu" value="Lưu thay đổi" />
 		</div>
-	</div>
-	
+	</form> <!-- kết thúc phần thông tin cá nhân -->
+</div>
+
 @endsection

@@ -44,13 +44,17 @@ Route::get('/shipper','ShipperController@index');
 ///khách hàng
 Route::get('/khachhang','KhachHangController@index');
 //dang nhap
-Route::post('/khachhangHome','KhachHangController@login');
+// Route::get('/khachhangHome','KhachHangController@login');
 Route::get('/giohang','KhachHangController@giohang');
 Route::get('/canhan','KhachHangController@canhan');
 Route::get('/matkhau','KhachHangController@matkhau');
+///cập nhậT thông tin cá nhân
+Route::post('/capnhat-thongtincanhan','KhachHangController@capnhat_thongtincanhan');
 
 
 //đang nhập đăng ký
 Route::get('/dangnhap','trangchuController@dangnhap');
 Route::get('/dangky','trangchuController@dangky');
+//kiểm tra đăng nhập
+Route::post('/kiemtra-dangnhap','trangchuController@kiemtra_dangnhap');
 

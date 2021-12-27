@@ -59,7 +59,7 @@
                                 <ul >
                                     <li><a href="{{URL::to('/canhan')}}">Trang cá nhân</a></li>
                                     <li><a href="{{URL::to('/giohang')}}">Giỏ hàng</a></li>
-                                    <li<a href="{{URL::to('/dangnhap')}}">Đăng xuất</a></li>
+                                    <li><a href="{{URL::to('/dangnhap')}}">Đăng xuất</a></li>
                                 </ul>                            
                             <li class="nav-item">
                             </li>
