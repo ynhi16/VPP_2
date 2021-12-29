@@ -49,4 +49,9 @@ class trangchuController extends Controller
             return Redirect::to('/dangnhap');
         }
     }
+    //chi tiết sản phẩm
+    public function chitietsanpham($maSP) {
+
+        return view('page.chitietsanpham');
+    }
 }

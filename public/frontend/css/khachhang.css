@@ -113,6 +113,7 @@
 
 .wp-giohang {
     font-size: 18px;
+    margin-left: 80px;
 }
 
 .item-sanphamgiohang {
@@ -139,7 +140,8 @@
 
 .inf-giohang {
     border: solid #6666;
-    border-radius: 20px;
+    border-width: 1px;
+    border-radius: 10px;
     margin-left: 50px;
     margin-right: 20px;
     margin-top: 20px;
@@ -152,7 +154,9 @@
 
 .btn-giohang-tttt {
     height: 40px;
-    width: 100%;
+    width: 80%;
+    margin-left: 25px;
+    margin-right: 20px;
 }
 
 .a-up {
@@ -162,6 +166,9 @@
 
 
 /* //////// header menu */
+
+
+/* ///thông thin sản phẩm/// */
 
 
 /*///home

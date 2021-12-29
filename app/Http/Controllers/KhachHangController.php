@@ -27,15 +27,28 @@ class KhachHangController extends Controller
     {
         return view('khachhang.giohang');
     }
+    ///trang thanh toán
+    public function thanhtoan()
+    {
+        return view('khachhang.thanhtoan');
+    }
 
     public function canhan()
     {
 
         $maND = Session::get('nguoidung_id');
 
-        $nguoidung = DB::table('nguoidung')->where('maND', $maND)->get();
+        $tinhthanh = DB::table('tinhthanh')->get();
+        $quanhuyen = DB::table('quanhuyen')->get();
+        $phuongxa = DB::table('phuongxa')->get();
 
-        return view('khachhang.canhan')->with('nguoidung', $nguoidung);
+        $nguoidung = DB::table('nguoidung')
+        -> join('phuongxa', 'phuongxa.IDPX', '=', 'nguoidung.maPX')
+        -> join('quanhuyen', 'quanhuyen.IDQH', '=', 'phuongxa.IDQH')
+        -> join('tinhthanh', 'quanhuyen.IDTT', '=', 'tinhthanh.IDTT')
+        ->where('maND', $maND)->get();
+
+        return view('khachhang.canhan')->with('nguoidung', $nguoidung)->with('tinhthanh', $tinhthanh)->with('quanhuyen', $quanhuyen)->with('phuongxa', $phuongxa);
     }
     //cập nhật thông tin cá nhân
     public function capnhat_ttcn(Request $request)
@@ -51,8 +64,7 @@ class KhachHangController extends Controller
         $data['diaChi'] = $request->diaChi;
         $data['taiKhoan'] = $request->taiKhoan;
         $data['matKhau'] = $request->matKhau;
-        $data['maPX'] = $request->maPX;
-        $data['vaiTro'] = $request->vaiTro;
+        $data['maPX'] = $request->phuongxa;
         $data['maQuyen'] = $request->maQuyen;
 
         DB::table('nguoidung')->where('maND', $request->maND)->update($data);
@@ -98,5 +110,10 @@ class KhachHangController extends Controller
 
             return Redirect::to('canhan');
         }
+    }
+    //đơn mua
+    public function donmua() {
+
+        return view('khachhang.donmua');
     }
 }

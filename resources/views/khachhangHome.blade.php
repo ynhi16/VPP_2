@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
     <!-- CSS tùy chỉnh của bạn ở dưới này -->
-    <link rel="stylesheet" href="{{('public/frontend/css/khachhang.css')}}">
+    <link rel="stylesheet" href="{{asset('public/frontend/css/khachhang.css')}}">
     <link rel="stylesheet" href="{{asset('public/frontend/css/layout.css')}}">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
@@ -21,6 +21,7 @@
 	<div class="wp_khHome">
 		<div class="row kh_header">
 			@include("khachhang.headerKhachHang")
+			<hr style="border-width: 0.3px;">
 		</div>
 
 		<div class="row" style="margin-bottom: 100px; margin-top: 50px;">
