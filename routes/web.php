@@ -12,6 +12,8 @@
 */
 //front
 Route::get('/','trangchuController@index');
+//chi tiết sản phẩm
+Route::get('/chitietsanpham/{maSP}&{tenha}','trangchuController@chitietsanpham');
 
 //admin
 Route::get('/admin','AdminController@index');
@@ -39,4 +41,34 @@ Route::get('/all-sale','SaleController@all_sale');
 //shipper
 Route::get('/shipper','ShipperController@index');
 
+
+
+///khách hàng
+Route::get('/khachhang','KhachHangController@index');
+//dang nhap
+// Route::get('/khachhangHome','KhachHangController@login');
+Route::get('/giohang','KhachHangController@giohang');
+Route::get('/thanhtoan','KhachHangController@thanhtoan');
+Route::get('/canhan','KhachHangController@canhan');
+Route::get('/matkhau','KhachHangController@matkhau');
+///cập nhậT thông tin cá nhân
+Route::post('/capnhat-ttcn','KhachHangController@capnhat_ttcn');
+///đổi mật khẩu
+Route::post('/capnhat-mk','KhachHangController@capnhat_mk');
+//đơn mua
+Route::get('/donmua','KhachHangController@donmua');
+
+///giỏ hàng
+Route::post('/add-giohang','GioHangController@add_giohang');
+Route::get('/del-giohang/{rowId}','GioHangController@del_giohang');
+
+
+
+
+
+//đang nhập đăng ký
+Route::get('/dangnhap','trangchuController@dangnhap');
+Route::get('/dangky','trangchuController@dangky');
+//kiểm tra đăng nhập
+Route::post('/kiemtra-dangnhap','trangchuController@kiemtra_dangnhap');
 

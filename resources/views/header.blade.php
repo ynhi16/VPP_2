@@ -55,9 +55,9 @@
                     <div class="d-flex align-items-start bd-highlight mb-3" style="height: 100px">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="navbar_right" href="#">Đăng Nhập</a>
+                                <a class="navbar_right" href="{{URL::to('/dangnhap')}}">Đăng Nhập</a>
                             <li class="nav-item">
-                                <a class="navbar_right" href="#">Đăng Ký</a>
+                                <a class="navbar_right" href="{{URL::to('/dangky')}}">Đăng Ký</a>
                             <li class="nav-item">
                             </li>
                             <button type="button" class="btn me-2">

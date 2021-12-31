@@ -1,0 +1,45 @@
+.wp-dangnhap {
+    margin-right: 80px;
+    margin-left: 80px;
+}
+
+.header {
+    margin-top: 20px;
+}
+
+.logo {
+    height: 150px;
+    width: 100%;
+    text-align: left;
+}
+
+.h-title {
+    font-family: 'Hello Day';
+    height: 35px;
+}
+
+.thongtin-dangnhap {
+    width: 100%;
+    text-align: center;
+}
+
+.inf {
+    margin-top: 70px;
+    margin-left: 0px;
+    text-align: center;
+}
+
+.p-quenmk {
+    text-align: left;
+    margin-top: 10px;
+}
+
+.btn-dangnhap {
+    margin-top: 50px;
+    width: 100%;
+    height: 50px;
+}
+
+.p-dangky {
+    margin-top: 10px;
+}
