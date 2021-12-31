@@ -1,62 +1,45 @@
-*{
-	margin: 0 auto;
-
+.wp-dangnhap {
+    margin-right: 80px;
+    margin-left: 80px;
 }
 
-.wp-dangnhap{
-	margin-right: 80px;
-	margin-left: 80px;
+.header {
+    margin-top: 20px;
 }
 
-.header{
-
-	margin-top: 20px;
-}
-.logo{
-	height:150px;
-	width: 100%;
-	text-align: left;
-}
-.h-title{
-	font-family: 'Hello Day';
-	height: 35px;
+.logo {
+    height: 150px;
+    width: 100%;
+    text-align: left;
 }
 
-.form_dangnhap{
-	margin-top: 50px;
-	margin-right: 100px;
-	margin-left: 100px;
-}
-.img-dangnhap{
-	width: 450px;
-	height: 450px;
+.h-title {
+    font-family: 'Hello Day';
+    height: 35px;
 }
 
-.thongtin-dangnhap{
-	width: 100%;
-	text-align: center;
+.thongtin-dangnhap {
+    width: 100%;
+    text-align: center;
 }
-.inf{
-	margin-top: 70px;
-	margin-left: 0px;
-	text-align: center;
+
+.inf {
+    margin-top: 70px;
+    margin-left: 0px;
+    text-align: center;
 }
-.input-inf{
-	margin-top: 30px;
-	margin-right: 10%;
-	height: 60px;
-	width: 100%;
+
+.p-quenmk {
+    text-align: left;
+    margin-top: 10px;
 }
-.p-quenmk{
-	text-align: left;
-	margin-top: 10px;
+
+.btn-dangnhap {
+    margin-top: 50px;
+    width: 100%;
+    height: 50px;
 }
-.btn-dangnhap{
-	margin-top: 50px;
-	width: 100%;
-	height: 50px;
-}
-.p-dangky{
-	margin-top: 10px;
-	
+
+.p-dangky {
+    margin-top: 10px;
 }

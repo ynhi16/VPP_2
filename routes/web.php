@@ -13,7 +13,7 @@
 //front
 Route::get('/','trangchuController@index');
 //chi tiết sản phẩm
-Route::get('/chitietsanpham/{maSP}','trangchuController@chitietsanpham');
+Route::get('/chitietsanpham/{maSP}&{tenha}','trangchuController@chitietsanpham');
 
 //admin
 Route::get('/admin','AdminController@index');
@@ -57,6 +57,10 @@ Route::post('/capnhat-ttcn','KhachHangController@capnhat_ttcn');
 Route::post('/capnhat-mk','KhachHangController@capnhat_mk');
 //đơn mua
 Route::get('/donmua','KhachHangController@donmua');
+
+///giỏ hàng
+Route::post('/add-giohang','GioHangController@add_giohang');
+Route::get('/del-giohang/{rowId}','GioHangController@del_giohang');
 
 
 

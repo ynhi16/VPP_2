@@ -50,8 +50,35 @@ class trangchuController extends Controller
         }
     }
     //chi tiết sản phẩm
-    public function chitietsanpham($maSP) {
+    public function chitietsanpham($maSP, $tenha) {
 
-        return view('page.chitietsanpham');
+        $sanphamct = DB::table('sanpham')
+        -> join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')
+        -> join('danhmuc', 'sanpham.maDM', '=', 'danhmuc.maDM')
+        -> where('sanpham.maSP', $maSP)->get();
+
+        $get = DB::table('sanpham')
+        -> join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')->get();
+
+        $distinct = null;
+        foreach ($get as $key => $value) {
+            if ($distinct != null) {
+                $i = 0;
+                foreach ($distinct as $key => $dis) {
+                    if ($dis->maSP == $value->maSP) {
+
+                        $i = 1;
+                    }
+                }
+                if ($i == 0) {
+                    $distinct[] = $value;
+                }
+            } else {
+                $distinct = array();
+                $distinct[] = $value;
+            }
+        }
+
+        return view('page.chitietsanpham')->with('sanphamct', $sanphamct)->with('sanphambc', $distinct)->with('tenha', $tenha);
     }
 }

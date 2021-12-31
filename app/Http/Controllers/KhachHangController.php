@@ -25,12 +25,41 @@ class KhachHangController extends Controller
 
     public function giohang()
     {
-        return view('khachhang.giohang');
+        $get = DB::table('sanpham')
+        -> join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')->get();
+
+        $distinct = null;
+        foreach ($get as $key => $value) {
+            if ($distinct != null) {
+                $i = 0;
+                foreach ($distinct as $key => $dis) {
+                    if ($dis->maSP == $value->maSP) {
+
+                        $i = 1;
+                    }
+                }
+                if ($i == 0) {
+                    $distinct[] = $value;
+                }
+            } else {
+                $distinct = array();
+                $distinct[] = $value;
+            }
+        }
+
+        return view('khachhang.giohang')->with('sanphambc', $distinct);
     }
     ///trang thanh toán
     public function thanhtoan()
     {
-        return view('khachhang.thanhtoan');
+        $maND = Session::get('nguoidung_id');
+
+        $get = DB::table('nguoidung')
+        ->join('phuongxa', 'nguoidung.maPX', '=', 'phuongxa.idPX')
+        -> join('quanhuyen', 'quanhuyen.IDQH', '=', 'phuongxa.IDQH')
+        -> join('tinhthanh', 'quanhuyen.IDTT', '=', 'tinhthanh.IDTT')
+        ->where('nguoidung.maND', $maND)->first();
+        return view('khachhang.thanhtoan')->with('nguoidung', $get);
     }
 
     public function canhan()
