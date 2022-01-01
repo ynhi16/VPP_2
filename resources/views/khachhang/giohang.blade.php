@@ -36,6 +36,7 @@
 			width: 29px;
 			height: 29px;
 			border-radius: 3px;
+			color: #16A085;
 		}
 
 		.btn-soluong-tang {
@@ -44,6 +45,7 @@
 			width: 29px;
 			height: 29px;
 			border-radius: 3px;
+			color: white;
 		}
 
 
@@ -59,7 +61,7 @@
 			padding-left: 5px;
 		}
 
-		
+
 		.a-del:hover {
 			color: #16A085;
 			text-decoration: none;
@@ -72,19 +74,20 @@
 		<h2>Giỏ hàng</h2>
 		<div class="row">
 			<div class="col-md-7">
-				<?php 
-				$giohang = Cart::content(); 
+				<?php
+				$giohang = Cart::content();
 				$soluong = 0;
 				$tongsoluong = 0;
 				$tongtien = 0;
 				?>
 
-				@foreach($giohang as $item)
+				@foreach($giohang as $key => $item)
 				<hr style="border-width: 0.5px;">
 				<!-- bat dau item san pham -->
 				<div class="row item-sanphamgiohang">
+					<input type="hidden" id="index" value="{{$key}}">
 					<div class="col-md-3">
-						<a href="{{URL::to('/chitietsanpham/'.$item->id.'&'.$item->options->image)}}"><img src="{{asset('public/frontend/img/'.$item->options->image)}}" class="img-thumbnail" alt="Cinque Terre"></a>
+						<a href="{{URL::to('/chitietsanpham/'.$item->id)}}"><img src="{{asset('public/frontend/img/'.$item->options->image)}}" class="img-thumbnail" alt="Cinque Terre"></a>
 					</div>
 					<div class="col-md-4" style="padding-left: 0px;">
 						<p class="text-dendam">{{$item->name}}</p>
@@ -94,24 +97,24 @@
 						<div class="giohang-box3-1">
 
 							<div class="btnsoluong">
-								<button class="btn-soluong-giam"><a href="#" style="color: #16A085;">-</a></button>
-								<input type="text" class="input-soluong" value="{{$item->qty}}">
-								<button class="btn-soluong-tang"><a href="#" style="color: white;">+</a></button>
+								<button class="btn-soluong-giam btn-gh-giam">-</button>
+								<input type="text" class="input-soluong input-gh-sl" value="{{$item->qty}}" id="sl{{$key}}" >
+								<button class="btn-soluong-tang btn-gh-tang" onclick="tang($key)">+</button>
 							</div>
 
 
 						</div>
 					</div>
 					<div class="col-md-2">
-						<p class="p-box4">{{$item->qty * $item->price}} đ</p>
+						<p class="p-box4" id="tt{{$key}}">{{$item->qty * $item->price}} đ</p>
 						<p style="text-align: right;"><a href="{{URL::to('/del-giohang/'.$item->rowId)}}" class="a-del text-xanh">Delete</a></p>
 					</div>
 				</div> <!-- ket thuc item san pham -->
 
-				<?php 
+				<?php
 				$soluong++;
 				$tongsoluong += $item->qty;
-				$tongtien += $item->qty*$item->price; 
+				$tongtien += $item->qty * $item->price;
 				?>
 				@endforeach
 			</div>
@@ -131,7 +134,7 @@
 		<div class="row spbc">
 			@for($i=0; $i<=3; $i++) <div class="col-md-3 img-sp-bc">
 				<div class="row">
-					<a href="{{URL::to('/chitietsanpham/'.$sanphambc[$i]->maSP.'&'.$sanphambc[$i]->tenHA)}}"><img src="{{asset('public/frontend/img/'.$sanphambc[$i]->tenHA)}}" class="img-thumbnail" alt="Cinque Terre"></a>
+					<a href="{{URL::to('/chitietsanpham/'.$sanphambc[$i]->maSP)}}"><img src="{{asset('public/frontend/img/'.$sanphambc[$i]->tenHA)}}" class="img-thumbnail" alt="Cinque Terre"></a>
 				</div>
 				<div class="row" style="font-size: 16px; margin-top: 5px;">
 					<div class="col-md-8">
@@ -148,7 +151,7 @@
 	<div class="row spbc">
 		@for($i=4; $i<=7; $i++) <div class="col-md-3 img-sp-bc">
 			<div class="row">
-				<a href="{{URL::to('/chitietsanpham/'.$sanphambc[$i]->maSP.'&'.$sanphambc[$i]->tenHA)}}"><img src="{{asset('public/frontend/img/'.$sanphambc[$i]->tenHA)}}" class="img-thumbnail" alt="Cinque Terre"></a>
+				<a href="{{URL::to('/chitietsanpham/'.$sanphambc[$i]->maSP)}}"><img src="{{asset('public/frontend/img/'.$sanphambc[$i]->tenHA)}}" class="img-thumbnail" alt="Cinque Terre"></a>
 			</div>
 			<div class="row" style="font-size: 16px; margin-top: 5px;">
 				<div class="col-md-8">
@@ -162,6 +165,50 @@
 	@endfor
 	</div>
 	</div>
+
+
+	<script>
+
+		//chỉ lấy 1 đối tượng
+        const $ = document.querySelector.bind(document);
+        //lấy tất cả đối tượng
+        const $$ = document.querySelectorAll.bind(document);
+
+		document.getElementById('img').src = imgs[index];
+
+		function tang(index) {
+			var idsl = sl + index + "";
+			var sl = document.getElementById(idsl).value;
+			sl++;
+			document.getElementById(idsl).value = sl;
+		}
+
+
+
+		/* btn số lượng */
+		// const inputSL2 = $(".input-soluong.input-gh-sl");
+		// const btnTang2 = $(".btn-soluong-tang.btn-gh-tang");
+		// const btnGiam2 = $(".btn-soluong-giam.btn-gh-giam");
+
+		// btnGiam2.onclick = function() {
+		// 	var sl = inputSL2.value;
+		// 	if (sl >= 2) {
+		// 		sl--;
+		// 		inputSL2.value = sl;
+
+		// 		///set lại giá
+
+		// 	}
+		// };
+
+		// btnTang2.onclick = function() {
+		// 	var sl = inputSL2.value;
+
+		// 	sl++;
+		// 	inputSL2.value = sl;
+
+		// };
+	</script>
 </body>
 
 </html>

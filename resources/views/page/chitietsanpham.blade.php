@@ -30,16 +30,9 @@
         }
 
         .img-con {
-            /* width: 138px;
-            height: 87px; */
             margin-top: 5px;
 
         }
-
-        .img-con-chon {
-            border: solid #16A085;
-        }
-
 
         .btnsoluong {
             margin-top: 40px;
@@ -59,6 +52,8 @@
             width: 29px;
             height: 29px;
             border-radius: 3px;
+            color: #16A085;
+            padding-left: 8px;
         }
 
         .btn-soluong-tang {
@@ -67,6 +62,8 @@
             width: 29px;
             height: 29px;
             border-radius: 3px;
+            color: white;
+            padding-left: 8px;
         }
 
         .btn {
@@ -93,6 +90,43 @@
             border-radius: 20px;
             padding-left: 5px;
         }
+
+
+
+        /* ///image/// */
+        .tabs {
+            display: flex;
+            position: relative;
+        }
+
+        .tab-item {
+            /* độ trong suốt */
+            opacity: 0.6;
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+
+        .tab-item:hover {
+            opacity: 1;
+            background-color: rgba(194, 53, 100, 0.05);
+            border-color: rgba(194, 53, 100, 0.1);
+        }
+
+        .tab-item.active {
+            opacity: 1;
+        }
+
+        .tab-content {
+            padding: 28px 0;
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
     </style>
 </head>
 
@@ -102,44 +136,72 @@
         <p class="danhmuc">{{$sanphamct[0]->tenDM}}</p>
         <div class="row">
             <div class="col-md-6">
+
                 <div class="row">
-                    <img src="{{asset('public/frontend/img/'.$tenha)}}" class="img-thumbnail" alt="Cinque Terre">
-                </div>
-                <div class="row">
-                    @foreach($sanphamct as $kay => $value)
-
-                    <div class="col-md-3" style="padding: 0; margin-right: 5px;">
-                        <a href="{{URL::to('/chitietsanpham/'.$value->maSP.'&'.$value->tenHA)}}">
-                            @if ($value->tenHA === $tenha)
-
-                            <img src="{{asset('public/frontend/img/'.$value->tenHA)}}" class="img-thumbnail img-con img-con-chon" alt="Cinque Terre">
-                            @else
-
-                            <img src="{{asset('public/frontend/img/'.$value->tenHA)}}" class="img-thumbnail img-con" alt="Cinque Terre">
-                            @endif
-                        </a>
+                    <!-- tab content -->
+                    <div class="content">
+                        @foreach($sanphamct as $key => $value)
+                        @if ($key == 0)
+                        <div class="tab-pane active">
+                            <img src="{{asset('public/frontend/img/'.$value->tenHA)}}" class="img-thumbnail" alt="Cinque Terre">
+                        </div>
+                        @else
+                        <div class="tab-pane">
+                            <img src="{{asset('public/frontend/img/'.$value->tenHA)}}" class="img-thumbnail" alt="Cinque Terre">
+                        </div>
+                        @endif
+                        @endforeach
                     </div>
-                    @endforeach
                 </div>
+
+                <div class="row">
+                    <!-- tab items -->
+                    <div class="tabs">
+
+                        @foreach($sanphamct as $key => $value)
+                        <div class="col-md-3" style="padding: 0; margin-right: 5px;">
+                            @if($key == 0)
+                            <div class="tab-item active">
+
+                                <img src="{{asset('public/frontend/img/'.$value->tenHA)}}" class="img-thumbnail img-con" alt="Cinque Terre">
+
+                            </div>
+                            @else
+                            <div class="tab-item">
+
+                                <img src="{{asset('public/frontend/img/'.$value->tenHA)}}" class="img-thumbnail img-con" alt="Cinque Terre">
+
+                            </div>
+                            @endif
+                        </div>
+                        @endforeach
+
+                    </div>
+                </div>
+
             </div>
 
             <div class="col-md-5 inf-sanpham">
+
                 <form action="{{URL::to('/add-giohang')}}" method="post">
                     @csrf
+
                     <input type="hidden" name="maSP" value="{{$sanphamct[0]->maSP}}">
                     <p class="text-dendam" style="font-size: 22px;">{{$value->tenSP}}</p>
                     <p>{{$value->donGia}} đ</p>
                     <p>Số lượng còn: {{$value->soLuongCon}}</p>
                     <div class="btnsoluong">
-                        <button class="btn-soluong-giam"><a href="#" style="color: #16A085;">-</a></button>
-                        <input type="text" class="input-soluong" value="1" name="soluong">
-                        <button class="btn-soluong-tang"><a href="#" style="color: white;">+</a></button>
+                        <label class="btn-soluong-giam btn-ct-giam">-</label>
+                        <input type="text" class="input-soluong input-ct-sl" value="1" name="soluong">
+                        <label class="btn-soluong-tang btn-ct-tang">+</label>
                     </div>
                     <div class="btn">
                         <button type="submit" class="btn-xanh btn-chitiet">Thêm vào giỏ hàng</button>
                         <button class="btn-trang btn-chitiet">Mua ngay</button>
                     </div>
+
                 </form>
+
             </div>
         </div>
 
@@ -155,7 +217,7 @@
         <div class="row spbc">
             @for($i=0; $i<=3; $i++) <div class="col-md-3 img-sp-bc">
                 <div class="row">
-                    <a href="{{URL::to('/chitietsanpham/'.$sanphambc[$i]->maSP.'&'.$sanphambc[$i]->tenHA)}}"><img src="{{asset('public/frontend/img/'.$sanphambc[$i]->tenHA)}}" class="img-thumbnail" alt="Cinque Terre"></a>
+                    <a href="{{URL::to('/chitietsanpham/'.$sanphambc[$i]->maSP)}}"><img src="{{asset('public/frontend/img/'.$sanphambc[$i]->tenHA)}}" class="img-thumbnail" alt="Cinque Terre"></a>
                 </div>
                 <div class="row" style="font-size: 16px; margin-top: 5px;">
                     <div class="col-md-8">
@@ -172,7 +234,7 @@
     <div class="row spbc">
         @for($i=4; $i<=7; $i++) <div class="col-md-3 img-sp-bc">
             <div class="row">
-                <a href="{{URL::to('/chitietsanpham/'.$sanphambc[$i]->maSP.'&'.$sanphambc[$i]->tenHA)}}"><img src="{{asset('public/frontend/img/'.$sanphambc[$i]->tenHA)}}" class="img-thumbnail" alt="Cinque Terre"></a>
+                <a href="{{URL::to('/chitietsanpham/'.$sanphambc[$i]->maSP)}}"><img src="{{asset('public/frontend/img/'.$sanphambc[$i]->tenHA)}}" class="img-thumbnail" alt="Cinque Terre"></a>
             </div>
             <div class="row" style="font-size: 16px; margin-top: 5px;">
                 <div class="col-md-8">
@@ -187,6 +249,56 @@
     </div>
     </div>
 
+
+    <script>
+        //* hình ảnh sản phẩm */
+
+        //chỉ lấy 1 đối tượng
+        const $ = document.querySelector.bind(document);
+        //lấy tất cả đối tượng
+        const $$ = document.querySelectorAll.bind(document);
+
+        //lấy theo tên class
+        const tabs = $$(".tab-item");
+        const panes = $$(".tab-pane");
+
+        const tabActive = $(".tab-item.active");
+
+        tabs.forEach((tab, index) => {
+            const pane = panes[index];
+
+            tab.onclick = function() {
+                //tìm và xoá các element có class chứa active
+                $(".tab-item.active").classList.remove("active");
+                $(".tab-pane.active").classList.remove("active");
+
+                this.classList.add("active");
+                pane.classList.add("active");
+            };
+        });
+
+        /* btn số lượng */
+        const inputSL = $(".input-soluong.input-ct-sl");
+        const btnTang = $(".btn-soluong-tang.btn-ct-tang");
+        const btnGiam = $(".btn-soluong-giam.btn-ct-giam");
+
+        btnGiam.onclick = function() {
+            var sl = inputSL.value;
+            if (sl >= 2) {
+                sl--;
+                inputSL.value = sl;
+            }
+        };
+
+        btnTang.onclick = function() {
+            var sl = inputSL.value;
+            var slmax = <?= $sanphamct[0]->soLuongCon; ?>;
+            if (sl < slmax) {
+                sl++;
+                inputSL.value = sl;
+            }
+        };
+    </script>
 </body>
 
 </html>

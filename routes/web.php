@@ -13,7 +13,7 @@
 //front
 Route::get('/','trangchuController@index');
 //chi tiết sản phẩm
-Route::get('/chitietsanpham/{maSP}&{tenha}','trangchuController@chitietsanpham');
+Route::get('/chitietsanpham/{maSP}','trangchuController@chitietsanpham');
 
 //admin
 Route::get('/admin','AdminController@index');

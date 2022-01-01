@@ -43,7 +43,7 @@
                 <div class="d-flex justify-content-between">
                     <div class="bd-highlight">
                         <div class="card" style="width: 170px;">
-                            <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="...">
+                            <img src="{{('public/frontend/img/sanpham1.png')}}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p class="card-text">Calendar/ Schedule</p>
                             </div>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="bd-highlight">
                         <div class="card" style="width: 170px;">
-                            <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="...">
+                            <img src="{{('public/frontend/img/sanpham1.png')}}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p class="card-text">Stickers</p>
                             </div>
@@ -59,7 +59,7 @@
                     </div>
                     <div class="bd-highlight">
                         <div class="card" style="width: 170px;">
-                            <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="...">
+                            <img src="{{('public/frontend/img/sanpham1.png')}}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p class="card-text">Masking Tape</p>
                             </div>
@@ -67,7 +67,7 @@
                     </div>
                     <div class="bd-highlight">
                         <div class="card" style="width: 170px;">
-                            <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="...">
+                            <img src="{{('public/frontend/img/sanpham1.png')}}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p class="card-text">Sticky Note/ Memo Pad</p>
                             </div>
@@ -75,7 +75,7 @@
                     </div>
                     <div class="bd-highlight">
                         <div class="card" style="width: 170px;">
-                            <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="...">
+                            <img src="{{('public/frontend/img/sanpham1.png')}}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <p class="card-text">Writing Utensils</p>
                             </div>
@@ -91,7 +91,7 @@
             
                 <div class="d-flex justify-content-between">
                     <div class="card" style="width: 250px;">
-                        <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="...">
+                        <img src="{{('public/frontend/img/sanpham1.png')}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <div class="card-text">60 Sticker cổ điển retro</div>
@@ -100,7 +100,7 @@
                         </div>
                     </div>
                     <div class="card" style="width: 250px;">
-                        <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="...">
+                        <img src="{{('public/frontend/img/sanpham1.png')}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <div class="card-text">60 Sticker cổ điển retro</div>
@@ -109,7 +109,7 @@
                         </div>
                     </div>
                     <div class="card" style="width: 250px;">
-                        <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="...">
+                        <img src="{{('public/frontend/img/sanpham1.png')}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <div class="card-text">60 Sticker cổ điển retro</div>
@@ -118,7 +118,7 @@
                         </div>
                     </div>
                     <div class="card" style="width: 250px;">
-                        <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="...">
+                        <img src="{{('public/frontend/img/sanpham1.png')}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <div class="card-text">60 Sticker cổ điển retro</div>
@@ -136,7 +136,7 @@
             
                 <div class="d-flex justify-content-between">
                     <div class="card" style="width: 250px;">
-                        <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="...">
+                        <img src="{{('public/frontend/img/sanpham1.png')}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <div class="card-text">60 Sticker cổ điển retro</div>
@@ -145,7 +145,7 @@
                         </div>
                     </div>
                     <div class="card" style="width: 250px;">
-                        <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="...">
+                        <img src="{{('public/frontend/img/sanpham1.png')}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <div class="card-text">60 Sticker cổ điển retro</div>
@@ -154,7 +154,7 @@
                         </div>
                     </div>
                     <div class="card" style="width: 250px;">
-                        <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="...">
+                        <img src="{{('public/frontend/img/sanpham1.png')}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <div class="card-text">60 Sticker cổ điển retro</div>
@@ -163,7 +163,7 @@
                         </div>
                     </div>
                     <div class="card" style="width: 250px;">
-                        <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="...">
+                        <img src="{{('public/frontend/img/sanpham1.png')}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <div class="card-text">60 Sticker cổ điển retro</div>
@@ -181,7 +181,7 @@
             
                 <div class="d-flex justify-content-between">
                     <div class="card" style="width: 250px;">
-                        <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="...">
+                        <img src="{{('public/frontend/img/sanpham1.png')}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <div class="card-text">60 Sticker cổ điển retro</div>
@@ -190,7 +190,7 @@
                         </div>
                     </div>
                     <div class="card" style="width: 250px;">
-                        <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="...">
+                        <img src="{{('public/frontend/img/sanpham1.png')}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <div class="card-text">60 Sticker cổ điển retro</div>
@@ -199,7 +199,7 @@
                         </div>
                     </div>
                     <div class="card" style="width: 250px;">
-                        <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="...">
+                        <img src="{{('public/frontend/img/sanpham1.png')}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <div class="card-text">60 Sticker cổ điển retro</div>
@@ -208,7 +208,7 @@
                         </div>
                     </div>
                     <div class="card" style="width: 250px;">
-                        <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="...">
+                        <img src="{{('public/frontend/img/sanpham1.png')}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <div class="card-text">60 Sticker cổ điển retro</div>

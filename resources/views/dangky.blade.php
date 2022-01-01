@@ -58,6 +58,7 @@
 					<h1>Đăng ký</h1>
 					<div class="inf">
     					<input type="text" class="form-control input-trang  input-inf" placeholder="Họ tên">
+						<input type="text" class="form-control input-trang  input-inf" placeholder="Email">
     					<input type="text" class="form-control input-trang  input-inf" placeholder="Tên đăng nhập">
     					<input type="password" class="form-control input-trang  input-inf" placeholder="Mật khẩu">
 
