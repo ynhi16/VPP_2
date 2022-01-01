@@ -1,0 +1,19 @@
+.card-text {
+    font-size: 13px;
+}
+
+
+.row-cols-lg-5>* {
+    flex: 0 0 auto;
+    width: 16%;
+}
+.title-row {
+    font-weight: bold;
+    font-size: 18px;
+}
+.price {
+    background: #C8F4F3;
+    padding: 0px 5px;
+    border: 1px solid #C8F4F3;
+    border-radius: 5px;
+}
