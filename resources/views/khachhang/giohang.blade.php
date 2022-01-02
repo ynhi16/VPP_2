@@ -37,6 +37,7 @@
 			height: 29px;
 			border-radius: 3px;
 			color: #16A085;
+			padding-right: 8px;
 		}
 
 		.btn-soluong-tang {
@@ -46,6 +47,7 @@
 			height: 29px;
 			border-radius: 3px;
 			color: white;
+			padding-right: 7px;
 		}
 
 
@@ -62,9 +64,22 @@
 		}
 
 
+		.a-del{
+			color: black;
+			font-weight: bold;
+		}
 		.a-del:hover {
-			color: #16A085;
+			color: black;
+			font-size: 20px;
 			text-decoration: none;
+		}
+
+		.btn-giohang-tt {
+			width: 100%;
+			background-color: black;
+            height: 45px;
+            border-radius: 30px;
+			margin-top: 30px;
 		}
 	</style>
 </head>
@@ -72,20 +87,23 @@
 <body>
 	<div class="wp-giohang">
 		<h2>Giỏ hàng</h2>
+
 		<div class="row">
+
 			<div class="col-md-7">
+
 				<?php
 				$giohang = Cart::content();
 				$soluong = 0;
 				$tongsoluong = 0;
 				$tongtien = 0;
 				?>
-
 				@foreach($giohang as $key => $item)
 				<hr style="border-width: 0.5px;">
 				<!-- bat dau item san pham -->
 				<div class="row item-sanphamgiohang">
-					<input type="hidden" id="index" value="{{$key}}">
+					<!-- <input type="hidden" class="rowid" value="{{$item->rowId}}" id="rowid"> -->
+					<input type="hidden" class="dongia" value="{{$item->price}}">
 					<div class="col-md-3">
 						<a href="{{URL::to('/chitietsanpham/'.$item->id)}}"><img src="{{asset('public/frontend/img/'.$item->options->image)}}" class="img-thumbnail" alt="Cinque Terre"></a>
 					</div>
@@ -97,40 +115,46 @@
 						<div class="giohang-box3-1">
 
 							<div class="btnsoluong">
-								<button class="btn-soluong-giam btn-gh-giam">-</button>
-								<input type="text" class="input-soluong input-gh-sl" value="{{$item->qty}}" id="sl{{$key}}" >
-								<button class="btn-soluong-tang btn-gh-tang" onclick="tang($key)">+</button>
+								<!-- <label class="btn-soluong-giam btn-gh-giam">-</label>
+								<input type="text" class="input-soluong input-gh-sl" value="{{$item->qty}}" name="newqty[]" id="qty">
+								<label class="btn-soluong-tang btn-gh-tang" onclick="">+</label> -->
+								<input type="text" class="input-soluong input-gh-sl" value="{{$item->qty}}" name="newqty">
 							</div>
-
 
 						</div>
 					</div>
 					<div class="col-md-2">
-						<p class="p-box4" id="tt{{$key}}">{{$item->qty * $item->price}} đ</p>
-						<p style="text-align: right;"><a href="{{URL::to('/del-giohang/'.$item->rowId)}}" class="a-del text-xanh">Delete</a></p>
-					</div>
-				</div> <!-- ket thuc item san pham -->
+						<p class="p-box4">{{$item->qty * $item->price}} đ</p>
+						<p style="text-align: right;"><a href="{{URL::to('/del-giohang/'.$item->rowId)}}" class="a-del">Delete</a></p>
 
-				<?php
-				$soluong++;
-				$tongsoluong += $item->qty;
-				$tongtien += $item->qty * $item->price;
-				?>
+					</div>
+
+					<?php
+					$soluong++;
+					$tongsoluong += $item->qty;
+					$tongtien += $item->qty * $item->price;
+					?>
+
+
+
+				</div> <!-- ket thuc item san pham -->
 				@endforeach
 			</div>
-			<div class="col-md-3 inf-giohang" style="border-width: 1px; border-radius: 10px; padding-left: 30px;">
+			<div class="col-md-3" style="margin-left: 60px;">
 				<h5 style="font-weight: bold;"><?php echo $soluong ?> sản phẩm</h5>
-				<p>Tổng số lượng: <?php echo $tongsoluong ?> món</p>
+				<p style="margin-top: 20px;">Tổng số lượng: <?php echo $tongsoluong ?> món</p>
 				<p>Tổng tiền: <?php echo $tongtien ?> đ</p>
-				<button class="btn-xanh btn-giohang-tttt"><a href="{{URL::to('/thanhtoan')}}" style="color: white;">Tiếp tục để thanh toán</a></button>
+				<button class="btn-giohang-tt"><a href="{{URL::to('/thanhtoan')}}" style="color: white;">Tiếp tục để thanh toán</a></button>
 			</div>
+
 		</div>
+
 	</div>
 	<!-- /// -->
-	<div style="margin-top: 100px;"></div>
+	<div style="margin-top: 200px;"></div>
 	<div style="width: 87%; margin-left: 90px;">
 
-		<p class="text-dendam">Sản phẩm bán chạy</p>
+		<p class="text-dendam" style="font-size: 25px;">Sản phẩm bán chạy</p>
 		<div class="row spbc">
 			@for($i=0; $i<=3; $i++) <div class="col-md-3 img-sp-bc">
 				<div class="row">
@@ -166,49 +190,56 @@
 	</div>
 	</div>
 
+	<!-- <script type="text/javascript">
+		$(document).ready(function() {
+			$('.btn-gh-giam').click(function() {
+				var rowid = $(this).data('rowid').val();
+				console.log(rowid)
 
-	<script>
+			});
 
-		//chỉ lấy 1 đối tượng
-        const $ = document.querySelector.bind(document);
-        //lấy tất cả đối tượng
-        const $$ = document.querySelectorAll.bind(document);
+		});
+	</script> -->
 
-		document.getElementById('img').src = imgs[index];
+	<!-- <script>
+		// innerHTML
+		const $ = document.querySelector.bind(document);
+		const $$ = document.querySelectorAll.bind(document);
 
-		function tang(index) {
-			var idsl = sl + index + "";
-			var sl = document.getElementById(idsl).value;
-			sl++;
-			document.getElementById(idsl).value = sl;
-		}
+		const btngiams = $$(".btn-soluong-giam.btn-gh-giam");
+		const btntangs = $$(".btn-soluong-tang.btn-gh-tang");
+		const soluongs = $$(".input-soluong.input-gh-sl");
+		const thanhtiens = $$(".p-box4");
+		const rowids = $$(".rowid");
+		const dongias = $$(".dongia");
 
+		btngiams.forEach((btngiam, index) => {
+			const btntang = btntangs[index];
+			const soluong = soluongs[index];
+			const thanhtien = thanhtiens[index];
+			const dongia = dongias[index].value;
+			const rowid = rowids[index].value;
 
+			btngiam.onclick = function() {
+				var sl = soluong.value;
+				if (sl > 1) {
+					sl--;
+					soluong.value = sl;
+					var tt = dongia * sl;
+					thanhtien.innerHTML = tt + ' đ' + rowid;
 
-		/* btn số lượng */
-		// const inputSL2 = $(".input-soluong.input-gh-sl");
-		// const btnTang2 = $(".btn-soluong-tang.btn-gh-tang");
-		// const btnGiam2 = $(".btn-soluong-giam.btn-gh-giam");
+				}
+			}
 
-		// btnGiam2.onclick = function() {
-		// 	var sl = inputSL2.value;
-		// 	if (sl >= 2) {
-		// 		sl--;
-		// 		inputSL2.value = sl;
-
-		// 		///set lại giá
-
-		// 	}
-		// };
-
-		// btnTang2.onclick = function() {
-		// 	var sl = inputSL2.value;
-
-		// 	sl++;
-		// 	inputSL2.value = sl;
-
-		// };
-	</script>
+			btntang.onclick = function() {
+				var sl = soluong.value;
+				sl++;
+				soluong.value = sl;
+				var tt = dongia * sl;
+				thanhtien.innerHTML = tt + ' đ';
+			};
+		});
+	</script> -->
 </body>
 
 </html>

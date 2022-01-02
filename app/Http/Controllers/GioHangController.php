@@ -28,7 +28,7 @@ class GioHangController extends Controller
         $data['name'] = $sanpham->tenSP;
         $data['price'] = $sanpham->donGia;
         $data['options']['image'] = $sanpham->tenHA;
-        $data['weight'] = '0';
+        $data['weight'] = $sanpham->soLuongCon;
         Cart::add($data);
 
         return Redirect::to('/giohang');
@@ -39,5 +39,14 @@ class GioHangController extends Controller
 
         Cart::update($rowId, 0);
         return Redirect::to('/giohang');
+    }
+
+    //change
+    public function change(Request $request) {
+        $data = $request->all();
+        $rowId = $data['rowid'];
+        $sl = $data['sl'];
+        Cart::update($rowId, $sl);
+        print_r($data);
     }
 }

@@ -44,6 +44,18 @@
             height: 40px;
             margin-top: 25px;
         }
+
+
+        /* thông tin người nhận */
+        .btn-thanhtoan {
+            background-color: black;
+            height: 45px;
+            border-radius: 30px;
+			margin-top: 30px;
+            color: white;
+            font-size: 20px;
+        }
+
     </style>
 </head>
 
@@ -51,7 +63,7 @@
     <div class="wp-thanhtoan">
         <h2>Thanh toán</h2>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <!-- danh sach san pham -->
                 <?php
                 $giohang = Cart::content();
@@ -77,43 +89,43 @@
                 <?php $tongtien += $item->price * $item->qty; ?>
                 @endforeach
                 <!-- ket thuc item san pham -->
-                
+
             </div>
             <!-- ket thuc danh sach san pham -->
-            <div class="col-md-3 inf-sanpham">
-                <p class="title-tt">Thông tin người nhận</p>
-                <label class="thongtin">{{$nguoidung->tenND}}</label> <br>
-                <label class="thongtin">{{$nguoidung->SDT}}</label>
-                <hr style="border-width: 0.5px;">
 
-                <p class="title-tt">Địa chỉ giao hàng</p>
-                <p class="thongtin">{{$nguoidung->diaChi.', '.$nguoidung->tenPX.', '.$nguoidung->tenQH.', '.$nguoidung->tenTT}}</p>
-                <hr style="border-width: 0.5px;">
-
-                <p class="title-tt">Phương thức thanh toán</p>
-                <p class="thongtin">Thanh toán trực tiếp khi nhận hàng</p>
-                <hr style="border-width: 0.5px;">
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <p class="title-tt">Phí vận chuyển</p>
-                    </div>
-                    <div class="col-md-6">
-                        <p style="text-align: right;">15.000 đ</p>
-                    </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-4">
+                <div class="panel-body">
+                    <p style="text-align: center; font-size: 28px;">Thông tin người nhận</p>
+                    <form role="form" action="{{URL::to('/add-bandoc')}}" method="post">
+                        {{csrf_field()}}
+                        <div class="form-group">
+                            <label>Họ tên</label>
+                            <input type="text" class="form-control" name="them_hoten">
+                        </div>
+                        <div class="form-group">
+                            <label>Số điện thoại</label>
+                            <input type="text" class="form-control" name="them_hoten">
+                        </div>
+                        <div class="form-group">
+                            <label>Tỉnh/Thành phố</label>
+                            <input type="text" class="form-control" name="them_hoten">
+                        </div>
+                        <div class="form-group">
+                            <label>Quận/Huyện</label>
+                            <input type="text" class="form-control" name="them_hoten">
+                        </div>
+                        <div class="form-group">
+                            <label>Phường/Xã</label>
+                            <input type="text" class="form-control" name="them_hoten">
+                        </div>
+                        <div class="form-group">
+                            <label>Số nhà</label>
+                            <input type="text" class="form-control" name="them_hoten">
+                        </div>
+                        <button class="btn-thanhtoan">Đặt hàng</button>
+                    </form>
                 </div>
-                <hr style="border-width: 0.5px;">
-
-                <div class="row">
-                    <div class="col-md-7">
-                        <p class="title-tt">Tổng tiền thanh toán</p>
-                    </div>
-                    <div class="col-md-5">
-                        <p style="text-align: right;"><?php echo $tongtien ?> đ</p>
-                    </div>
-                </div>
-
-                <div class="btn-thanhtoan"><button class="btn-xanh thanhtoan"><a href="{{URL::to('/donmua')}}" style="color: white;">Thanh toán</a></button></div>
             </div>
         </div>
     </div>

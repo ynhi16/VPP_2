@@ -15,7 +15,6 @@ class KhachHangController extends Controller
     //
     public function index()
     {
-
         return view('page.khachhang_home');
     }
     //dang nhap

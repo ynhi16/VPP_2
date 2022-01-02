@@ -11,7 +11,7 @@
     <title>Document</title>
     <style>
         .danhmuc {
-            padding: 0;
+            padding-left: 10px;
             margin: 0;
             color: #8B8989;
             margin-left: -15px;
@@ -66,15 +66,18 @@
             padding-left: 8px;
         }
 
-        .btn {
-            text-align: center;
-            margin-top: 20px;
+        .box-btn {
+            width: 100%;
+            margin-top: 50px;
         }
 
         .btn-chitiet {
-            width: 300px;
-            height: 40px;
+            width: 100%;
+            
             margin-bottom: 15px;
+            background-color: black;
+            height: 45px;
+            border-radius: 30px;
         }
 
 
@@ -89,6 +92,10 @@
             background-color: #C8F4F3;
             border-radius: 20px;
             padding-left: 5px;
+        }
+
+        .select-soluong {
+            height: 45px;
         }
 
 
@@ -132,80 +139,127 @@
 
 <body>
 
-    <div class="container">
-        <p class="danhmuc">{{$sanphamct[0]->tenDM}}</p>
-        <div class="row">
-            <div class="col-md-6">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-7">
+                            <p class="danhmuc">{{$sanphamct[0]->tenDM}}</p>
+                            <div class="row">
 
-                <div class="row">
-                    <!-- tab content -->
-                    <div class="content">
-                        @foreach($sanphamct as $key => $value)
-                        @if ($key == 0)
-                        <div class="tab-pane active">
-                            <img src="{{asset('public/frontend/img/'.$value->tenHA)}}" class="img-thumbnail" alt="Cinque Terre">
-                        </div>
-                        @else
-                        <div class="tab-pane">
-                            <img src="{{asset('public/frontend/img/'.$value->tenHA)}}" class="img-thumbnail" alt="Cinque Terre">
-                        </div>
-                        @endif
-                        @endforeach
-                    </div>
-                </div>
-
-                <div class="row">
-                    <!-- tab items -->
-                    <div class="tabs">
-
-                        @foreach($sanphamct as $key => $value)
-                        <div class="col-md-3" style="padding: 0; margin-right: 5px;">
-                            @if($key == 0)
-                            <div class="tab-item active">
-
-                                <img src="{{asset('public/frontend/img/'.$value->tenHA)}}" class="img-thumbnail img-con" alt="Cinque Terre">
-
+                                <!-- tab content -->
+                                <div class="content">
+                                    @foreach($sanphamct as $key => $value)
+                                    @if ($key == 0)
+                                    <div class="tab-pane active">
+                                        <img src="{{asset('public/frontend/img/'.$value->tenHA)}}" class="img-thumbnail" alt="Cinque Terre">
+                                    </div>
+                                    @else
+                                    <div class="tab-pane">
+                                        <img src="{{asset('public/frontend/img/'.$value->tenHA)}}" class="img-thumbnail" alt="Cinque Terre">
+                                    </div>
+                                    @endif
+                                    @endforeach
+                                </div>
                             </div>
-                            @else
-                            <div class="tab-item">
 
-                                <img src="{{asset('public/frontend/img/'.$value->tenHA)}}" class="img-thumbnail img-con" alt="Cinque Terre">
+                            <div class="row">
+                                <!-- tab items -->
+                                <div class="tabs">
 
+                                    @foreach($sanphamct as $key => $value)
+                                    <div class="col-md-2" style="padding: 0; margin-right: 5px;">
+                                        @if($key == 0)
+                                        <div class="tab-item active">
+
+                                            <img src="{{asset('public/frontend/img/'.$value->tenHA)}}" class="img-thumbnail img-con" alt="Cinque Terre">
+
+                                        </div>
+                                        @else
+                                        <div class="tab-item">
+
+                                            <img src="{{asset('public/frontend/img/'.$value->tenHA)}}" class="img-thumbnail img-con" alt="Cinque Terre">
+
+                                        </div>
+                                        @endif
+                                    </div>
+                                    @endforeach
+
+                                </div>
                             </div>
-                            @endif
+
+                            <div class="row" style="margin-top: 80px; margin-left: -10px;">
+                                <h3 class="danhmuc">Thông tin sản phẩm</h3>
+                                <p style="margin-top: 25px;">Thời gian giao hàng dự kiến cho sản phẩm này là từ 7-9 ngày</p>
+                                <p style="margin-top: 25px;">Thông tin sản phẩm: hình dán hình nhân vật hoạt hình</p>
+                                <p>Chất liệu: Giấy từ Nhật Bản</p>
+                                <p>Khối lượng: 10g</p>
+                                <p>Kích thước: 10 * 11.4cm</p>
+                                <p>Họa tiết: Hoạt hình</p>
+                                <p>Gói hàng bao gồm: 40 hình dán/gói hàng</p>
+                                <p style="margin-top: 25px;">Các sản phẩm trong cửa hàng về cơ bản là có sẵn trong kho</p>
+                                <p>Chúng tôi chỉ bán các sản phẩm chất lượng cao và kiểm tra chất lượng trước khi giao.</p>
+                                <p>Nếu bạn có bất kỳ câu hỏi hoặc đề xuất nào, bạn có thể liên hệ với chúng tôi.</p>
+                                <p style="margin-top: 25px;">Lưu ý:</p>
+                                <p>Do cài đặt ánh sáng và màn hình khác nhau, màu sắc thực tế của sản phẩm có thể hơi khác so với hình ảnh.</p>
+                                <p>Vui lòng cho phép sai số 1-3 cm do đo lường thủ công.</p>
+                                <p>Cảm ơn bạn đã thông cảm.</p>
+                            </div>
+
                         </div>
-                        @endforeach
 
+                        <!-- <div class="col-md-5 inf-sanpham"> -->
+                        <div class="col-md-4" style="margin-top: 35px;">
+                            <form action="{{URL::to('/add-giohang')}}" method="post">
+                                @csrf
+
+                                <input type="hidden" name="maSP" value="{{$sanphamct[0]->maSP}}">
+                                <p class="text-dendam" style="font-size: 34px;">{{$value->tenSP}}</p>
+                                <p style="font-size: 20px; margin-top: 30px;">{{$value->donGia}} đ</p>
+                                <!-- <p>Số lượng còn: {{$value->soLuongCon}}</p> -->
+                                <div class="chon-phanloai" style="margin-top: 30px;">
+                                    <label style="color: #8B8989; font-size:14px;">Phân loại</label>
+                                    <select class="form-control select-soluong">
+                                        @for($i=1; $i<=$value->soLuongCon; $i++)
+                                            <option><?php echo $i ?></option>
+                                            @endfor
+                                    </select>
+                                </div>
+                                <div class="chon-soluong" style="margin-top: 15px;">
+                                    <label style="color: #8B8989; font-size:14px;">Số lượng</label>
+                                    <select class="form-control select-soluong" name="soluong">
+                                        @for($i=1; $i<=$value->soLuongCon; $i++)
+                                            <option><?php echo $i ?></option>
+                                            @endfor
+                                    </select>
+                                </div>
+                                <!-- <div class="btnsoluong">
+                                    <label class="btn-soluong-giam btn-ct-giam">-</label>
+                                    <input type="text" class="input-soluong input-ct-sl" value="1" name="soluong">
+                                    <label class="btn-soluong-tang btn-ct-tang">+</label>
+                                </div> -->
+                                <div class="box-btn">
+
+                                    <button type="submit" class=" btn-xanh btn-chitiet">Thêm vào giỏ hàng</button>
+                                    <!-- <button class="btn-trang btn-chitiet">Mua ngay</button> -->
+                                </div>
+
+                            </form>
+
+                        </div>
                     </div>
+
+                    <div style="margin-top: 100px;"></div>
                 </div>
-
-            </div>
-
-            <div class="col-md-5 inf-sanpham">
-
-                <form action="{{URL::to('/add-giohang')}}" method="post">
-                    @csrf
-
-                    <input type="hidden" name="maSP" value="{{$sanphamct[0]->maSP}}">
-                    <p class="text-dendam" style="font-size: 22px;">{{$value->tenSP}}</p>
-                    <p>{{$value->donGia}} đ</p>
-                    <p>Số lượng còn: {{$value->soLuongCon}}</p>
-                    <div class="btnsoluong">
-                        <label class="btn-soluong-giam btn-ct-giam">-</label>
-                        <input type="text" class="input-soluong input-ct-sl" value="1" name="soluong">
-                        <label class="btn-soluong-tang btn-ct-tang">+</label>
-                    </div>
-                    <div class="btn">
-                        <button type="submit" class="btn-xanh btn-chitiet">Thêm vào giỏ hàng</button>
-                        <button class="btn-trang btn-chitiet">Mua ngay</button>
-                    </div>
-
-                </form>
-
             </div>
         </div>
+    </div>
 
-        <div style="margin-top: 100px;"></div>
+    <div class="container">
+
 
     </div>
 

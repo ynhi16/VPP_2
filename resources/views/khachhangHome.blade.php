@@ -9,6 +9,8 @@
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <!-- CSS tùy chỉnh của bạn ở dưới này -->
     <link rel="stylesheet" href="{{asset('public/frontend/css/khachhang.css')}}">
     <link rel="stylesheet" href="{{asset('public/frontend/css/layout.css')}}">

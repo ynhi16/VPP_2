@@ -10,6 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/test', function () {
+    return view('test');
+});
+
 //front
 Route::get('/','trangchuController@index');
 //chi tiết sản phẩm
@@ -61,6 +66,7 @@ Route::get('/donmua','KhachHangController@donmua');
 ///giỏ hàng
 Route::post('/add-giohang','GioHangController@add_giohang');
 Route::get('/del-giohang/{rowId}','GioHangController@del_giohang');
+Route::post('/change','GioHangController@change');
 
 
 
