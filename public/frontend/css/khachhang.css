@@ -178,3 +178,129 @@
     width: 700px;
     height: 430px;
 }
+.wp-thanhtoan {
+    margin-left: 100px;
+    margin-right: 170px;
+    width: 1300px;
+
+}
+
+.item-donmua {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    border: solid #DDDDDD;
+    border-width: 2px;
+    margin-bottom: 30px;
+}
+
+.inf-sanpham {
+    border: solid #6666;
+    border-width: 1.5px;
+    border-radius: 5px;
+    height: 580px;
+    padding-left: 15px;
+    padding-top: 20px;
+    margin-left: 50px;
+
+}
+
+.a-thaotac {
+    padding-left: 5px;
+    color: #16A085;
+    text-decoration: none;
+}
+
+a.a-thaotac:hover {
+    text-decoration: none;
+}
+.wp-giohang {
+    font-size: 18px;
+    margin-left: 90px;
+}
+
+.btnsoluong {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    vertical-align: bottom;
+    display: table-cell;
+    text-align: right;
+}
+
+.input-soluong {
+    width: 30px;
+    height: 30px;
+    padding-left: 4px;
+    border: none;
+    color: #696767;
+}
+
+.btn-soluong-giam {
+    border: solid #16A085;
+    background-color: white;
+    width: 29px;
+    height: 29px;
+    border-radius: 3px;
+}
+
+.btn-soluong-tang {
+    background-color: #16A085;
+    border: solid #16A085;
+    width: 29px;
+    height: 29px;
+    border-radius: 3px;
+}
+
+
+.img-sp-bc {
+    padding-left: 0;
+    padding-right: 10px;
+    margin-bottom: 50px;
+}
+
+.bg-xanh {
+    background-color: #C8F4F3;
+    border-radius: 20px;
+    padding-left: 5px;
+}
+
+
+.a-del:hover {
+    color: #16A085;
+    text-decoration: none;
+}
+.wp-thanhtoan {
+    margin-left: 100px;
+    margin-right: 70px;
+}
+
+.inf-sanpham {
+    border: solid #6666;
+    border-width: 1.5px;
+    border-radius: 5px;
+    height: 580px;
+    padding-left: 15px;
+    padding-top: 20px;
+    margin-left: 50px;
+
+}
+
+.title-tt {
+    color: #16A085;
+    font-weight: bold;
+}
+
+.thongtin {
+    margin-left: 30px;
+}
+
+.btn-thanhtoan {
+    width: 100%;
+    text-align: center;
+}
+
+.thanhtoan {
+    width: 300px;
+    height: 40px;
+    margin-top: 25px;
+}

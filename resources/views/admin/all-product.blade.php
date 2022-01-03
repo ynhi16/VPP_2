@@ -24,41 +24,28 @@
                     <th scope="col">Số lượng</th>
                     <th scope="col">Đơn vị tính</th>
                     <th scope="col">Giá</th>
-                    <th scope="col">Hình ảnh</th>
+                    <th scope="col">Nhà Cung Cấp</th>
                     <th scope="col">Mã danh mục</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
+                @foreach($product as $key => $cate)
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Calendar Calendar Calendar Calendar </td>
-                    <td>Calendar</td>
-                    <td>Calendar</td>
-                    <td>Calendar</td>
-                    <td>Calendar</td>
-                    <td>Calendar</td>
-
+                    <th scope="row">{{$cate -> maSP}}</th>
+                    <td>{{$cate -> tenSP}}</td>
+                    <td>{{$cate -> donViTinh}}</td>
+                    <td>{{$cate -> donGia}}</td>
+                    <td>{{$cate -> soLuongCon}}</td>
+                    <td>{{$cate -> maNCC}}</td>
+                    <td>{{$cate -> maDM}}</td>
                     <td>
                         <button type="button" class="btn btn-outline-success me-2">Xem</button>
                         <button type="button" class="btn btn-outline-warning ms-2">Sửa</button>
                         <button type="button" class="btn btn-outline-danger ms-2">Xóa</button>
                     </td>
                 </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Calendar/ Schedule</td>
-                    <td>Calendar/ Schedule</td>
-                    <td>Calendar/ Schedule</td>
-                    <td>Calendar/ Schedule</td>
-                    <td>Calendar/ Schedule</td>
-                    <td>Calendar/ Schedule</td>
-                    <td>
-                        <button type="button" class="btn btn-outline-success me-2">Xem</button>
-                        <button type="button" class="btn btn-outline-warning ms-2">Sửa</button>
-                        <button type="button" class="btn btn-outline-danger ms-2">Xóa</button>
-                    </td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
 
