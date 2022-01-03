@@ -1,47 +1,29 @@
 <div class="navbar_style">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
-                        <h1 class="title" style="font-size: 52px;">Sahami</h1>
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <div class="d-flex flex-column bd-highlight mb-3">
-                            <div class="p-2 bd-highlight">
-                                <form class="d-flex">
-                                    <select class="form-select me-2" aria-label="Default select example">
-                                        <option selected>Danh mục</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                    <button class="btn btn-outline-success" type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </form>
-                            </div>
-                            <div class="p-2 bd-highlight">
-                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#">Calendar/ Schedule</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Stickers</a>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Masking Tape</a>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Sticky Note/ Memo Pad</a>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Writing Utensils</a>
-                                    </li>
-                                    <button type="button" class="btn button_sale ms-3 me-3">Sale</button>
-                                </ul>
-                            </div>
-                        </div>
->>>>>>> c5acb16ea000dc17ce695145b6c3404a677cb7d7
+<<<<<<< HEAD
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <h1 class="title">Sahami</h1>
+                <p class="title_font">Văn phòng phẩm</p>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="d-flex flex-column bd-highlight mb-3">
+                    <div class="p-2 bd-highlight">
+                        <form class="d-flex">
+                            <select class="form-select me-2" aria-label="Default select example">
+                                <option selected>Danh mục</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
                     </div>
                     <div class="p-2 bd-highlight">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
