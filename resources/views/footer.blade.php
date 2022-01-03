@@ -24,7 +24,7 @@
                 </button>
             </div>
         </div>
-        <div class="d-flex justify-content-around" style="width: 50%">
+        <div class="d-flex justify-content-around" style="width: 100%">
             <div class="d-flex flex-column bd-highlight">
                 <div class="p-2 bd-highlight">Địa chỉ: 48 Cao Thắng - P. Thanh Bình - Q.Hải Châu - TP. Đà Nẵng </div>
                 <div class="p-2">Email: sahami@gmail.com</div>

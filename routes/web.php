@@ -74,3 +74,6 @@ Route::post('/kiemtra-dangnhap','trangchuController@kiemtra_dangnhap');
 
 
 Route::get('/chitietsanpham','ChiTietSanPhamController@index');
+
+//timkiem
+Route::get('/find','TimKiemController@index');

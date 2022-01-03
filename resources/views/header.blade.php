@@ -11,8 +11,7 @@
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">
-                        <h1 class="title">Sahami</h1>
-                        <p class="title_font">Văn phòng phẩm</p>
+                        <h1 class="title" style="font-size: 52px;">Sahami</h1>
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>

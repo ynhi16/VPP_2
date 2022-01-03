@@ -84,7 +84,7 @@
 				<!-- bat dau item san pham -->
 				<div class="row item-sanphamgiohang">
 					<div class="col-md-3">
-						<a href="{{URL::to('/chitietsanpham/1')}}"><img src="{{asset('public/frontend/img/'.$item->options->image)}}" class="img-thumbnail" alt="Cinque Terre"></a>
+						<a href="{{URL::to('/chitietsanpham/'.$item->id.'&'.$item->options->image)}}"><img src="{{asset('public/frontend/img/'.$item->options->image)}}" class="img-thumbnail" alt="Cinque Terre"></a>
 					</div>
 					<div class="col-md-4" style="padding-left: 0px;">
 						<p class="text-dendam">{{$item->name}}</p>
