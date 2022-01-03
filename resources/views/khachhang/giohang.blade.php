@@ -1,6 +1,5 @@
 @extends('khachhangHome')
 @section('khachhang_content')
-
 <div class="wp-giohang">
 	<h2>Giỏ hàng</h2>
 	<div class="row">
