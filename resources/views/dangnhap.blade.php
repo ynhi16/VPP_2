@@ -32,6 +32,17 @@
 			margin-right: 100px;
 			margin-left: 100px;
 		}
+
+		.p-dangky {
+			margin-top: 15px;
+		}
+		.a-dangky {
+			color: black;
+		}
+		.a-dangky:hover {
+			color: black;
+			text-decoration: none;
+		}
 	</style>
 
 </head>
@@ -47,6 +58,7 @@
 		</div>
 
 		<div class="row form_dangnhap">
+		<div class="col-md-1"></div>
 
 			<div class="col-md-4">
 				<img class="img-dangnhap" src="{{('public/frontend/img/dangnhap.png')}}" alt="error">
@@ -65,7 +77,7 @@
 							<p class="p-quenmk">Quên mật khẩu</p>
 							<input type="submit" name="dangnhap" class="btn-hong btn-dangnhap" value="Đăng nhập">
 						</form>
-						<p class="p-dangky"><a href="{{URL::to('/dangky')}}">Đăng ký</a></p>
+						<p class="p-dangky"><a class="a-dangky" href="{{URL::to('/dangky')}}">Bạn chưa có tài khoản?</a></p>
 					</div>
 
 				</div>
@@ -74,9 +86,9 @@
 
 		</div>
 	</div>
-	<div style="margin-top: 100px;">
+	<!-- <div style="margin-top: 100px;">
 		@include("footer")
-	</div>
+	</div> -->
 
 </body>
 

@@ -77,6 +77,7 @@ Route::get('/dangnhap','trangchuController@dangnhap');
 Route::get('/dangky','trangchuController@dangky');
 //kiểm tra đăng nhập
 Route::post('/kiemtra-dangnhap','trangchuController@kiemtra_dangnhap');
-
+//đăng xuất
+Route::get('/dangxuat','trangchuController@dangxuat');
 
 Route::get('/chitietsanpham','ChiTietSanPhamController@index');

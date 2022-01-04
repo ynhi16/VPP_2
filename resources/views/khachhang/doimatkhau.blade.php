@@ -1,5 +1,6 @@
-@extends('khachhangHome')
-@section('khachhang_content')
+
+@extends('layout')
+@section('trangchu')
 
 <div class="container">
 	<div class="col-md-10">

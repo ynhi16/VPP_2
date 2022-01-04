@@ -1,5 +1,6 @@
-@extends('khachhangHome')
-@section('khachhang_content')
+
+@extends('layout')
+@section('trangchu')
 <!DOCTYPE html>
 <html lang="en">
 
