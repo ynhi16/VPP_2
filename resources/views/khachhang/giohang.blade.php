@@ -23,7 +23,7 @@
 		}
 
 		.input-soluong {
-			width: 30px;
+			width: 70px;
 			height: 30px;
 			padding-left: 4px;
 			border: none;
