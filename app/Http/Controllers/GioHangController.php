@@ -19,6 +19,7 @@ class GioHangController extends Controller
 
         $maSP = $request->maSP;
         $key = $request->phanloai;
+        $sl = $request->soluong;
 
         $pl = DB::table('phanloai') -> where ('maSP', $maSP) ->get();
 
@@ -27,10 +28,8 @@ class GioHangController extends Controller
         ->join('phanloai', 'sanpham.masp', '=', 'phanloai.masp')
         ->where('sanpham.maSP', $maSP)->where ('tenPL', $pl[$key]->tenPL) ->first();
 
-        
-
         $data['id'] = $request->maSP;
-        $data['qty'] = $request->soluong;
+        $data['qty'] = $sl[$key];
         $data['name'] = $sanpham->tenSP;
         $data['price'] = $sanpham->donGia;
         $data['options']['image'] = $sanpham->tenHA;
