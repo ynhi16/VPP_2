@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 @extends('khachhangHome')
 @section('khachhang_content')
 
