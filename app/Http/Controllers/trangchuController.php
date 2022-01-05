@@ -7,22 +7,35 @@ use DB;
 use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
+
 session_start();
 
 class trangchuController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return view('page.trangchu');
     }
-    public function dangnhap() {
+    public function dangnhap()
+    {
         return view('dangnhap');
     }
-    public function dangky() {
+    public function dangky()
+    {
         return view('dangky');
+    }
+    //đăng xuất
+    public function dangxuat()
+    {
+        Session::put('nguoidung_name', null);
+        Session::put('nguoidung_id', null);
+
+        return Redirect::to('/');
     }
 
     //kiểm tra đăng nhập
-    public function kiemtra_dangnhap(Request $request) {
+    public function kiemtra_dangnhap(Request $request)
+    {
         $taikhoan = $request->taikhoan;
         $matkhau = $request->matkhau;
 
@@ -30,14 +43,19 @@ class trangchuController extends Controller
 
         if ($data) {
 
-            Session::put('nguoidung_name', $data->tenND);
-            Session::put('nguoidung_id', $data->maND);
-
             $quyen = $data->maQuyen;
 
-            if ($quyen ==3) {
+            if ($quyen == 3) {
 
-                return Redirect::to('/khachhang');
+                Session::put('nguoidung_name', $data->tenND);
+                Session::put('nguoidung_id', $data->maND);
+
+                // return Redirect::to('/khachhang');
+                return Redirect::to('/');
+                
+            } else if ($quyen == 1){
+
+                return Redirect::to('/admin');
             } else {
 
                 return Redirect::to('/dangnhap');
@@ -50,16 +68,29 @@ class trangchuController extends Controller
         }
     }
     //chi tiết sản phẩm
-    public function chitietsanpham($maSP, $tenha) {
+    public function chitietsanpham($maSP)
+    {
 
+        //lấy thông tin sản phẩm theo maSP
         $sanphamct = DB::table('sanpham')
-        -> join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')
-        -> join('danhmuc', 'sanpham.maDM', '=', 'danhmuc.maDM')
-        -> where('sanpham.maSP', $maSP)->get();
+            ->join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')
+            ->join('danhmuc', 'sanpham.maDM', '=', 'danhmuc.maDM')
+            ->where('sanpham.maSP', $maSP)->get();
+        //lấy phân loại sản phẩm
+        $phanloaisp = DB::table('sanpham')
+            ->join('phanloai', 'sanpham.maSP', '=', 'phanloai.maSP')
+            ->where('sanpham.maSP', $maSP)->get();
+        //lấy mảng các đường dẫn hình ảnh
+        $hinhanhs = [];
+        foreach ($sanphamct as $key => $value) {
+            $hinhanhs[] = "{{asset('public/frontend/img/'.$value->tenHA)}}";
+        }
 
+        //lấy danh sách sản phẩm bán chạy
         $get = DB::table('sanpham')
-        -> join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')->get();
-
+        ->where('maDM', 2)
+            ->join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')->get();
+        //lọc danh sách sản phẩm bán chạy
         $distinct = null;
         foreach ($get as $key => $value) {
             if ($distinct != null) {
@@ -79,6 +110,6 @@ class trangchuController extends Controller
             }
         }
 
-        return view('page.chitietsanpham')->with('sanphamct', $sanphamct)->with('sanphambc', $distinct)->with('tenha', $tenha);
+        return view('page.chitietsanpham')->with('sanphamct', $sanphamct)->with('sanphambc', $distinct)->with('hinhanhs', $hinhanhs)->with('phanloaisp', $phanloaisp);
     }
 }

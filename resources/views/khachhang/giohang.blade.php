@@ -30,8 +30,6 @@
 							<input type="text" class="input-soluong" value="{{$item->qty}}">
 							<button class="btn-soluong-tang"><a href="#">+</a></button>
 						</div>
-
-
 					</div>
 				</div>
 				<div class="col-md-2">
@@ -63,6 +61,21 @@
 	<div class="row spbc">
 		@for($i=0; $i<=3; $i++) <div class="col-md-3 img-sp-bc">
 			<div class="row">
+				<a href="{{URL::to('/chitietsanpham/'.$sanphambc[$i]->maSP)}}"><img src="{{asset('public/frontend/img/'.$sanphambc[$i]->tenHA)}}" class="img-thumbnail" alt="Cinque Terre"></a>
+			</div>
+			<div class="row" style="font-size: 16px; margin-top: 5px;">
+				<div class="col-md-8">
+					<p>{{$sanphambc[$i]->tenSP}}</p>
+				</div>
+				<div class="col-md-4 ">
+					<p class="bg-xanh">{{$sanphambc[$i]->donGia}} đ</p>
+				</div>
+			</div>
+	</div>
+	@endfor
+	<div class="row spbc">
+		@for($i=4; $i<=7; $i++) <div class="col-md-3 img-sp-bc">
+			<div class="row">
 				<a href="{{URL::to('/chitietsanpham/'.$sanphambc[$i]->maSP.'&'.$sanphambc[$i]->tenHA)}}"><img src="{{asset('public/frontend/img/'.$sanphambc[$i]->tenHA)}}" class="img-thumbnail" alt="Cinque Terre"></a>
 			</div>
 			<div class="row" style="font-size: 16px; margin-top: 5px;">
@@ -75,22 +88,5 @@
 			</div>
 	</div>
 	@endfor
-</div>
-
-<div class="row spbc">
-	@for($i=4; $i<=7; $i++) <div class="col-md-3 img-sp-bc">
-		<div class="row">
-			<a href="{{URL::to('/chitietsanpham/'.$sanphambc[$i]->maSP.'&'.$sanphambc[$i]->tenHA)}}"><img src="{{asset('public/frontend/img/'.$sanphambc[$i]->tenHA)}}" class="img-thumbnail" alt="Cinque Terre"></a>
-		</div>
-		<div class="row" style="font-size: 16px; margin-top: 5px;">
-			<div class="col-md-8">
-				<p>{{$sanphambc[$i]->tenSP}}</p>
-			</div>
-			<div class="col-md-4 ">
-				<p class="bg-xanh">{{$sanphambc[$i]->donGia}} đ</p>
-			</div>
-		</div>
-</div>
-@endfor
 </div>
 @endsection

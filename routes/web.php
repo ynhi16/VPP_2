@@ -10,10 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/test', function () {
+    return view('test');
+});
+
 //front
 Route::get('/','trangchuController@index');
 //chi tiết sản phẩm
-Route::get('/chitietsanpham/{maSP}&{tenha}','trangchuController@chitietsanpham');
+Route::get('/chitietsanpham/{maSP}','trangchuController@chitietsanpham');
 
 //admin
 Route::get('/admin','AdminController@index');
@@ -61,6 +66,7 @@ Route::get('/donmua','KhachHangController@donmua');
 ///giỏ hàng
 Route::post('/add-giohang','GioHangController@add_giohang');
 Route::get('/del-giohang/{rowId}','GioHangController@del_giohang');
+Route::post('/change','GioHangController@change');
 
 
 
@@ -71,7 +77,8 @@ Route::get('/dangnhap','trangchuController@dangnhap');
 Route::get('/dangky','trangchuController@dangky');
 //kiểm tra đăng nhập
 Route::post('/kiemtra-dangnhap','trangchuController@kiemtra_dangnhap');
-
+//đăng xuất
+Route::get('/dangxuat','trangchuController@dangxuat');
 
 Route::get('/chitietsanpham','ChiTietSanPhamController@index');
 

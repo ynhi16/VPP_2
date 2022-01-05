@@ -113,7 +113,6 @@
                     <div class="title-row">Sản phẩm mới nhất</div>
                     <div class=""><a href="#">Xem thêm</a></div>
                 </div>
-            
                 <div class="d-flex justify-content-between mb-5">
                     <div class="card" style="width: 300px; height: 300px;">
                         <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="..." height="230px" width="98%">
@@ -159,7 +158,6 @@
                     <div class="title-row">Sản phẩm bán chạy</div>
                     <div class=""><a href="#">Xem thêm</a></div>
                 </div>
-            
                 <div class="d-flex justify-content-between mb-5">
                     <div class="card" style="width: 300px; height: 300px;">
                         <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="..." height="230px" width="98%">
@@ -205,7 +203,6 @@
                     <div class="title-row">Sản phẩm giảm giá</div>
                     <div class=""><a href="#">Xem thêm</a></div>
                 </div>
-            
                 <div class="d-flex justify-content-between mb-5">
                     <div class="card" style="width: 300px; height: 300px;">
                         <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="..." height="230px" width="98%">
@@ -227,6 +224,7 @@
                     </div>
                     <div class="card" style="width: 300px;">
                         <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="...">
+
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <div class="card-text">60 Sticker cổ điển retro</div>
@@ -236,6 +234,7 @@
                     </div>
                     <div class="card" style="width: 300px;">
                         <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="...">
+
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <div class="card-text">60 Sticker cổ điển retro</div>

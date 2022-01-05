@@ -1,5 +1,7 @@
+<<<<<<< HEAD
 @extends('khachhangHome')
 @section('khachhang_content')
+
 
 
 <div class="wp-thanhtoan">
