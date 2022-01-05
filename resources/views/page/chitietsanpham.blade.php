@@ -149,9 +149,7 @@
 
         /*tab iu 2*/
 
-        .tab-content2 {
-           
-        }
+        .tab-content2 {}
 
         .tab-pane2 {
             color: #fff;
@@ -235,41 +233,39 @@
 
 
                                 <div>
-                                  
+
                                     <div class="chon-phanloai" style="margin-top: 30px;">
                                         <label style="color: #8B8989; font-size:14px;">Phân loại</label>
-                                        <select class="form-control select-soluong" name="phanloai" onchange="soLuong(this.classList)">
+                                        <select class="form-control select-soluong" name="phanloai" onchange="soLuong(this.value)">
                                             @foreach($phanloaisp as $key => $value)
-                                            <option class="<?php echo $key ?>" value="<?php echo $value->tenPL ?>">{{$value->tenPL}}</option>
+                                            <option value="<?php echo $key ?>">{{$value->tenPL}}</option>
                                             @endforeach
                                         </select>
                                     </div>
 
                                     <label style="color: #8B8989; font-size:14px; margin-top: 10px;">Số lượng</label>
-                                   
-                                    <div class="content2">
 
-                                        
-                                            @foreach($phanloaisp as $key => $value2)
-                                            @if ($key == 0)
-                                            <div class="tab-pane2 active2">
-                                            <select class="form-control select-soluong " name="soluong[]">
+                                    <div class="content2">
+                                        @foreach($phanloaisp as $key => $value2)
+                                        @if ($key == 0)
+                                        <div class="tab-pane2 active2">
+                                            <select class="form-control select-soluong" name="soluong">
                                                 @for($i=1; $i<=$value2->soLuong; $i++)
                                                     <option><?php echo $i ?></option>
                                                     @endfor
                                             </select>
-                                            </div>
-                                            @else
-                                            <div class="tab-pane2">
-                                            <select class="form-control select-soluong " name="soluong[]">
+                                        </div>
+                                        @else
+                                        <div class="tab-pane2">
+                                            <select class="form-control select-soluong" name="soluong">
                                                 @for($i=1; $i<=$value2->soLuong; $i++)
                                                     <option><?php echo $i ?></option>
                                                     @endfor
                                             </select>
-                                            </div>
-                                            @endif
-                                            @endforeach
-                                   
+                                        </div>
+                                        @endif
+                                        @endforeach
+
                                     </div>
                                 </div>
 
@@ -389,11 +385,14 @@
 
 
         ///thay đổi số lượng
-        function soLuong(key) {
+        function soLuong(st) {
+            const key = Number(st)
             const panes2 = $$(".tab-pane2");
             const pane2 = panes2[key];
             $(".tab-pane2.active2").classList.remove("active2");
             pane2.classList.add("active2");
+            // $(".tab-pane2.active2").namespace.remove("soluong")
+            // pane2.namespace.add("soluong");
         }
 
 
