@@ -18,19 +18,23 @@ class GioHangController extends Controller
     public function add_giohang(Request $request) {
 
         $maSP = $request->maSP;
-        $phanloai = $request->phanloai;
+        $key = $request->phanloai;
+
+        $pl = DB::table('phanloai') -> where ('maSP', $maSP) ->get();
 
         $sanpham = DB::table('sanpham')
         ->join('hinhanh', 'sanpham.masp', '=', 'hinhanh.masp')
         ->join('phanloai', 'sanpham.masp', '=', 'phanloai.masp')
-        ->where('sanpham.maSP', $maSP)->where ('tenPL', $phanloai) ->first();
+        ->where('sanpham.maSP', $maSP)->where ('tenPL', $pl[$key]->tenPL) ->first();
+
+        
 
         $data['id'] = $request->maSP;
         $data['qty'] = $request->soluong;
         $data['name'] = $sanpham->tenSP;
         $data['price'] = $sanpham->donGia;
         $data['options']['image'] = $sanpham->tenHA;
-        $data['options']['phanloai'] = $phanloai;
+        $data['options']['phanloai'] = $pl[$key]->tenPL;
         $data['weight'] = '123';
         Cart::add($data);
 
