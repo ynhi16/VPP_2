@@ -15,7 +15,5 @@ class AdminController extends Controller
     public function show_all_bill() {
         return view('admin.all-bill');
     }
-    public function show_account() {
-        return view('admin.account');
-    }
+
 }

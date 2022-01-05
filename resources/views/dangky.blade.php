@@ -72,7 +72,7 @@
 		</div>
 
 	</div>
-	<div style="margin-top: 100px;">
+	<div style="margin: 95px 3rem 0px 3rem;">
 			@include("footer")
 	</div>
 	

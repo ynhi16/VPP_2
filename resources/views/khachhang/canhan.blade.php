@@ -1,9 +1,8 @@
 @extends('khachhangHome')
 @section('khachhang_content')
 
-
-<div class="container">
-	<div class="col-md-10">
+<div class="d-flex justify-content-center">
+	<div class="col-md-6">
 		<h2>Thiết lập tài khoản</h2>
 
 
@@ -73,7 +72,7 @@
 				</select>
 				<label for="pwd"><strong>Phường xã</strong></label>
 				<select class="form-control input-canhan" name="phuongxa">
-				@foreach($phuongxa as $key => $tt)
+					@foreach($phuongxa as $key => $tt)
 					@if($tt->tenPX == $value->tenPX)
 
 					<option selected value="{{$tt->IDPX}}">{{$tt->tenPX}}</option>
@@ -99,5 +98,6 @@
 		</form> <!-- kết thúc phần thông tin cá nhân -->
 	</div>
 </div>
+
 
 @endsection

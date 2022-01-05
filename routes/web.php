@@ -39,7 +39,7 @@ Route::get('/all-product','ProductController@all_product');
 Route::get('/all-bill','AdminController@show_all_bill');
 Route::get('/bill-detail','BillController@show_bill_detail');
 //
-Route::get('/account','AdminController@show_account');
+Route::get('/account','AccountProduct@show_account');
 //
 Route::get('/add-sale','SaleController@add_sale');
 Route::get('/all-sale','SaleController@all_sale');
@@ -80,3 +80,6 @@ Route::post('/kiemtra-dangnhap','trangchuController@kiemtra_dangnhap');
 
 
 Route::get('/chitietsanpham','ChiTietSanPhamController@index');
+
+//timkiem
+Route::get('/find','TimKiemController@index');
