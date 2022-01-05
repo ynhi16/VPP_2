@@ -1,4 +1,3 @@
-
 @extends('layout')
 @section('trangchu')
 <!DOCTYPE html>
@@ -52,11 +51,10 @@
             background-color: black;
             height: 45px;
             border-radius: 30px;
-			margin-top: 30px;
+            margin-top: 30px;
             color: white;
             font-size: 20px;
         }
-
     </style>
 </head>
 
@@ -64,7 +62,7 @@
     <div class="wp-thanhtoan">
         <h2>Thanh toán</h2>
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-7">
                 <!-- danh sach san pham -->
                 <?php
                 $giohang = Cart::content();
@@ -76,15 +74,21 @@
                 <div class="row item-sanphamgiohang">
                     <!-- bat dau item san pham -->
 
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <a href="{{URL::to('/chitietsanpham/'.$item->id.'&'.$item->options->image)}}"><img src="{{asset('public/frontend/img/'.$item->options->image)}}" class="img-thumbnail" alt="Cinque Terre"></a>
                     </div>
-                    <div class="col-md-6" style="padding-left: 0px;">
-                        <p class="text-dendam">{{$item->name}}</p>
-                        <p>Số lượng: {{$item->qty}}</p>
-                    </div>
-                    <div class="col-md-3">
-                        <p class="p-box4">{{$item->price * $item->qty}} đ</p>
+
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <p style="margin: 0;">{{$item->name}}</p>
+                                <label style="font-size: 13px; color: ##8B8989;">Phân loại: {{$item->options->phanloai}}</label>
+                                <p style="font-size: 13px; color: ##8B8989">Số lượng: {{$item->qty}}</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p style="text-align: right;">{{$item->price * $item->qty}} đ</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <?php $tongtien += $item->price * $item->qty; ?>

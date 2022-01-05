@@ -88,6 +88,7 @@ class trangchuController extends Controller
 
         //lấy danh sách sản phẩm bán chạy
         $get = DB::table('sanpham')
+        ->where('maDM', 2)
             ->join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')->get();
         //lọc danh sách sản phẩm bán chạy
         $distinct = null;

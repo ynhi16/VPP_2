@@ -1,5 +1,5 @@
-@extends('khachhangHome')
-@section('khachhang_content')
+@extends('layout')
+@section('trangchu')
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +10,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        .wp-chitiet {
+            /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+            /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+            /* font-family: 'Times New Roman', Times, serif; */
+            /* font-family: 'Courier New', Courier, monospace; */
+            /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
         .danhmuc {
             padding-left: 10px;
             margin: 0;
@@ -73,11 +82,12 @@
 
         .btn-chitiet {
             width: 100%;
-            
+            color: white;
             margin-bottom: 15px;
             background-color: black;
             height: 45px;
             border-radius: 30px;
+            font-size: 20px;
         }
 
 
@@ -134,18 +144,35 @@
         .tab-pane.active {
             display: block;
         }
+
+
+
+        /*tab iu 2*/
+
+        .tab-content2 {
+           
+        }
+
+        .tab-pane2 {
+            color: #fff;
+            display: none;
+        }
+
+        .tab-pane2.active2 {
+            display: block;
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="row">
+    <div class="row wp-chitiet">
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-10">
                     <div class="row">
-                        
+
                         <div class="col-md-4">
                             <p class="danhmuc">{{$sanphamct[0]->tenDM}}</p>
                             <div class="row">
@@ -201,12 +228,52 @@
                                 @csrf
 
                                 <input type="hidden" name="maSP" value="{{$sanphamct[0]->maSP}}">
-                                <p class="text-dendam" style="font-size: 34px;">{{$value->tenSP}}</p>
-                                <p style="font-size: 24px; margin-top: 30px; font-weight: bold;">{{$value->donGia}} đ</p>
+                                <p class="text-dendam" style="font-size: 26px;">{{$value->tenSP}}</p>
+                                <p style="font-size: 24px; margin-top: 24px; ">{{$value->donGia}} đ</p>
                                 <p>Kích thước: {{$sanphamct[0]->kichThuoc}}</p>
                                 <p>Mô tả: {{$sanphamct[0]->moTa}}</p>
-                                <!-- <p>Số lượng còn: {{$value->soLuongCon}}</p> -->
-                                <div class="chon-phanloai" style="margin-top: 30px;">
+
+
+                                <div>
+                                  
+                                    <div class="chon-phanloai" style="margin-top: 30px;">
+                                        <label style="color: #8B8989; font-size:14px;">Phân loại</label>
+                                        <select class="form-control select-soluong" name="phanloai" onchange="soLuong(this.classList)">
+                                            @foreach($phanloaisp as $key => $value)
+                                            <option class="<?php echo $key ?>" value="<?php echo $value->tenPL ?>">{{$value->tenPL}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <label style="color: #8B8989; font-size:14px; margin-top: 10px;">Số lượng</label>
+                                   
+                                    <div class="content2">
+
+                                        
+                                            @foreach($phanloaisp as $key => $value2)
+                                            @if ($key == 0)
+                                            <div class="tab-pane2 active2">
+                                            <select class="form-control select-soluong " name="soluong[]">
+                                                @for($i=1; $i<=$value2->soLuong; $i++)
+                                                    <option><?php echo $i ?></option>
+                                                    @endfor
+                                            </select>
+                                            </div>
+                                            @else
+                                            <div class="tab-pane2">
+                                            <select class="form-control select-soluong " name="soluong[]">
+                                                @for($i=1; $i<=$value2->soLuong; $i++)
+                                                    <option><?php echo $i ?></option>
+                                                    @endfor
+                                            </select>
+                                            </div>
+                                            @endif
+                                            @endforeach
+                                   
+                                    </div>
+                                </div>
+
+                                <!-- <div class="chon-phanloai" style="margin-top: 30px;">
                                     <label style="color: #8B8989; font-size:14px;">Phân loại</label>
                                     <select class="form-control select-soluong" name="phanloai">
                                         @foreach($phanloaisp as $key => $value)
@@ -221,7 +288,10 @@
                                             <option><?php echo $i ?></option>
                                             @endfor
                                     </select>
-                                </div>
+                                </div> -->
+
+
+
                                 <!-- <div class="btnsoluong">
                                     <label class="btn-soluong-giam btn-ct-giam">-</label>
                                     <input type="text" class="input-soluong input-ct-sl" value="1" name="soluong">
@@ -229,7 +299,7 @@
                                 </div> -->
                                 <div class="box-btn">
 
-                                    <button type="submit" class=" btn-xanh btn-chitiet">Thêm vào giỏ hàng</button>
+                                    <button type="submit" class="btn-chitiet">Thêm vào giỏ hàng</button>
                                     <!-- <button class="btn-trang btn-chitiet">Mua ngay</button> -->
                                 </div>
 
@@ -316,6 +386,17 @@
                 pane.classList.add("active");
             };
         });
+
+
+        ///thay đổi số lượng
+        function soLuong(key) {
+            const panes2 = $$(".tab-pane2");
+            const pane2 = panes2[key];
+            $(".tab-pane2.active2").classList.remove("active2");
+            pane2.classList.add("active2");
+        }
+
+
 
         /* btn số lượng */
         const inputSL = $(".input-soluong.input-ct-sl");

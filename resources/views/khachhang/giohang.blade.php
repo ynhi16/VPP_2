@@ -1,4 +1,3 @@
-
 @extends('layout')
 @section('trangchu')
 <!DOCTYPE html>
@@ -11,8 +10,8 @@
 	<title>Document</title>
 	<style>
 		.wp-giohang {
-			font-size: 18px;
-			margin-left: 90px;
+			/* font-size: 18px; */
+			margin-left: 50px;
 		}
 
 		.btnsoluong {
@@ -65,10 +64,11 @@
 		}
 
 
-		.a-del{
+		.a-del {
 			color: black;
 			font-weight: bold;
 		}
+
 		.a-del:hover {
 			color: black;
 			font-size: 20px;
@@ -78,9 +78,18 @@
 		.btn-giohang-tt {
 			width: 100%;
 			background-color: black;
-            height: 45px;
-            border-radius: 30px;
+			height: 45px;
+			border-radius: 30px;
 			margin-top: 30px;
+		}
+
+		.a-tttt {
+			color: white;
+			text-decoration: none;
+		}
+		.a-tttt:hover{
+			color: white;
+			text-decoration: none;
 		}
 	</style>
 </head>
@@ -91,7 +100,7 @@
 
 		<div class="row">
 
-			<div class="col-md-7">
+			<div class="col-md-8">
 
 				<?php
 				$giohang = Cart::content();
@@ -108,47 +117,59 @@
 					<div class="col-md-3">
 						<a href="{{URL::to('/chitietsanpham/'.$item->id)}}"><img src="{{asset('public/frontend/img/'.$item->options->image)}}" class="img-thumbnail" alt="Cinque Terre"></a>
 					</div>
-					<div class="col-md-4" style="padding-left: 0px;">
-						<p class="text-dendam">{{$item->name}}</p>
-						<p>{{$item->price}} đ</p>
-					</div>
-					<div class="col-md-3 giohang-box3">
-						<div class="giohang-box3-1">
-
-							<div class="btnsoluong">
-								<!-- <label class="btn-soluong-giam btn-gh-giam">-</label>
-								<input type="text" class="input-soluong input-gh-sl" value="{{$item->qty}}" name="newqty[]" id="qty">
-								<label class="btn-soluong-tang btn-gh-tang" onclick="">+</label> -->
-								<input type="text" class="input-soluong input-gh-sl" value="{{$item->qty}}" name="newqty">
-							</div>
-
+					<div class="col-md-7">
+						<div class="row">
+							<p style="font-size: 22px; ">{{$item->name}}</p>
 						</div>
+						<div class="row">
+							<p>{{$item->price}} đ</p>
+						</div>
+						<div class="row">
+							<input type="text" class="input-soluong input-gh-sl" value="{{$item->qty}}" name="newqty">
+						</div>
+
 					</div>
+					<!-- <div class="col-md-3 giohang-box3">
+							<div class="giohang-box3-1">
+
+								<div class="btnsoluong">
+									<label class="btn-soluong-giam btn-gh-giam">-</label>
+								<input type="text" class="input-soluong input-gh-sl" value="{{$item->qty}}" name="newqty[]" id="qty">
+								<label class="btn-soluong-tang btn-gh-tang" onclick="">+</label>
+									<input type="text" class="input-soluong input-gh-sl" value="{{$item->qty}}" name="newqty">
+								</div>
+
+							</div>
+						</div> -->
 					<div class="col-md-2">
-						<p class="p-box4">{{$item->qty * $item->price}} đ</p>
+						<p style="text-align: right;">{{$item->qty * $item->price}} đ</p>
 						<p style="text-align: right;"><a href="{{URL::to('/del-giohang/'.$item->rowId)}}" class="a-del">Delete</a></p>
 
 					</div>
-
-					<?php
-					$soluong++;
-					$tongsoluong += $item->qty;
-					$tongtien += $item->qty * $item->price;
-					?>
+				</div>
 
 
-
-				</div> <!-- ket thuc item san pham -->
+				<?php
+				$soluong++;
+				$tongsoluong += $item->qty;
+				$tongtien += $item->qty * $item->price;
+				?>
 				@endforeach
-			</div>
-			<div class="col-md-3" style="margin-left: 60px;">
+
+
+			</div> <!-- ket thuc item san pham -->
+
+
+			<div class="col-md-3" style="margin-left: 50px;">
 				<h5 style="font-weight: bold;"><?php echo $soluong ?> sản phẩm</h5>
 				<p style="margin-top: 20px;">Tổng số lượng: <?php echo $tongsoluong ?> món</p>
 				<p>Tổng tiền: <?php echo $tongtien ?> đ</p>
-				<button class="btn-giohang-tt"><a href="{{URL::to('/thanhtoan')}}" style="color: white;">Tiếp tục để thanh toán</a></button>
+				<button class="btn-giohang-tt"><a href="{{URL::to('/thanhtoan')}}" class="a-tttt">Tiếp tục để thanh toán</a></button>
 			</div>
-
 		</div>
+
+
+	</div>
 
 	</div>
 	<!-- /// -->

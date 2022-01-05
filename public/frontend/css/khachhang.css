@@ -9,6 +9,7 @@
 
 * {
     margin: 0;
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
 }
 
 .btn-xanh {
@@ -91,7 +92,7 @@
 }
 
 .inf-canhan {
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .inf-canhan * {

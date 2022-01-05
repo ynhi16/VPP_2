@@ -6,9 +6,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Header</title>
+
+    <style>
+        /* header */
+
+        .li-2 {
+            position: relative;
+            list-style: none;
+            display: inline-block;
+            padding: 0;
+            margin: 0;
+            width: 100px;
+            background-color: #FDF9F9;
+        }
+
+        .li-2-a {
+            display: block;
+            text-decoration: none;
+            padding: 0 10px;
+            color: #454545;
+            background-color: #FDF9F9;
+        }
+
+        .ul-2 {
+            position: absolute;
+            display: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .li-1:hover>.ul-2 {
+            display: block;
+        }
+
+        .li-1 {
+            margin-top: 10px;
+            width: 100px;
+        }
+    </style>
 </head>
 
 <body>
+
     <div class="navbar_style">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
@@ -78,7 +117,7 @@
                     </ul>
                 </div>
                 @else
-                
+
                 <div class="d-flex align-items-start bd-highlight mb-3" style="height: 100px">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
@@ -98,6 +137,7 @@
             </div>
         </nav>
     </div>
+
 </body>
 
 </html>
