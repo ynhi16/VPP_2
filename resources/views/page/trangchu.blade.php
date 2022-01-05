@@ -156,7 +156,7 @@
 
             <div class="mt-4">
                 <div class="d-flex justify-content-between mb-4">
-                    <div class="title-row">Sản phẩm mới nhất</div>
+                    <div class="title-row">Sản phẩm bán chạy</div>
                     <div class=""><a href="#">Xem thêm</a></div>
                 </div>
             
@@ -202,7 +202,7 @@
 
             <div class="mt-4">
                 <div class="d-flex justify-content-between mb-4">
-                    <div class="title-row">Sản phẩm mới nhất</div>
+                    <div class="title-row">Sản phẩm giảm giá</div>
                     <div class=""><a href="#">Xem thêm</a></div>
                 </div>
             

@@ -1,18 +1,22 @@
 @font-face {
-    font-family: 'Hello Day';
-    src: url('../font/HelloDay-Regular.eot');
-    src: url('../font/HelloDay-Regular.eot?#iefix') format('embedded-opentype'), url('../font/HelloDay-Regular.woff2') format('woff2'), url('../font/HelloDay-Regular.woff') format('woff'), url('../font/HelloDay-Regular.ttf') format('truetype'), url('../font/HelloDay-Regular.svg#HelloDay-Regular') format('svg');
+    font-family: "Hello Day";
+    src: url("../font/HelloDay-Regular.eot");
+    src: url("../font/HelloDay-Regular.eot?#iefix") format("embedded-opentype"),
+        url("../font/HelloDay-Regular.woff2") format("woff2"),
+        url("../font/HelloDay-Regular.woff") format("woff"),
+        url("../font/HelloDay-Regular.ttf") format("truetype"),
+        url("../font/HelloDay-Regular.svg#HelloDay-Regular") format("svg");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Tahoma", sans-serif;
 }
 
 .title {
-    font-family: 'Hello Day', sans-serif;
+    font-family: "Hello Day", sans-serif;
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {
@@ -31,14 +35,14 @@ body {
 
 .navbar_right {
     display: block;
-    color: #16A085;
+    color: #16a085;
     padding: 0.5rem 1rem;
     text-decoration: none;
 }
 
 .button_sale {
     background-color: rgba(249, 165, 169, 0.62);
-    color: #BF0000;
+    color: #bf0000;
     border-radius: 5px;
     border: solid black 1px;
 }

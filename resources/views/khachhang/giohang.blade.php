@@ -26,9 +26,9 @@
 					<div class="giohang-box3-1">
 
 						<div class="btnsoluong">
-							<button class="btn-soluong-giam"><a href="#" style="color: #16A085;">-</a></button>
+							<button class="btn-soluong-giam"><a href="#">-</a></button>
 							<input type="text" class="input-soluong" value="{{$item->qty}}">
-							<button class="btn-soluong-tang"><a href="#" style="color: white;">+</a></button>
+							<button class="btn-soluong-tang"><a href="#">+</a></button>
 						</div>
 
 
