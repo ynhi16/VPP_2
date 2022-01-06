@@ -145,8 +145,6 @@
             display: block;
         }
 
-
-
         /*tab iu 2*/
 
         .tab-content2 {}

@@ -1,18 +1,16 @@
 @font-face {
     font-family: "Hello Day";
     src: url("../font/HelloDay-Regular.eot");
-    src: url("../font/HelloDay-Regular.eot?#iefix") format("embedded-opentype"),
-        url("../font/HelloDay-Regular.woff2") format("woff2"),
-        url("../font/HelloDay-Regular.woff") format("woff"),
-        url("../font/HelloDay-Regular.ttf") format("truetype"),
-        url("../font/HelloDay-Regular.svg#HelloDay-Regular") format("svg");
+    src: url("../font/HelloDay-Regular.eot?#iefix") format("embedded-opentype"), url("../font/HelloDay-Regular.woff2") format("woff2"), url("../font/HelloDay-Regular.woff") format("woff"), url("../font/HelloDay-Regular.ttf") format("truetype"), url("../font/HelloDay-Regular.svg#HelloDay-Regular") format("svg");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
+
 body {
     font-family: "Tahoma", sans-serif;
 }
+
 * {
     margin: 0;
     /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
@@ -74,6 +72,7 @@ body {
     font-weight: bold;
 }
 
+
 /*canhan*/
 
 .tab-duocchon {
@@ -113,6 +112,7 @@ body {
     width: 180px;
     height: 40px;
 }
+
 
 /*giohang*/
 
@@ -169,9 +169,12 @@ body {
     text-decoration: none;
 }
 
+
 /* //////// header menu */
 
+
 /* ///thông thin sản phẩm/// */
+
 
 /*///home
 */
@@ -180,6 +183,7 @@ body {
     width: 700px;
     height: 430px;
 }
+
 .wp-thanhtoan {
     margin-left: 100px;
     margin-right: 170px;
@@ -214,6 +218,7 @@ body {
 a.a-thaotac:hover {
     text-decoration: none;
 }
+
 .wp-giohang {
     font-size: 18px;
     margin-left: 90px;
@@ -267,6 +272,7 @@ a.a-thaotac:hover {
     color: #16a085;
     text-decoration: none;
 }
+
 .wp-thanhtoan {
     margin-left: 100px;
     margin-right: 70px;
