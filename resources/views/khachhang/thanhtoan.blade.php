@@ -1,6 +1,56 @@
-<<<<<<< HEAD
-@extends('khachhangHome')
-@section('khachhang_content')
+@extends('layout')
+@section('trangchu')
+
+<style>
+    .inf-sanpham {
+        border: solid #6666;
+        border-width: 1.5px;
+        border-radius: 5px;
+        height: 580px;
+        padding-left: 15px;
+        padding-top: 20px;
+        margin-left: 50px;
+
+    }
+
+    .title-tt {
+        color: #16A085;
+        font-weight: bold;
+    }
+
+    .thongtin {
+        margin-left: 30px;
+    }
+
+    .thanhtoan {
+        width: 300px;
+        height: 40px;
+        margin-top: 25px;
+    }
+
+
+    /* thông tin người nhận */
+    .btn-thanhtoan {
+        background-color: black;
+        height: 45px;
+        width: 100%;
+        border-radius: 30px;
+        margin-top: 30px;
+        color: white;
+        font-size: 18px;
+        text-align: center;
+        text-decoration: none;
+        padding-top: 10px;
+    }
+
+    .btn-thanhtoan:hover {
+        color: white;
+        text-decoration: none;
+    }
+</style>
+
+
+<body>
 
     <div class="wp-thanhtoan">
         <h2>Thanh toán</h2>
@@ -21,12 +71,15 @@
                         <a href="{{URL::to('/chitietsanpham/'.$item->id.'&'.$item->options->image)}}"><img src="{{asset('public/frontend/img/'.$item->options->image)}}" class="img-thumbnail" alt="Cinque Terre"></a>
                     </div>
 
-                    <div class="col-md-10">
+                    <div class="col-md-9">
                         <div class="row">
                             <div class="col-md-9">
                                 <p style="margin: 0;">{{$item->name}}</p>
+
+
                                 <label style="font-size: 13px; color: #8B8989;">Phân loại: {{$item->options->phanloai}}</label>
                                 <p style="font-size: 13px; color: #8B8989">Số lượng: {{$item->qty}}</p>
+
                             </div>
                             <div class="col-md-3">
                                 <p style="text-align: right;">{{$item->price * $item->qty}} đ</p>
@@ -34,48 +87,93 @@
                         </div>
                     </div>
                 </div>
+
+                <?php $tongtien += $item->price * $item->qty; ?>
+                @endforeach
+
+                <hr style="border-width: 0.5px;">
+                <p style="text-align: right;">Tổng tiền: <?php echo $tongtien ?> đ</p>
             </div>
-            <?php $tongtien += $item->price * $item->qty; ?>
-            @endforeach
+
             <!-- ket thuc item san pham -->
 
-        </div>
-        <!-- ket thuc danh sach san pham -->
-        <div class="col-md-3 inf-sanpham">
-            <p class="title-tt">Thông tin người nhận</p>
-            <label class="thongtin">{{$nguoidung->tenND}}</label> <br>
-            <label class="thongtin">{{$nguoidung->SDT}}</label>
-            <hr style="border-width: 0.5px;">
+            <div class="col-md-1"></div>
+            <div class="col-md-4">
+                <div class="panel-body">
+                    <p style="text-align: center; font-size: 28px;">Thông tin người nhận</p>
+                    <form action="{{URL::to('/add-hoadon')}}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label style="margin-top: 10px;">Họ tên</label>
+                            <input type="text" class="form-control" name="hoten" value="<?php if ($nguoidung) echo $nguoidung->tenND ?>">
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-top: 10px;">Số điện thoại</label>
+                            <input type="text" class="form-control" name="sdt" value="<?php if ($nguoidung) echo $nguoidung->SDT ?>">
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-top: 10px;">Tỉnh/Thành phố</label>
+                            <select class="form-control" name="tinhthanh">
+                                <option></option>
+                                @foreach($tinhthanh as $key => $tt)
+                                @if($nguoidung && $tt->tenTT == $nguoidung->tenTT)
 
-            <p class="title-tt">Địa chỉ giao hàng</p>
-            <p class="thongtin">{{$nguoidung->diaChi.', '.$nguoidung->tenPX.', '.$nguoidung->tenQH.', '.$nguoidung->tenTT}}</p>
-            <hr style="border-width: 0.5px;">
+                                <option selected value="{{$tt->IDTT}}">{{$tt->tenTT}}</option>
+                                @else
 
-            <p class="title-tt">Phương thức thanh toán</p>
-            <p class="thongtin">Thanh toán trực tiếp khi nhận hàng</p>
-            <hr style="border-width: 0.5px;">
+                                <option value="{{$tt->IDTT}}">{{$tt->tenTT}}</option>
+                                @endif
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-top: 10px;">Quận/Huyện</label>
+                            <select class="form-control" name="quanhuyen">
+                                <option></option>
+                                @foreach($quanhuyen as $key => $tt)
+                                @if($nguoidung && $tt->tenQH == $nguoidung->tenQH)
 
-            <div class="row">
-                <div class="col-md-6">
-                    <p class="title-tt">Phí vận chuyển</p>
-                </div>
-                <div class="col-md-6">
-                    <p style="text-align: right;">15.000 đ</p>
+                                <option selected value="{{$tt->IDQH}}">{{$tt->tenQH}}</option>
+                                @else
+
+                                <option value="{{$tt->IDQH}}">{{$tt->tenQH}}</option>
+                                @endif
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-top: 10px;">Phường/Xã</label>
+                            <select class="form-control" name="phuongxa">
+                                <option></option>
+                                @foreach($phuongxa as $key => $tt)
+                                @if($nguoidung && $tt->tenPX == $nguoidung->tenPX)
+
+                                <option selected value="{{$tt->IDPX}}">{{$tt->tenPX}}</option>
+                                @else
+
+                                <option value="{{$tt->IDPX}}">{{$tt->tenPX}}</option>
+                                @endif
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-top: 10px;">Số nhà</label>
+                            <input type="text" class="form-control" name="sonha" value="<?php if ($nguoidung) echo $nguoidung->diaChi ?>">
+                        </div>
+                        <?php
+                        $msg = Session::get("msg");
+                        if ($msg) {
+                            echo $msg;
+                            Session::put("msg", null);
+                        }
+                        ?>
+                        <button class="btn-thanhtoan">Đặt hàng</button>
+                    </form>
+
                 </div>
             </div>
-            <hr style="border-width: 0.5px;">
-
-            <div class="row">
-                <div class="col-md-7">
-                    <p class="title-tt">Tổng tiền thanh toán</p>
-                </div>
-                <div class="col-md-5">
-                    <p style="text-align: right;"><?php echo $tongtien ?> đ</p>
-                </div>
-            </div>
-
-            <div class="btn-thanhtoan"><button class="btn-xanh thanhtoan"><a href="{{URL::to('/donmua')}}" style="color: white;">Thanh toán</a></button></div>
         </div>
+    </div>
     </div>
 
 
