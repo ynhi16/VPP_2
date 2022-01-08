@@ -32,9 +32,15 @@ Route::get('/del-category/{maDM}','CategoryProduct@del_category');
 Route::get('/all-category-product','CategoryProduct@all_category_product');
 Route::post('/save-category','CategoryProduct@save_category');
 Route::post('/update-category/{maDM}','CategoryProduct@update_category');
+Route::get('/danhmuc/{maDM}','CategoryProduct@show_category_home');
 //Product
 Route::get('/add-product','ProductController@add_product');
 Route::get('/all-product','ProductController@all_product');
+Route::get('/all-product-home','ProductController@show_all_product');
+Route::get('/edit-product/{maDM}','ProductController@edit_product');
+Route::get('/del-product/{maDM}','ProductController@del_product');
+Route::post('/save-product','ProductController@save_product');
+Route::post('/update-product/{maSP}','ProductController@update_product');
 //
 Route::get('/all-bill','AdminController@show_all_bill');
 Route::get('/bill-detail','BillController@show_bill_detail');

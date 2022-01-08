@@ -18,7 +18,7 @@
 <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-        <p>alo</p>
+        <p>alo</p> {{$name}}
     </div>
     <div class="col-md-4"></div>
 </div>

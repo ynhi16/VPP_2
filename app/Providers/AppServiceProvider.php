@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Providers;
-
+use DB;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $categories = DB::table('danhmuc')->get();
+
+        View::share('categories', $categories);
     }
 }

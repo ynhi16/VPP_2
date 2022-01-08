@@ -17,11 +17,11 @@
 <body>
 
     <div class="ms-5 me-5">
-        {{View::make('header')}}
+        @include('header')
+
         @yield('trangchu')
-        <div class="mt-4">
-            {{View::make('footer')}}
-        </div>
+
+        @include('footer')
     </div>
 </body>
 

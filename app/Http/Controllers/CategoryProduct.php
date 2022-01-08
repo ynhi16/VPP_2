@@ -45,4 +45,79 @@ class CategoryProduct extends Controller
         Session::put('message','Xóa danh mục sản phẩm thành công');
         return Redirect::to('all-category-product');
     }
+
+    //End Function Admin 
+    public function show_category_home($maDM){
+        
+        $get = DB::table('sanpham')
+        -> join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')
+        -> join('danhmuc', 'sanpham.maDM', '=', 'danhmuc.maDM')->where('sanpham.maDM',$maDM)->get();
+        $distinct = null;
+        $tenDM = DB::table('danhmuc')->where('danhmuc.maDM',$maDM)->get();
+        foreach ($get as $key => $value) {
+            if ($distinct != null) {
+                $i = 0;
+                foreach ($distinct as $key => $dis) {
+                    if ($dis->maSP == $value->maSP) {
+
+                        $i = 1;
+                    }
+                }
+                if ($i == 0) {
+                    $distinct[] = $value;
+                }
+            } else {
+                $distinct = array();
+                $distinct[] = $value;
+            }
+        }
+
+        return view('page.show_category')->with('sanphambc', $distinct)->with('maDM',$maDM)->with('ten',$tenDM);
+        
+        
+    }
+    public function chitietsanpham($maSP)
+    {
+
+        //lấy thông tin sản phẩm theo maSP
+        $sanphamct = DB::table('sanpham')
+            ->join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')
+            ->join('danhmuc', 'sanpham.maDM', '=', 'danhmuc.maDM')
+            ->where('sanpham.maSP', $maSP)->get();
+        //lấy phân loại sản phẩm
+        $phanloaisp = DB::table('sanpham')
+            ->join('phanloai', 'sanpham.maSP', '=', 'phanloai.maSP')
+            ->where('sanpham.maSP', $maSP)->get();
+        //lấy mảng các đường dẫn hình ảnh
+        $hinhanhs = [];
+        foreach ($sanphamct as $key => $value) {
+            $hinhanhs[] = "{{asset('public/frontend/img/'.$value->tenHA)}}";
+        }
+
+        //lấy danh sách sản phẩm bán chạy
+        $get = DB::table('sanpham')
+            ->where('maDM', 2)
+            ->join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')->get();
+        //lọc danh sách sản phẩm bán chạy
+        $distinct = null;
+        foreach ($get as $key => $value) {
+            if ($distinct != null) {
+                $i = 0;
+                foreach ($distinct as $key => $dis) {
+                    if ($dis->maSP == $value->maSP) {
+
+                        $i = 1;
+                    }
+                }
+                if ($i == 0) {
+                    $distinct[] = $value;
+                }
+            } else {
+                $distinct = array();
+                $distinct[] = $value;
+            }
+        }
+
+        return view('page.chitietsanpham')->with('sanphamct', $sanphamct)->with('sanphambc', $distinct)->with('hinhanhs', $hinhanhs)->with('phanloaisp', $phanloaisp);
+    }
 }

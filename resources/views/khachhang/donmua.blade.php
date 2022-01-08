@@ -1,9 +1,5 @@
-
-@extends('khachhangHome')
-@section('khachhang_content')
-
-
-
+@extends('layout')
+@section('trangchu')
 <div class="wp-thanhtoan">
     <h2>Lịch sử mua hàng</h2>
     <hr style="border-width: 0.5px;">

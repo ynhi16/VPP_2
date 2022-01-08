@@ -14,7 +14,30 @@ class trangchuController extends Controller
 {
     public function index()
     {
-        return view('page.trangchu');
+        $get = DB::table('sanpham')
+        -> join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')->get();
+
+        $distinct = null;
+        foreach ($get as $key => $value) {
+            if ($distinct != null) {
+                $i = 0;
+                foreach ($distinct as $key => $dis) {
+                    if ($dis->maSP == $value->maSP) {
+
+                        $i = 1;
+                    }
+                }
+                if ($i == 0) {
+                    $distinct[] = $value;
+                }
+            } else {
+                $distinct = array();
+                $distinct[] = $value;
+            }
+        }
+
+        return view('page.trangchu')->with('sanphambc', $distinct);
+        
     }
     public function dangnhap()
     {
@@ -52,11 +75,11 @@ class trangchuController extends Controller
 
                 // return Redirect::to('/khachhang');
                 return Redirect::to('/');
-                
-            } else if ($quyen == 1){
+            } else if ($quyen == 1) {
 
                 return Redirect::to('/admin');
-            } else {
+            }
+            else {
 
                 return Redirect::to('/dangnhap');
             }
@@ -88,7 +111,7 @@ class trangchuController extends Controller
 
         //lấy danh sách sản phẩm bán chạy
         $get = DB::table('sanpham')
-        ->where('maDM', 2)
+            ->where('maDM', 2)
             ->join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')->get();
         //lọc danh sách sản phẩm bán chạy
         $distinct = null;

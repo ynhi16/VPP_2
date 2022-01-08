@@ -1,10 +1,53 @@
-<<<<<<< HEAD
-@extends('khachhangHome')
-@section('khachhang_content')
+@extends('layout')
+@section('trangchu')
+	<style>
+		.btn-den {
+			background-color: black;
+			color: white;
+			height: 45px;
+			border-radius: 5px;
+			font-size: 16px;
+		}
 
-<div class="d-flex justify-content-center">
-	<div class="col-md-6">
-		<h2>Thiết lập tài khoản</h2>
+		.btn-vienden {
+			background-color: black;
+			color: white;
+			height: 45px;
+			border-radius: 5px;
+			font-size: 16px;
+		}
+
+		.tab-khongchon {
+			text-decoration: none;
+			padding-top: 10px;
+		}
+
+		.tab-khongchon:hover {
+			text-decoration: none;
+			color: black;
+			font-size: 18px;
+		}
+
+		.tab-duocchon {
+			text-decoration: none;
+			padding-top: 10px;
+		}
+
+		.tab-duocchon:hover {
+			text-decoration: none;
+			color: white;
+			font-size: 18px;
+		}
+	</style>
+</head>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<h2>Thiết lập tài khoản</h2>
+
+
 				<!-- bắt đầu menu ngang -->
 				<div class="row" style="margin-top: 60px;">
 					<a class="btn-vienden tab-duocchon" href="{{URL::to('/canhan')}}">Thông tin cá nhân</a>
@@ -91,11 +134,6 @@
 				<input type="hidden" value="{{$value->maQuyen}}" name="maQuyen">
 				@endforeach
 			</div>
-=======
-		</div>  -->
-				<!-- kết thúc avatar -->
->>>>>>> refs/remotes/origin/khachhang
-
 				<div class="row">
 					<!-- bắt đầu phần thông tin cá nhân -->
 					<form action="{{URL::to('/capnhat-ttcn')}}" method="post">
