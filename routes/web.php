@@ -66,9 +66,12 @@ Route::get('/donmua','KhachHangController@donmua');
 ///giỏ hàng
 Route::post('/add-giohang','GioHangController@add_giohang');
 Route::get('/del-giohang/{rowId}','GioHangController@del_giohang');
-Route::post('/change','GioHangController@change');
+Route::get('/update-giohang/{rowId}&{soluong}','GioHangController@update_giohang');
 
-
+//thêm hoá đơn
+Route::post('/add-hoadon','GioHangController@add_hoadon');
+//khách hàng huye đơn
+Route::get('/del-hoadon/{maHD}','GioHangController@del_hoadon');
 
 
 

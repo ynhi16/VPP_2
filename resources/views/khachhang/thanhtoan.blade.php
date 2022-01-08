@@ -34,11 +34,6 @@
             margin-left: 30px;
         }
 
-        .btn-thanhtoan {
-            width: 100%;
-            text-align: center;
-        }
-
         .thanhtoan {
             width: 300px;
             height: 40px;
@@ -50,10 +45,19 @@
         .btn-thanhtoan {
             background-color: black;
             height: 45px;
+            width: 100%;
             border-radius: 30px;
             margin-top: 30px;
             color: white;
-            font-size: 20px;
+            font-size: 18px;
+            text-align: center;
+            text-decoration: none;
+            padding-top: 10px;
+        }
+
+        .btn-thanhtoan:hover {
+            color: white;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -83,7 +87,7 @@
                             <div class="col-md-9">
                                 <p style="margin: 0;">{{$item->name}}</p>
                                 <label style="font-size: 13px; color: ##8B8989;">Phân loại: {{$item->options->phanloai}}</label>
-                                <p style="font-size: 13px; color: ##8B8989">Số lượng: {{$item->qty}}</p>
+                                <p style="font-size: 13px; color: ##8B8989;">Số lượng: {{$item->qty}}</p>
                             </div>
                             <div class="col-md-3">
                                 <p style="text-align: right;">{{$item->price * $item->qty}} đ</p>
@@ -95,6 +99,9 @@
                 @endforeach
                 <!-- ket thuc item san pham -->
 
+                <hr style="border-width: 0.5px;">
+                <p style="text-align: right;">Tổng tiền: <?php echo $tongtien ?> đ</p>
+
             </div>
             <!-- ket thuc danh sach san pham -->
 
@@ -102,35 +109,76 @@
             <div class="col-md-4">
                 <div class="panel-body">
                     <p style="text-align: center; font-size: 28px;">Thông tin người nhận</p>
-                    <form role="form" action="{{URL::to('/add-bandoc')}}" method="post">
-                        {{csrf_field()}}
+                    <form action="{{URL::to('/add-hoadon')}}" method="post">
+                        @csrf
                         <div class="form-group">
-                            <label>Họ tên</label>
-                            <input type="text" class="form-control" name="them_hoten">
+                            <label style="margin-top: 10px;">Họ tên</label>
+                            <input type="text" class="form-control" name="hoten" value="<?php if ($nguoidung) echo $nguoidung->tenND ?>">
                         </div>
                         <div class="form-group">
-                            <label>Số điện thoại</label>
-                            <input type="text" class="form-control" name="them_hoten">
+                            <label style="margin-top: 10px;">Số điện thoại</label>
+                            <input type="text" class="form-control" name="sdt" value="<?php if ($nguoidung) echo $nguoidung->SDT ?>">
                         </div>
                         <div class="form-group">
-                            <label>Tỉnh/Thành phố</label>
-                            <input type="text" class="form-control" name="them_hoten">
+                            <label style="margin-top: 10px;">Tỉnh/Thành phố</label>
+                            <select class="form-control" name="tinhthanh">
+                                <option></option>
+                                @foreach($tinhthanh as $key => $tt)
+                                @if($nguoidung && $tt->tenTT == $nguoidung->tenTT)
+
+                                <option selected value="{{$tt->IDTT}}">{{$tt->tenTT}}</option>
+                                @else
+
+                                <option value="{{$tt->IDTT}}">{{$tt->tenTT}}</option>
+                                @endif
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label>Quận/Huyện</label>
-                            <input type="text" class="form-control" name="them_hoten">
+                            <label style="margin-top: 10px;">Quận/Huyện</label>
+                            <select class="form-control" name="quanhuyen">
+                                <option></option>
+                                @foreach($quanhuyen as $key => $tt)
+                                @if($nguoidung && $tt->tenQH == $nguoidung->tenQH)
+
+                                <option selected value="{{$tt->IDQH}}">{{$tt->tenQH}}</option>
+                                @else
+
+                                <option value="{{$tt->IDQH}}">{{$tt->tenQH}}</option>
+                                @endif
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label>Phường/Xã</label>
-                            <input type="text" class="form-control" name="them_hoten">
+                            <label style="margin-top: 10px;">Phường/Xã</label>
+                            <select class="form-control" name="phuongxa">
+                                <option></option>
+                                @foreach($phuongxa as $key => $tt)
+                                @if($nguoidung && $tt->tenPX == $nguoidung->tenPX)
+
+                                <option selected value="{{$tt->IDPX}}">{{$tt->tenPX}}</option>
+                                @else
+
+                                <option value="{{$tt->IDPX}}">{{$tt->tenPX}}</option>
+                                @endif
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label>Số nhà</label>
-                            <input type="text" class="form-control" name="them_hoten">
+                            <label style="margin-top: 10px;">Số nhà</label>
+                            <input type="text" class="form-control" name="sonha" value="<?php if ($nguoidung) echo $nguoidung->diaChi ?>">
                         </div>
+                        <?php 
+                            $msg = Session::get("msg");
+                            if ($msg) {
+                                echo $msg;
+                                Session::put("msg", null);
+                            }
+                        ?>
                         <button class="btn-thanhtoan">Đặt hàng</button>
                     </form>
                 </div>
+
             </div>
         </div>
     </div>
