@@ -200,4 +200,11 @@ class KhachHangController extends Controller
         
         return view('khachhang.donmua')->with('hoadons', $gethoadon)->with('chitiets', $getchitiet)->with('hinhanhs', $hinhanhs);
     }
+
+    //yêu thích
+    public function yeuthich() {
+
+        
+        return view('khachhang.yeuthich');
+    }
 }
