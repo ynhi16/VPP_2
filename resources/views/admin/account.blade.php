@@ -21,29 +21,37 @@
                 <tr>
                     <th scope="col">Mã người dùng</th>
                     <th scope="col">Họ Tên</th>
-                    <th scope="col">Tài khoản</th>
+                    <th scope="col">Giới Tính</th>
                     <th scope="col">SĐT</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Giới Tính</th>
-                    <th scope="col">Trạng thái</th>
+                    <th scope="col">Địa chỉ</th>
+                    <th scope="col">Tài khoản</th>
+                    <th scope="col">Mật khẩu</th>
+                    <th scope="col">Phường Xã</th>
+                    <th scope="col">Quyền</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Calendar Calendar Calendar Calendar </td>
-                    <td>Calendar</td>
-                    <td>Calendar</td>
-                    <td>Calendar</td>
-                    <td>Calendar</td>
-                    <td>Calendar</td>
+                    @foreach($account as $key => $cate)
+                    <tr>
+                        <th scope="row">{{$cate -> maND}}</th>
+                        <td>{{$cate -> tenND}}</td>
+                        <td>{{$cate -> gioiTinh}}</td>
+                        <td>{{$cate -> SDT}}</td>
+                        <td>{{$cate -> email}}</td>
+                        <td>{{$cate -> diaChi}}</td>
+                        <td>{{$cate -> taiKhoan}}</td>
+                        <td>{{$cate -> matKhau}}</td>
+                        <td>{{$cate -> maPX}}</td>
+                        <td>{{$cate -> maQuyen}}</td>
+                        <td>
 
-                    <td>
-                        <button type="button" class="btn btn-outline-success me-2"><a href="#">Xem chi tiết</a></button>
-                        <button type="button" class="btn btn-outline-danger ms-2">Xóa</button>
-                    </td>
-                </tr>
+                            <button type="submit" class="btn btn-outline-success me-2"><a href="#">Xem chi tiết </a></button>
+                            <button type="submit" class="btn btn-outline-danger me-2"><a onclick="return confirm('Bạn có chắc chắn muốn xóa danh muc này?')" href="#">Xóa</a></button>
+                        </td>
+                    </tr>
+                    @endforeach
             </tbody>
         </table>
     </div>

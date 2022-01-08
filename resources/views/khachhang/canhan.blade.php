@@ -1,63 +1,10 @@
-@extends('layout')
-@section('trangchu')
+<<<<<<< HEAD
+@extends('khachhangHome')
+@section('khachhang_content')
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<style>
-		.btn-den {
-			background-color: black;
-			color: white;
-			height: 45px;
-			border-radius: 5px;
-			font-size: 16px;
-		}
-
-		.btn-vienden {
-			background-color: black;
-			color: white;
-			height: 45px;
-			border-radius: 5px;
-			font-size: 16px;
-		}
-
-		.tab-khongchon {
-			text-decoration: none;
-			padding-top: 10px;
-		}
-
-		.tab-khongchon:hover {
-			text-decoration: none;
-			color: black;
-			font-size: 18px;
-		}
-
-		.tab-duocchon {
-			text-decoration: none;
-			padding-top: 10px;
-		}
-
-		.tab-duocchon:hover {
-			text-decoration: none;
-			color: white;
-			font-size: 18px;
-		}
-	</style>
-</head>
-
-<body>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-10">
-				<h2>Thiết lập tài khoản</h2>
-
-
+<div class="d-flex justify-content-center">
+	<div class="col-md-6">
+		<h2>Thiết lập tài khoản</h2>
 				<!-- bắt đầu menu ngang -->
 				<div class="row" style="margin-top: 60px;">
 					<a class="btn-vienden tab-duocchon" href="{{URL::to('/canhan')}}">Thông tin cá nhân</a>
@@ -81,8 +28,73 @@
 					<button class="btn-trang" style="margin-left: 10px;width: 80px; height: 35px;">Delete</button>
 				</div>
 			</div>
+<<<<<<< HEAD
+		</div> <!-- kết thúc avatar -->
+
+		<!-- bắt đầu phần thông tin cá nhân -->
+		<form action="{{URL::to('/capnhat-ttcn')}}" method="post">
+			@csrf
+			<div class="row inf-canhan" style="margin-top: 50px;">
+				@foreach($nguoidung as $key => $value)
+				<label for="pwd"><strong>Họ tên</strong></label>
+				<input type="text" class="form-control input-canhan" value="{{$value->tenND}}" name="tenND">
+				<label for="pwd"><strong>Giới tính</strong></label>
+				<input type="text" class="form-control input-canhan" value="{{$value->gioiTinh}}" name="gioiTinh">
+				<label for="pwd"><strong>Ngày sinh</strong></label>
+				<input type="date" class="form-control input-canhan" value="{{$value->ngaySinh}}" name="ngaySinh">
+				<label for="pwd"><strong>Email</strong></label>
+				<input type="text" class="form-control input-canhan" value="{{$value->email}}" name="email">
+				<label for="pwd"><strong>Số điện thoại</strong></label>
+				<input type="text" class="form-control input-canhan" value="{{$value->SDT}}" name="SDT">
+				<label for="pwd"><strong>Tỉnh thành</strong></label>
+				<select class="form-control input-canhan" name="tinhthanh">
+					@foreach($tinhthanh as $key => $tt)
+					@if($tt->tenTT == $value->tenTT)
+
+					<option selected value="{{$tt->IDTT}}">{{$tt->tenTT}}</option>
+					@else
+
+					<option value="{{$tt->IDTT}}">{{$tt->tenTT}}</option>
+					@endif
+					@endforeach
+				</select>
+				<label for="pwd"><strong>Quận huyện</strong></label>
+				<select class="form-control input-canhan" name="quanhuyen">
+					@foreach($quanhuyen as $key => $tt)
+					@if($tt->tenQH == $value->tenQH)
+
+					<option selected value="{{$tt->IDQH}}">{{$tt->tenQH}}</option>
+					@else
+
+					<option value="{{$tt->IDQH}}">{{$tt->tenQH}}</option>
+					@endif
+					@endforeach
+				</select>
+				<label for="pwd"><strong>Phường xã</strong></label>
+				<select class="form-control input-canhan" name="phuongxa">
+					@foreach($phuongxa as $key => $tt)
+					@if($tt->tenPX == $value->tenPX)
+
+					<option selected value="{{$tt->IDPX}}">{{$tt->tenPX}}</option>
+					@else
+
+					<option value="{{$tt->IDPX}}">{{$tt->tenPX}}</option>
+					@endif
+					@endforeach
+				</select>
+				<label for="pwd"><strong>Số nhà</strong></label>
+				<input type="text" class="form-control input-canhan" value="{{$value->diaChi}}" name="diaChi">
+
+				<input type="hidden" value="{{$value->maND}}" name="maND">
+				<input type="hidden" value="{{$value->taiKhoan}}" name="taiKhoan">
+				<input type="hidden" value="{{$value->matKhau}}" name="matKhau">
+				<input type="hidden" value="{{$value->maQuyen}}" name="maQuyen">
+				@endforeach
+			</div>
+=======
 		</div>  -->
 				<!-- kết thúc avatar -->
+>>>>>>> refs/remotes/origin/khachhang
 
 				<div class="row">
 					<!-- bắt đầu phần thông tin cá nhân -->
@@ -165,5 +177,6 @@
 </body>
 
 </html>
+
 
 @endsection

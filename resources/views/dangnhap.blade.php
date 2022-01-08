@@ -86,9 +86,10 @@
 
 		</div>
 	</div>
-	<!-- <div style="margin-top: 100px;">
-		@include("footer")
-	</div> -->
+	<div style="margin: 95px 3rem 0px 3rem;">
+	{{View::make('footer')}}
+	</div>
+
 
 </body>
 

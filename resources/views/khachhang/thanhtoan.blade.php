@@ -1,8 +1,8 @@
-@extends('layout')
-@section('trangchu')
-<!DOCTYPE html>
-<html lang="en">
+<<<<<<< HEAD
+@extends('khachhangHome')
+@section('khachhang_content')
 
+<<<<<<< HEAD
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -63,6 +63,8 @@
 </head>
 
 <body>
+=======
+>>>>>>> d68ddacff3e384358826b0659ebd7dcfce72362a
     <div class="wp-thanhtoan">
         <h2>Thanh toán</h2>
         <div class="row">
@@ -86,8 +88,13 @@
                         <div class="row">
                             <div class="col-md-9">
                                 <p style="margin: 0;">{{$item->name}}</p>
+<<<<<<< HEAD
                                 <label style="font-size: 13px; color: ##8B8989;">Phân loại: {{$item->options->phanloai}}</label>
                                 <p style="font-size: 13px; color: ##8B8989;">Số lượng: {{$item->qty}}</p>
+=======
+                                <label style="font-size: 13px; color: #8B8989;">Phân loại: {{$item->options->phanloai}}</label>
+                                <p style="font-size: 13px; color: #8B8989">Số lượng: {{$item->qty}}</p>
+>>>>>>> d68ddacff3e384358826b0659ebd7dcfce72362a
                             </div>
                             <div class="col-md-3">
                                 <p style="text-align: right;">{{$item->price * $item->qty}} đ</p>
@@ -95,16 +102,44 @@
                         </div>
                     </div>
                 </div>
-                <?php $tongtien += $item->price * $item->qty; ?>
-                @endforeach
-                <!-- ket thuc item san pham -->
+            </div>
+            <?php $tongtien += $item->price * $item->qty; ?>
+            @endforeach
+            <!-- ket thuc item san pham -->
 
+<<<<<<< HEAD
                 <hr style="border-width: 0.5px;">
                 <p style="text-align: right;">Tổng tiền: <?php echo $tongtien ?> đ</p>
 
-            </div>
-            <!-- ket thuc danh sach san pham -->
+=======
+        </div>
+        <!-- ket thuc danh sach san pham -->
+        <div class="col-md-3 inf-sanpham">
+            <p class="title-tt">Thông tin người nhận</p>
+            <label class="thongtin">{{$nguoidung->tenND}}</label> <br>
+            <label class="thongtin">{{$nguoidung->SDT}}</label>
+            <hr style="border-width: 0.5px;">
 
+            <p class="title-tt">Địa chỉ giao hàng</p>
+            <p class="thongtin">{{$nguoidung->diaChi.', '.$nguoidung->tenPX.', '.$nguoidung->tenQH.', '.$nguoidung->tenTT}}</p>
+            <hr style="border-width: 0.5px;">
+
+            <p class="title-tt">Phương thức thanh toán</p>
+            <p class="thongtin">Thanh toán trực tiếp khi nhận hàng</p>
+            <hr style="border-width: 0.5px;">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="title-tt">Phí vận chuyển</p>
+                </div>
+                <div class="col-md-6">
+                    <p style="text-align: right;">15.000 đ</p>
+                </div>
+>>>>>>> d68ddacff3e384358826b0659ebd7dcfce72362a
+            </div>
+            <hr style="border-width: 0.5px;">
+
+<<<<<<< HEAD
             <div class="col-md-1"></div>
             <div class="col-md-4">
                 <div class="panel-body">
@@ -177,13 +212,21 @@
                         ?>
                         <button class="btn-thanhtoan">Đặt hàng</button>
                     </form>
+=======
+            <div class="row">
+                <div class="col-md-7">
+                    <p class="title-tt">Tổng tiền thanh toán</p>
+                </div>
+                <div class="col-md-5">
+                    <p style="text-align: right;"><?php echo $tongtien ?> đ</p>
+>>>>>>> d68ddacff3e384358826b0659ebd7dcfce72362a
                 </div>
 
             </div>
+
+            <div class="btn-thanhtoan"><button class="btn-xanh thanhtoan"><a href="{{URL::to('/donmua')}}" style="color: white;">Thanh toán</a></button></div>
         </div>
     </div>
-</body>
 
-</html>
 
-@endsection
+    @endsection
