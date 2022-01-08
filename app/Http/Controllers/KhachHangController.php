@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Cart;
 use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
+use PhpParser\Node\Stmt\Foreach_;
 
 session_start();
 
@@ -24,10 +26,34 @@ class KhachHangController extends Controller
 
     public function giohang()
     {
+        //giỏ hàng
+        $giohang = Cart::content();
+        // $phanloais = array();
+        // $nows = array();
+        // foreach($giohang as $key => $value) {
+        //     //lấy phân loại sản phẩm
+        //     $phanloai = DB::table('phanloai')->where('maSP', $value->id)->get();
+        //     $phanloais[$key] = $phanloai;
+
+        //     //lấy phân loại được chọn
+        //     foreach($phanloai as $key2 => $pl) {
+        //         if($pl->tenPL === $value->options->phanloai) {
+        //             $nows[$key] = $key2;
+        //         }
+        //     }
+        // }
+        $soluong = array();
+        foreach($giohang as $key => $value) {
+            $sl = DB::table('phanloai')->select('soLuong')->where('tenPL', $value->options->phanloai)->first();
+            $soluong[$key] = $sl;
+        }
+
+        //sản phẩm bán chạy
         $get = DB::table('sanpham')
-        -> join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')->get();
+            ->join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')->get();
 
         $distinct = null;
+        
         foreach ($get as $key => $value) {
             if ($distinct != null) {
                 $i = 0;
@@ -38,7 +64,7 @@ class KhachHangController extends Controller
                     }
                 }
                 if ($i == 0) {
-                    $distinct[] = $value;
+                    $distinct[] = $value;   
                 }
             } else {
                 $distinct = array();
@@ -46,19 +72,32 @@ class KhachHangController extends Controller
             }
         }
 
-        return view('khachhang.giohang')->with('sanphambc', $distinct);
+        return view('khachhang.giohang')->with('sanphambc', $distinct)->with('soluongs', $soluong);
     }
     ///trang thanh toán
     public function thanhtoan()
     {
+
+        $giohang = Cart::content();
+
+        if (count($giohang) == 0) {
+
+            return Redirect::to('/giohang');
+        }
+
         $maND = Session::get('nguoidung_id');
 
+        $tinhthanh = DB::table('tinhthanh')->get();
+        $quanhuyen = DB::table('quanhuyen')->get();
+        $phuongxa = DB::table('phuongxa')->get();
+
+
         $get = DB::table('nguoidung')
-        ->join('phuongxa', 'nguoidung.maPX', '=', 'phuongxa.idPX')
-        -> join('quanhuyen', 'quanhuyen.IDQH', '=', 'phuongxa.IDQH')
-        -> join('tinhthanh', 'quanhuyen.IDTT', '=', 'tinhthanh.IDTT')
-        ->where('nguoidung.maND', $maND)->first();
-        return view('khachhang.thanhtoan')->with('nguoidung', $get);
+            ->join('phuongxa', 'nguoidung.maPX', '=', 'phuongxa.idPX')
+            ->join('quanhuyen', 'quanhuyen.IDQH', '=', 'phuongxa.IDQH')
+            ->join('tinhthanh', 'quanhuyen.IDTT', '=', 'tinhthanh.IDTT')
+            ->where('nguoidung.maND', $maND)->first();
+        return view('khachhang.thanhtoan')->with('nguoidung', $get)->with('tinhthanh', $tinhthanh)->with('quanhuyen', $quanhuyen)->with('phuongxa', $phuongxa);
     }
 
     public function canhan()
@@ -71,10 +110,10 @@ class KhachHangController extends Controller
         $phuongxa = DB::table('phuongxa')->get();
 
         $nguoidung = DB::table('nguoidung')
-        -> join('phuongxa', 'phuongxa.IDPX', '=', 'nguoidung.maPX')
-        -> join('quanhuyen', 'quanhuyen.IDQH', '=', 'phuongxa.IDQH')
-        -> join('tinhthanh', 'quanhuyen.IDTT', '=', 'tinhthanh.IDTT')
-        ->where('maND', $maND)->get();
+            ->join('phuongxa', 'phuongxa.IDPX', '=', 'nguoidung.maPX')
+            ->join('quanhuyen', 'quanhuyen.IDQH', '=', 'phuongxa.IDQH')
+            ->join('tinhthanh', 'quanhuyen.IDTT', '=', 'tinhthanh.IDTT')
+            ->where('maND', $maND)->get();
 
         return view('khachhang.canhan')->with('nguoidung', $nguoidung)->with('tinhthanh', $tinhthanh)->with('quanhuyen', $quanhuyen)->with('phuongxa', $phuongxa);
     }
@@ -118,7 +157,7 @@ class KhachHangController extends Controller
             Session::put('capnhat', "Thông tin không hợp lệ!");
             return Redirect::to('matkhau');
         } else {
-             
+
             $data = array();
 
             $data['maND'] = $nguoidung->maND;
@@ -140,8 +179,25 @@ class KhachHangController extends Controller
         }
     }
     //đơn mua
-    public function donmua() {
+    public function donmua()
+    {
+        $maND = Session::get('nguoidung_id');
 
-        return view('khachhang.donmua');
+        $gethoadon = DB::table('hoadon')
+        ->where('maND', $maND)->orderby('maHD', 'desc')->get(); 
+
+        $getchitiet = DB::table('hoadon')
+        ->join('chitiethoadon', 'hoadon.maHD', '=', 'chitiethoadon.maHD')
+        ->join ('sanpham', 'sanpham.maSP', '=', 'chitiethoadon.maSP')
+        ->where('maND', $maND)->get(); 
+
+        $hinhanhs = array();
+        foreach($getchitiet as $key => $value) {
+
+            $image = DB::table('hinhanh')->where('maSP', $value->maSP)->first();
+            $hinhanhs[$key] = $image->tenHA;
+        }
+        
+        return view('khachhang.donmua')->with('hoadons', $gethoadon)->with('chitiets', $getchitiet)->with('hinhanhs', $hinhanhs);
     }
 }

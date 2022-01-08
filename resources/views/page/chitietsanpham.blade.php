@@ -145,8 +145,6 @@
             display: block;
         }
 
-
-
         /*tab iu 2*/
 
         .tab-content2 {}
@@ -249,7 +247,7 @@
                                         @foreach($phanloaisp as $key => $value2)
                                         @if ($key == 0)
                                         <div class="tab-pane2 active2">
-                                            <select class="form-control select-soluong" name="soluong">
+                                            <select class="form-control select-soluong" name="soluong[]">
                                                 @for($i=1; $i<=$value2->soLuong; $i++)
                                                     <option><?php echo $i ?></option>
                                                     @endfor
@@ -257,7 +255,7 @@
                                         </div>
                                         @else
                                         <div class="tab-pane2">
-                                            <select class="form-control select-soluong" name="soluong">
+                                            <select class="form-control select-soluong" name="soluong[]">
                                                 @for($i=1; $i<=$value2->soLuong; $i++)
                                                     <option><?php echo $i ?></option>
                                                     @endfor
