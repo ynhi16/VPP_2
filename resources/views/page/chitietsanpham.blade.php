@@ -225,7 +225,14 @@
 
                                 <input type="hidden" name="maSP" value="{{$sanphamct[0]->maSP}}">
                                 <p class="text-dendam" style="font-size: 26px;">{{$value->tenSP}}</p>
-                                <p style="font-size: 24px; margin-top: 24px; ">{{$value->donGia}} đ</p>
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <p style="font-size: 24px; margin-top: 24px; ">{{$value->donGia}} đ</p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <!-- <p style="text-align: right;"><img src="{{asset('public/frontend/img/tym-trang.png')}}" alt=""></p> -->
+                                    </div>
+                                </div>
                                 <p>Kích thước: {{$sanphamct[0]->kichThuoc}}</p>
                                 <p>Mô tả: {{$sanphamct[0]->moTa}}</p>
 
@@ -300,18 +307,22 @@
                             </form>
 
                         </div>
+
+                        <?php $maND = Session::get('nguoidung_id'); ?>
+                        @if ($maND)
+                        <div class="col-md-1">
+                            <p style="text-align: right; margin-top: 40px;"><img src="{{asset('public/frontend/img/tym-trang.png')}}" alt=""></p>
+                        </div>
+                        @endif
                     </div>
 
                     <div style="margin-top: 100px;"></div>
                 </div>
+
             </div>
         </div>
     </div>
 
-    <div class="container">
-
-
-    </div>
 
     <!-- /// -->
     <div style="margin-top: 100px;"></div>
