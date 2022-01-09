@@ -74,6 +74,7 @@
                         <li class="nav-item li-1"><span>Khánh Hạ</span>
                             <ul class="ul-2">
                                 <li class="li-2"><a href="{{URL::to('/canhan')}}" class="li-2-a">Cá nhân</a></li>
+                                <li class="li-2"><a href="{{URL::to('/yeuthich')}}" class="li-2-a">Yêu thích</a></li>
                                 <li class="li-2"><a href="{{URL::to('/giohang')}}" class="li-2-a">Giỏ hàng</a></li>
                                 <li class="li-2"><a href="{{URL::to('/donmua')}}" class="li-2-a">Đơn mua</a></li>
                                 <li class="li-2"><a href="{{URL::to('/dangxuat')}}" class="li-2-a">Đăng xuất</a></li>

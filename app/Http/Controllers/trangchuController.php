@@ -133,6 +133,20 @@ class trangchuController extends Controller
             }
         }
 
-        return view('page.chitietsanpham')->with('sanphamct', $sanphamct)->with('sanphambc', $distinct)->with('hinhanhs', $hinhanhs)->with('phanloaisp', $phanloaisp);
+
+
+        //kiểm tra sản phẩm yêu thích
+        $tym = "tym-trang.png";
+        $maND = Session::get("nguoidung_id");
+        if($maND) {
+            $yt = DB::table('yeuthich')->where("maND", $maND)->where('maSP', $maSP)->first();
+
+            if ($yt) {
+
+                $tym = "tym-den.png";
+            }
+        }
+
+        return view('page.chitietsanpham')->with('sanphamct', $sanphamct)->with('sanphambc', $distinct)->with('hinhanhs', $hinhanhs)->with('phanloaisp', $phanloaisp)->with('tym', $tym);
     }
 }

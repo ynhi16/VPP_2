@@ -97,23 +97,8 @@
             <!-- ket thuc item don mua -->
 
 
-            <div class="row item-sanphamgiohang">
-                <!-- bat dau item san pham -->
-                <div class="col-md-2">
-                    <a href="{{URL::to('/chitietsanpham/1')}}"><img src="{{asset('public/frontend/img/sanpham1.png')}}" class="img-thumbnail" alt="Cinque Terre"></a>
-                </div>
-                <div class="col-md-7" style="padding-left: 0px;">
-                    <p class="text-dendam">60 Sticker cổ điển retro</p>
-                    <p>Số lượng: 2</p>
-                </div>
-                <div class="col-md-3">
-                    <p class="p-box4">66.000 VNĐ</p>
-                </div>
-            </div> <!-- ket thuc item san pham -->
-            <hr style="border-width: 0.5px;">
-            <div class="row">
-                <p style="text-align: right;">Tổng tiền: 102.000 VNĐ</p>
-            </div>
+             <!-- ket thuc item san pham -->
+            
         </div>
         <!-- ket thuc item don mua -->
 

@@ -43,7 +43,7 @@ class KhachHangController extends Controller
         //     }
         // }
         $soluong = array();
-        foreach($giohang as $key => $value) {
+        foreach ($giohang as $key => $value) {
             $sl = DB::table('phanloai')->select('soLuong')->where('tenPL', $value->options->phanloai)->first();
             $soluong[$key] = $sl;
         }
@@ -53,7 +53,7 @@ class KhachHangController extends Controller
             ->join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')->get();
 
         $distinct = null;
-        
+
         foreach ($get as $key => $value) {
             if ($distinct != null) {
                 $i = 0;
@@ -64,7 +64,7 @@ class KhachHangController extends Controller
                     }
                 }
                 if ($i == 0) {
-                    $distinct[] = $value;   
+                    $distinct[] = $value;
                 }
             } else {
                 $distinct = array();
@@ -184,47 +184,48 @@ class KhachHangController extends Controller
         $maND = Session::get('nguoidung_id');
 
         $gethoadon = DB::table('hoadon')
-        ->where('maND', $maND)->orderby('maHD', 'desc')->get(); 
+            ->where('maND', $maND)->orderby('maHD', 'desc')->get();
 
         $getchitiet = DB::table('hoadon')
-        ->join('chitiethoadon', 'hoadon.maHD', '=', 'chitiethoadon.maHD')
-        ->join ('sanpham', 'sanpham.maSP', '=', 'chitiethoadon.maSP')
-        ->where('maND', $maND)->get(); 
+            ->join('chitiethoadon', 'hoadon.maHD', '=', 'chitiethoadon.maHD')
+            ->join('sanpham', 'sanpham.maSP', '=', 'chitiethoadon.maSP')
+            ->where('maND', $maND)->get();
 
         $hinhanhs = array();
-        foreach($getchitiet as $key => $value) {
+        foreach ($getchitiet as $key => $value) {
 
             $image = DB::table('hinhanh')->where('maSP', $value->maSP)->first();
             $hinhanhs[$key] = $image->tenHA;
         }
-        
+
         return view('khachhang.donmua')->with('hoadons', $gethoadon)->with('chitiets', $getchitiet)->with('hinhanhs', $hinhanhs);
     }
 
     //yêu thích
-    public function yeuthich() {
+    public function yeuthich()
+    {
 
         $maND = Session::get('nguoidung_id');
 
         $get = DB::table('yeuthich')
-        ->join('sanpham', 'yeuthich.maSP', '=', 'sanpham.masp')
-        ->join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')
-        ->where('yeuthich.maND', $maND)->get();
+            ->join('sanpham', 'yeuthich.maSP', '=', 'sanpham.masp')
+            ->join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')
+            ->where('yeuthich.maND', $maND)->get();
 
         $yeuthichs = null;
-        foreach($get as $key => $value) {
-            if($yeuthichs != null) {
+        foreach ($get as $key => $value) {
+            if ($yeuthichs != null) {
 
                 $kt = 1;
-                foreach($yeuthichs as $id => $item) {
+                foreach ($yeuthichs as $id => $item) {
 
-                    if($value->maSP == $item->maSP){
+                    if ($value->maSP == $item->maSP) {
 
                         $kt = 0;
                     }
                 }
 
-                if($kt == 1) {
+                if ($kt == 1) {
 
                     $yeuthichs[] = $value;
                 }
@@ -236,5 +237,38 @@ class KhachHangController extends Controller
         }
 
         return view('khachhang.yeuthich')->with('yeuthichs', $yeuthichs);
+    }
+
+    public function update_yeuthich($maSP, $tym)
+    {
+
+        $maND = Session::get('nguoidung_id');
+
+        $data = array();
+        $data['maND'] = $maND;
+        $data['maSP'] = $maSP;
+
+        if ($tym === "tym-trang.png") {
+
+            $result = DB::table('yeuthich')->insert($data);
+        } else {
+
+            $result = DB::table('yeuthich')-> where('maND',$maND)->where('maSP', $maSP)->delete();
+        }
+
+        return Redirect::to('/chitietsanpham'.'/'.$maSP);
+    }
+
+    public function del_yeuthich($maSP) {
+
+        $maND = Session::get('nguoidung_id');
+
+        $data = array();
+        $data['maND'] = $maND;
+        $data['maSP'] = $maSP;
+
+        $result = DB::table('yeuthich')-> where('maND',$maND)->where('maSP', $maSP)->delete();
+
+        return Redirect::to('/yeuthich');
     }
 }

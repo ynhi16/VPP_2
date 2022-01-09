@@ -63,6 +63,8 @@ Route::get('/thanhtoan','KhachHangController@thanhtoan');
 Route::get('/canhan','KhachHangController@canhan');
 Route::get('/matkhau','KhachHangController@matkhau');
 Route::get('/yeuthich','KhachHangController@yeuthich');
+Route::get('/update-yeuthich/{maSP}&{tym}','KhachHangController@update_yeuthich');
+Route::get('/del-yeuthich/{maSP}','KhachHangController@del_yeuthich');
 ///cập nhậT thông tin cá nhân
 Route::post('/capnhat-ttcn','KhachHangController@capnhat_ttcn');
 ///đổi mật khẩu

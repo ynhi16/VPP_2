@@ -74,8 +74,8 @@
 							@csrf
 							<input type="text" class="form-control input-trang input-inf" placeholder="Tên đăng nhập" name="taikhoan">
 							<input type="password" class="form-control input-trang input-inf" placeholder="Mật khẩu" name="matkhau">
-							<p class="p-quenmk">Quên mật khẩu</p>
-							<input type="submit" name="dangnhap" class="btn-hong btn-dangnhap" value="Đăng nhập">
+							<p class="p-quenmk" style="font-size: 14px; margin-left: 5px; margin-top: 10px;">Quên mật khẩu</p>
+							<input type="submit" name="dangnhap" class="btn-hong btn-dangnhap" style="font-size: 20px;" value="Đăng nhập">
 						</form>
 						<p class="p-dangky"><a class="a-dangky" href="{{URL::to('/dangky')}}">Bạn chưa có tài khoản?</a></p>
 					</div>

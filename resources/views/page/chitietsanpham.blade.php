@@ -311,7 +311,9 @@
                         <?php $maND = Session::get('nguoidung_id'); ?>
                         @if ($maND)
                         <div class="col-md-1">
-                            <p style="text-align: right; margin-top: 40px;"><img src="{{asset('public/frontend/img/tym-trang.png')}}" alt=""></p>
+                            
+                            <p style="text-align: right; margin-top: 40px;"><a class="like" href="{{URL::to('update-yeuthich/'.$sanphamct[0]->maSP.'&'.$tym)}}"><img src="{{asset('public/frontend/img/'.$tym)}}" alt=""></a></p>
+                            
                         </div>
                         @endif
                     </div>

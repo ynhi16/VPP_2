@@ -6,9 +6,17 @@
         width: 250px;
         /* height: 300px;
         background-color: black; */
+        height: 400px;
         float: left;
         margin-top: 10px;
         margin-right: 35px;
+
+    
+    }
+    .tymnho{
+        width: 25px;
+        height: 25px;
+        margin-top: -40px;
     }
 </style>
 
@@ -31,6 +39,7 @@
                     </div>
                     <div class="col-md-4 ">
                         <p class="bg-xanh" style="font-size: 14px;">{{$value->donGia}} đ</p>
+                        <p style="text-align: right; margin-top: 40px;"><a class="like" href="{{URL::to('del-yeuthich/'.$value->maSP)}}"><img class="tymnho" src="{{asset('public/frontend/img/tym-den.png')}}" alt=""></a></p>
                     </div>
                 </div>
             </div>
