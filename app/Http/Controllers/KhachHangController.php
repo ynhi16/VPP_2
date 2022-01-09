@@ -204,7 +204,37 @@ class KhachHangController extends Controller
     //yêu thích
     public function yeuthich() {
 
-        
-        return view('khachhang.yeuthich');
+        $maND = Session::get('nguoidung_id');
+
+        $get = DB::table('yeuthich')
+        ->join('sanpham', 'yeuthich.maSP', '=', 'sanpham.masp')
+        ->join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')
+        ->where('yeuthich.maND', $maND)->get();
+
+        $yeuthichs = null;
+        foreach($get as $key => $value) {
+            if($yeuthichs != null) {
+
+                $kt = 1;
+                foreach($yeuthichs as $id => $item) {
+
+                    if($value->maSP == $item->maSP){
+
+                        $kt = 0;
+                    }
+                }
+
+                if($kt == 1) {
+
+                    $yeuthichs[] = $value;
+                }
+            } else {
+
+                $yeuthichs = array();
+                $yeuthichs[] = $value;
+            }
+        }
+
+        return view('khachhang.yeuthich')->with('yeuthichs', $yeuthichs);
     }
 }

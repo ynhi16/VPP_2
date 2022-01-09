@@ -12,32 +12,34 @@
     }
 </style>
 
-<div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
-        <h3>Sản phẩm yêu thích</h3>
-        <hr>
+<div class="wp-yeuthich">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <h3>Sản phẩm yêu thích</h3>
+            <hr>
 
-        <!-- bắt đầu danh sách sản phẩm -->
+            <!-- bắt đầu danh sách sản phẩm -->
+            @foreach($yeuthichs as $key => $value)
+            <div class="item">
+                <div class="row">
+                    <a href="{{URL::to('/chitietsanpham/'.$value->maSP)}}"><img src="{{asset('public/frontend/img/'.$value->tenHA)}}" class="img-thumbnail" alt="Cinque Terre"></a>
+                </div>
+                <div class="row" style="font-size: 16px; margin-top: 5px;">
+                    <div class="col-md-8">
+                        <p style="font-size: 14px; ">{{$value->tenSP}}</p>
+                    </div>
+                    <div class="col-md-4 ">
+                        <p class="bg-xanh" style="font-size: 14px;">{{$value->donGia}} đ</p>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            <!-- kết thúc danh sách -->
 
-        <div class="item">
-            <div class="row">
-                <a href="{{URL::to('/chitietsanpham/')}}"><img src="{{asset('public/frontend/img/dm3-sp1-hinh1.png')}}" class="img-thumbnail" alt="Cinque Terre"></a>
-            </div>
-            <div class="row" style="font-size: 16px; margin-top: 5px;">
-                <div class="col-md-8">
-                    <p>Tên sản phẩm hơi bị dài lun á</p>
-                </div>
-                <div class="col-md-4 ">
-                    <p class="bg-xanh">đơn giá đ</p>
-                </div>
-            </div>
         </div>
 
-        <!-- kết thúc danh sách -->
-        
     </div>
-
 </div>
 
 @endsection
