@@ -87,6 +87,8 @@ Route::get('/del-hoadon/{maHD}','GioHangController@del_hoadon');
 //đang nhập đăng ký
 Route::get('/dangnhap','trangchuController@dangnhap');
 Route::get('/dangky','trangchuController@dangky');
+//tạo tài khoản
+Route::post('/add-user','trangchuController@add_user');
 //kiểm tra đăng nhập
 Route::post('/kiemtra-dangnhap','trangchuController@kiemtra_dangnhap');
 //đăng xuất

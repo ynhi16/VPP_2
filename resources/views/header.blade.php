@@ -71,7 +71,15 @@
                 <div class="d-flex align-items-start bd-highlight mb-3" style="height: 100px">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li><a class="navbar_right" href="#"><img src="{{asset('public/frontend/img/avtkhachhang.png')}}" style="width: 30px; height: 30px;"></a></li>
-                        <li class="nav-item li-1"><span>Khánh Hạ</span>
+                        <li class="nav-item li-1"><span>
+                            <?php 
+                                $hoten = Session::get('nguoidung_name');
+                                $fullname = explode ( ' ' , $hoten);
+                                $count = count($fullname);
+                                $name = $fullname[$count-2] . " " . $fullname[$count-1];
+                                echo $name;
+                            ?>
+                        </span>
                             <ul class="ul-2">
                                 <li class="li-2"><a href="{{URL::to('/canhan')}}" class="li-2-a">Cá nhân</a></li>
                                 <li class="li-2"><a href="{{URL::to('/yeuthich')}}" class="li-2-a">Yêu thích</a></li>

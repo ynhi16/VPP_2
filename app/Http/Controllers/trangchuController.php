@@ -15,7 +15,7 @@ class trangchuController extends Controller
     public function index()
     {
         $get = DB::table('sanpham')
-        -> join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')->get();
+            ->join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')->get();
 
         $distinct = null;
         foreach ($get as $key => $value) {
@@ -37,7 +37,6 @@ class trangchuController extends Controller
         }
 
         return view('page.trangchu')->with('sanphambc', $distinct);
-        
     }
     public function dangnhap()
     {
@@ -78,8 +77,7 @@ class trangchuController extends Controller
             } else if ($quyen == 1) {
 
                 return Redirect::to('/admin');
-            }
-            else {
+            } else {
 
                 return Redirect::to('/dangnhap');
             }
@@ -138,7 +136,7 @@ class trangchuController extends Controller
         //kiểm tra sản phẩm yêu thích
         $tym = "tym-trang.png";
         $maND = Session::get("nguoidung_id");
-        if($maND) {
+        if ($maND) {
             $yt = DB::table('yeuthich')->where("maND", $maND)->where('maSP', $maSP)->first();
 
             if ($yt) {
@@ -148,5 +146,57 @@ class trangchuController extends Controller
         }
 
         return view('page.chitietsanpham')->with('sanphamct', $sanphamct)->with('sanphambc', $distinct)->with('hinhanhs', $hinhanhs)->with('phanloaisp', $phanloaisp)->with('tym', $tym);
+    }
+
+
+    //tạo tài khoản
+    public function add_user(Request $request)
+    {
+
+        $data = array();
+        $data['tenND'] = $request->hoten;
+        $data['gioiTinh'] = null;
+        $data['ngaySinh'] = null;
+        $data['SDT'] = null;
+        $data['email'] = $request->email;
+        $data['diaChi'] = null;
+        $data['taiKhoan'] = $request->taikhoan;
+        $data['matKhau'] = $request->matkhau;
+        $data['maPX'] = null;
+        $data['maQuyen'] = 3;
+
+        if ($request->hoten == null || $request->email == null || $request->taikhoan == null || $request->matkhau == null) {
+
+            Session::put('msg', "Thông tin không hợp lệ!");
+            return Redirect::to('/dangky');
+        } else {
+
+            $get1 = DB::table('nguoidung')->where('email', $request->email)->first();
+            $get2 = DB::table('nguoidung')->where('taiKhoan', $request->taikhoan)->first();
+
+            if ($get1 || $get2) {
+
+                Session::put('msg', "Tài khoản đã tồn tại!");
+                return Redirect::to('/dangky');
+            } else {
+
+                $result = DB::table('nguoidung')->insert($data);
+
+                if ($result) {
+
+                    $thongtin = DB::table('nguoidung')->orderby('maND', 'desc')->first();
+
+                    Session::put('nguoidung_name', $thongtin->tenND);
+                    Session::put('nguoidung_id', $thongtin->maND);
+
+                    return Redirect::to('/');
+                } else {
+
+                    Session::put('msg', "Đăng ký thất bại!");
+                    return Redirect::to('/dangky');
+                }
+            }
+        }
+
     }
 }
