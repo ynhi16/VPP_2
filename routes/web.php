@@ -89,6 +89,13 @@ Route::get('/dangnhap','trangchuController@dangnhap');
 Route::get('/dangky','trangchuController@dangky');
 //tạo tài khoản
 Route::post('/add-user','trangchuController@add_user');
+
+//Login  google
+Route::get('/login-google','trangchuController@login_google');
+Route::get('/google/callback','trangchuController@callback_google');
+
+
+
 //kiểm tra đăng nhập
 Route::post('/kiemtra-dangnhap','trangchuController@kiemtra_dangnhap');
 //đăng xuất

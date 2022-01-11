@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Social; //sử dụng model Social
+use Socialite; //sử dụng Socialite
+use App\Login; //sử dụng model Login
+
 use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
@@ -197,6 +201,63 @@ class trangchuController extends Controller
                 }
             }
         }
+    }
 
+
+    //đăng nhập bằng google
+    public function login_google()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+    public function callback_google()
+    {
+        $users = Socialite::driver('google')->stateless()->user();
+        // return $users->id;
+        $authUser = $this->findOrCreateUser($users, 'google');
+        $account_name = Login::where('maND', $authUser->user)->first();
+        Session::put('nguoidung_name', $account_name->tenND);
+        Session::put('nguoidung_id', $account_name->maND);
+
+        return Redirect::to('/');
+        //return redirect('/dashboard')->with('message', 'Đăng nhập Admin thành công');
+    }
+    public function findOrCreateUser($users, $provider)
+    {
+        $authUser = Social::where('provider_user_id', $users->id)->first();
+        if ($authUser) {
+
+            return $authUser;
+        }
+
+        $hieu = new Social([
+            'provider_user_id' => $users->id,
+            'provider' => strtoupper($provider)
+        ]);
+
+        $orang = Login::where('email', $users->email)->first();
+
+        if (!$orang) {
+            $orang = Login::create([
+                'tenND' => $users->name,
+                'gioiTinh' => null,
+                'ngaySinh' => null,
+                'SDT' => null,
+                'email' => $users->email,
+                'diaChi' => null,
+                'taiKhoan' => null,
+                'matKhau' => null,
+                'maPX' => null,
+                'maQuyen' => 3,
+
+            ]);
+        }
+        $hieu->login()->associate($orang);
+        $hieu->save();
+
+        $account_name = Login::where('maND', $authUser->user)->first();
+        Session::put('nguoidung_name', $account_name->tenND);
+        Session::put('nguoidung_id', $account_name->maND);
+
+        return Redirect::to('/');
     }
 }
