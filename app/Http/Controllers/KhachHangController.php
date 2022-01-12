@@ -109,13 +109,20 @@ class KhachHangController extends Controller
         $quanhuyen = DB::table('quanhuyen')->get();
         $phuongxa = DB::table('phuongxa')->get();
 
-        $nguoidung = DB::table('nguoidung')
+        $nguoidung = DB::table('nguoidung')->where('maND', $maND)->get();
+        $kiemtra = 0;
+
+        if ($nguoidung[0]->maPX != null) {
+            $nguoidung = DB::table('nguoidung')
             ->join('phuongxa', 'phuongxa.IDPX', '=', 'nguoidung.maPX')
             ->join('quanhuyen', 'quanhuyen.IDQH', '=', 'phuongxa.IDQH')
             ->join('tinhthanh', 'quanhuyen.IDTT', '=', 'tinhthanh.IDTT')
             ->where('maND', $maND)->get();
 
-        return view('khachhang.canhan')->with('nguoidung', $nguoidung)->with('tinhthanh', $tinhthanh)->with('quanhuyen', $quanhuyen)->with('phuongxa', $phuongxa);
+            $kiemtra = 1;
+        }
+
+        return view('khachhang.canhan')->with('nguoidung', $nguoidung)->with('tinhthanh', $tinhthanh)->with('quanhuyen', $quanhuyen)->with('phuongxa', $phuongxa)->with('kiemtra', $kiemtra);
     }
     //cập nhật thông tin cá nhân
     public function capnhat_ttcn(Request $request)
@@ -133,6 +140,8 @@ class KhachHangController extends Controller
         $data['matKhau'] = $request->matKhau;
         $data['maPX'] = $request->phuongxa;
         $data['maQuyen'] = $request->maQuyen;
+
+ 
 
         DB::table('nguoidung')->where('maND', $request->maND)->update($data);
         return Redirect::to('canhan');
@@ -270,5 +279,13 @@ class KhachHangController extends Controller
         $result = DB::table('yeuthich')-> where('maND',$maND)->where('maSP', $maSP)->delete();
 
         return Redirect::to('/yeuthich');
+    }
+
+
+
+    public function test(Request $request) {
+        $response = $request->bien;
+        $response = 'hè lố';
+        return $request;
     }
 }

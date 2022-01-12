@@ -78,6 +78,7 @@
 							<input type="submit" name="dangnhap" class="btn-hong btn-dangnhap" style="font-size: 20px;" value="Đăng nhập">
 						</form>
 						<p class="p-dangky"><a class="a-dangky" href="{{URL::to('/dangky')}}">Bạn chưa có tài khoản?</a></p>
+						<p class="p-dangky"><a class="a-dangky" href="{{URL::to('/login-google')}}">Tiếp tục với Google <img src="{{('public/frontend/img/icongg.png')}}" style="width: 28px; height: 28px;" alt=""></a></p>
 					</div>
 
 				</div>

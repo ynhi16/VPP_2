@@ -70,7 +70,7 @@
                 @if($nguoidung_id)
                 <div class="d-flex align-items-start bd-highlight mb-3" style="height: 100px">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li><a class="navbar_right" href="#"><img src="{{asset('public/frontend/img/avtkhachhang.png')}}" style="width: 30px; height: 30px;"></a></li>
+                        <li><a class="navbar_right" href="#"><img src="{{asset('public/frontend/img/user.png')}}" style="width: 30px; height: 30px;"></a></li>
                         <li class="nav-item li-1"><span>
                             <?php 
                                 $hoten = Session::get('nguoidung_name');
@@ -88,6 +88,7 @@
                                 <li class="li-2"><a href="{{URL::to('/dangxuat')}}" class="li-2-a">Đăng xuất</a></li>
                             </ul>
                         <li class="nav-item">
+                           
                         </li>
                         <button type="button" class="btn me-2">
                             <a href="{{URL::to('/giohang')}}">

@@ -105,3 +105,9 @@ Route::get('/chitietsanpham','ChiTietSanPhamController@index');
 
 //timkiem
 Route::get('/find','TimKiemController@index');
+
+
+
+
+
+Route::post('/test','KhachHangController@test');

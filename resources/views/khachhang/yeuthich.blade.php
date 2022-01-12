@@ -11,9 +11,10 @@
         margin-top: 10px;
         margin-right: 35px;
 
-    
+
     }
-    .tymnho{
+
+    .tymnho {
         width: 25px;
         height: 25px;
         margin-top: -40px;
@@ -25,9 +26,13 @@
         <div class="col-md-1"></div>
         <div class="col-md-10">
             <h3>Sản phẩm yêu thích</h3>
+
             <hr>
 
+
+
             <!-- bắt đầu danh sách sản phẩm -->
+            @if ($yeuthichs && count($yeuthichs) > 0) 
             @foreach($yeuthichs as $key => $value)
             <div class="item">
                 <div class="row">
@@ -44,11 +49,36 @@
                 </div>
             </div>
             @endforeach
+            @else
+            <div class="col-md-6">
+            <img src="{{asset('public/frontend/img/rong.png')}}" alt="" >
+            </div>
+            @endif
             <!-- kết thúc danh sách -->
 
         </div>
 
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('alo').click(function(event) {
+            alert('clm')
+            var bien = $('bla').val();
+            $.ajax({
+                method: 'post',
+                url: '{{url("/test")}}',
+                data: bien,
+                // other AJAX settings goes here
+                // ..
+                success: function(request) {
+                    alert(request)
+                }
+            });
+            //event.preventDefault(); // <- avoid reloading
+        });
+    });
+</script>
 
 @endsection
