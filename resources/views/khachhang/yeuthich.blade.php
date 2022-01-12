@@ -52,6 +52,7 @@
             @else
             <div class="col-md-6">
             <img src="{{asset('public/frontend/img/rong.png')}}" alt="" >
+            <div style="height: 400px;"></div>
             </div>
             @endif
             <!-- kết thúc danh sách -->
