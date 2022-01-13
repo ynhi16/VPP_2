@@ -109,13 +109,12 @@ Route::get('/xtietsanpham','xTietSanPhamController@index');
 
 //timkiem
 Route::get('/find','TimKiemController@index');
-<<<<<<< HEAD
+
 Route::post('/timkiem','trangchuController@timkiem');
-=======
+
 
 
 
 
 
 Route::post('/test','KhachHangController@test');
->>>>>>> ca74ea329c20acbc15d3be4c602c264838b5b330
