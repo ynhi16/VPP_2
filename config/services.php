@@ -31,9 +31,9 @@ return [
     ],
 
     'google' => [
-        'client_id' => '1057758199098-cnagpb6m8ltnei4ff8j7gij74et10tpd.apps.googleusercontent.com',
-        'client_secret' => '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',
-        'redirect' => 'http://localhost:81/blabla/V%c4%83n%20Ph%c3%b2ng%20Ph%e1%ba%a9m/VPP/google/callback'
+        'client_id' => '451491828772-drevol7jogqjg6nh9uc4k2ngak25svht.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => 'http://localhost:8080/VPP/VPP/google/callback'
     ],
 
 ];

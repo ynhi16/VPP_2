@@ -9,6 +9,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('public/frontend/css/admin.css')}}">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+  
+
+
 </head>
 
 <body>
@@ -50,18 +54,6 @@
                 <li>
                     <a href="{{URL::to('/all-bill')}}"><span class="fa fa-sticky-note" aria-hidden="true"></span>Xét duyệt hóa đơn</a>
                 </li>
-                <li>
-                    <a href="#sale" data-toggle="collapse" aria-expanded="false" class="">
-                        <span class="fa fa-percent" aria-hidden="true"></span>Quản lý khuyến mãi</a>
-                    <ul class="collapse list-unstyled" id="sale">
-                        <li>
-                            <a href="{{URL::to('/add-sale')}}">Thêm khuyến mãi</a>
-                        </li>
-                        <li>
-                            <a href="{{URL::to('/all-sale')}}">Liệt kê khuyến mãi</a>
-                        </li>
-                    </ul>
-                </li>
             </ul>
         </nav>
 
@@ -93,7 +85,12 @@
     <script src="{{asset('public/backend/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('public/backend/js/main.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#table1').DataTable();
+        });
+    </script>
 </body>
 
 </html>

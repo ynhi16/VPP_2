@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <h3 class="title-section">Tất cả danh mục</h3>
         <div class="col-8 bg-light">
-            <table class="table mx-auto align-middle">
+            <table class="table mx-auto align-middle" id="table1">
                 <thead>
                     <tr>
                         <th scope="col">Mã Sản Phẩm</th>

@@ -1,90 +1,5 @@
 @extends('layout')
 @section('trangchu')
-<<<<<<< HEAD
-	<style>
-		.btn-den {
-			background-color: black;
-			color: white;
-			height: 45px;
-			border-radius: 5px;
-			font-size: 16px;
-		}
-
-		.btn-vienden {
-			background-color: black;
-			color: white;
-			height: 45px;
-			border-radius: 5px;
-			font-size: 16px;
-		}
-
-		.tab-khongchon {
-			text-decoration: none;
-			padding-top: 10px;
-		}
-
-		.tab-khongchon:hover {
-			text-decoration: none;
-			color: black;
-			font-size: 18px;
-		}
-
-		.tab-duocchon {
-			text-decoration: none;
-			padding-top: 10px;
-		}
-
-		.tab-duocchon:hover {
-			text-decoration: none;
-			color: white;
-			font-size: 18px;
-		}
-	</style>
-</head>
-
-	<div class="container">
-		<div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-10">
-				<h2>Thiết lập tài khoản</h2>
-
-
-				<!-- bắt đầu menu ngang -->
-				<div class="row" style="margin-top: 60px;">
-					<a class="btn-vienden tab-duocchon" href="{{URL::to('/canhan')}}">Thông tin cá nhân</a>
-					<a class="tab-khongchon" href="{{URL::to('/matkhau')}}">Đổi mật khẩu</a>
-				</div> <!-- kết thúc menu ngang -->
-				<hr>
-				<div class="row">
-					<!-- bắt đầu phần thông tin cá nhân -->
-					<form action="{{URL::to('/capnhat-ttcn')}}" method="post">
-						@csrf
-						<div class="row inf-canhan" style="margin-top: 50px;">
-							@foreach($nguoidung as $key => $value)
-							<div class="col-md-5">
-								<label for="pwd"><strong>Họ tên</strong></label>
-								<input type="text" class="form-control input-canhan" value="{{$value->tenND}}" name="tenND">
-								<label for="pwd"><strong>Giới tính</strong></label>
-								<input type="text" class="form-control input-canhan" value="{{$value->gioiTinh}}" name="gioiTinh">
-								<label for="pwd"><strong>Ngày sinh</strong></label>
-								<input type="date" class="form-control input-canhan" value="{{$value->ngaySinh}}" name="ngaySinh">
-								<label for="pwd"><strong>Email</strong></label>
-								<input type="text" class="form-control input-canhan" value="{{$value->email}}" name="email">
-								<label for="pwd"><strong>Số điện thoại</strong></label>
-								<input type="text" class="form-control input-canhan" value="{{$value->SDT}}" name="SDT">
-
-							</div>
-
-							<div class="col-md-1"></div>
-
-							<div class="col-md-5">
-								<label for="pwd"><strong>Tỉnh thành</strong></label>
-								<select class="form-control input-canhan" name="tinhthanh">
-									@foreach($tinhthanh as $key => $tt)
-									@if($tt->tenTT == $value->tenTT)
-
-									<option selected value="{{$tt->IDTT}}">{{$tt->tenTT}}</option>
-=======
 <style>
 	.btn-den {
 		background-color: black;
@@ -158,7 +73,6 @@
 								@for($i=0; $i<=1; $i++) @if($kiemtra==1 && $gt[$i]==$value->gioiTinh)
 
 									<option selected value="{{$gt[$i]}}">{{$gt[$i]}}</option>
->>>>>>> ca74ea329c20acbc15d3be4c602c264838b5b330
 									@else
 
 									<option value="{{$gt[$i]}}">{{$gt[$i]}}</option>

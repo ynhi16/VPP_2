@@ -16,7 +16,7 @@
                 </form>
             </div>
         </nav>
-        <table class="table align-middle">
+        <table class="table align-middle" id="table1">
             <thead>
                 <tr>
                     <th scope="col">Mã Khyến Mãi</th>

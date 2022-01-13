@@ -259,7 +259,7 @@ class trangchuController extends Controller
             $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
             foreach ($data as $row) {
                 $output .= '
-               <li><a href="#" style="text-decoration: none; color: black">' . $row->tenSP . '</a></li>
+               <li><a href="#" class="search" style="text-decoration: none; color: black">' . $row->tenSP . '</a></li>
                ';
             }
             $output .= '</ul>';
