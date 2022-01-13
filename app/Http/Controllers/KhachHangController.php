@@ -43,7 +43,7 @@ class KhachHangController extends Controller
         //     }
         // }
         $soluong = array();
-        foreach($giohang as $key => $value) {
+        foreach ($giohang as $key => $value) {
             $sl = DB::table('phanloai')->select('soLuong')->where('tenPL', $value->options->phanloai)->first();
             $soluong[$key] = $sl;
         }
@@ -53,7 +53,7 @@ class KhachHangController extends Controller
             ->join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')->get();
 
         $distinct = null;
-        
+
         foreach ($get as $key => $value) {
             if ($distinct != null) {
                 $i = 0;
@@ -64,7 +64,7 @@ class KhachHangController extends Controller
                     }
                 }
                 if ($i == 0) {
-                    $distinct[] = $value;   
+                    $distinct[] = $value;
                 }
             } else {
                 $distinct = array();
@@ -109,13 +109,20 @@ class KhachHangController extends Controller
         $quanhuyen = DB::table('quanhuyen')->get();
         $phuongxa = DB::table('phuongxa')->get();
 
-        $nguoidung = DB::table('nguoidung')
+        $nguoidung = DB::table('nguoidung')->where('maND', $maND)->get();
+        $kiemtra = 0;
+
+        if ($nguoidung[0]->maPX != null) {
+            $nguoidung = DB::table('nguoidung')
             ->join('phuongxa', 'phuongxa.IDPX', '=', 'nguoidung.maPX')
             ->join('quanhuyen', 'quanhuyen.IDQH', '=', 'phuongxa.IDQH')
             ->join('tinhthanh', 'quanhuyen.IDTT', '=', 'tinhthanh.IDTT')
             ->where('maND', $maND)->get();
 
-        return view('khachhang.canhan')->with('nguoidung', $nguoidung)->with('tinhthanh', $tinhthanh)->with('quanhuyen', $quanhuyen)->with('phuongxa', $phuongxa);
+            $kiemtra = 1;
+        }
+
+        return view('khachhang.canhan')->with('nguoidung', $nguoidung)->with('tinhthanh', $tinhthanh)->with('quanhuyen', $quanhuyen)->with('phuongxa', $phuongxa)->with('kiemtra', $kiemtra);
     }
     //cập nhật thông tin cá nhân
     public function capnhat_ttcn(Request $request)
@@ -133,6 +140,8 @@ class KhachHangController extends Controller
         $data['matKhau'] = $request->matKhau;
         $data['maPX'] = $request->phuongxa;
         $data['maQuyen'] = $request->maQuyen;
+
+ 
 
         DB::table('nguoidung')->where('maND', $request->maND)->update($data);
         return Redirect::to('canhan');
@@ -184,20 +193,99 @@ class KhachHangController extends Controller
         $maND = Session::get('nguoidung_id');
 
         $gethoadon = DB::table('hoadon')
-        ->where('maND', $maND)->orderby('maHD', 'desc')->get(); 
+            ->where('maND', $maND)->orderby('maHD', 'desc')->get();
 
         $getchitiet = DB::table('hoadon')
-        ->join('chitiethoadon', 'hoadon.maHD', '=', 'chitiethoadon.maHD')
-        ->join ('sanpham', 'sanpham.maSP', '=', 'chitiethoadon.maSP')
-        ->where('maND', $maND)->get(); 
+            ->join('chitiethoadon', 'hoadon.maHD', '=', 'chitiethoadon.maHD')
+            ->join('sanpham', 'sanpham.maSP', '=', 'chitiethoadon.maSP')
+            ->where('maND', $maND)->get();
 
         $hinhanhs = array();
-        foreach($getchitiet as $key => $value) {
+        foreach ($getchitiet as $key => $value) {
 
             $image = DB::table('hinhanh')->where('maSP', $value->maSP)->first();
             $hinhanhs[$key] = $image->tenHA;
         }
-        
+
         return view('khachhang.donmua')->with('hoadons', $gethoadon)->with('chitiets', $getchitiet)->with('hinhanhs', $hinhanhs);
+    }
+
+    //yêu thích
+    public function yeuthich()
+    {
+
+        $maND = Session::get('nguoidung_id');
+
+        $get = DB::table('yeuthich')
+            ->join('sanpham', 'yeuthich.maSP', '=', 'sanpham.masp')
+            ->join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')
+            ->where('yeuthich.maND', $maND)->get();
+
+        $yeuthichs = null;
+        foreach ($get as $key => $value) {
+            if ($yeuthichs != null) {
+
+                $kt = 1;
+                foreach ($yeuthichs as $id => $item) {
+
+                    if ($value->maSP == $item->maSP) {
+
+                        $kt = 0;
+                    }
+                }
+
+                if ($kt == 1) {
+
+                    $yeuthichs[] = $value;
+                }
+            } else {
+
+                $yeuthichs = array();
+                $yeuthichs[] = $value;
+            }
+        }
+
+        return view('khachhang.yeuthich')->with('yeuthichs', $yeuthichs);
+    }
+
+    public function update_yeuthich($maSP, $tym)
+    {
+
+        $maND = Session::get('nguoidung_id');
+
+        $data = array();
+        $data['maND'] = $maND;
+        $data['maSP'] = $maSP;
+
+        if ($tym === "tym-trang.png") {
+
+            $result = DB::table('yeuthich')->insert($data);
+        } else {
+
+            $result = DB::table('yeuthich')-> where('maND',$maND)->where('maSP', $maSP)->delete();
+        }
+
+        return Redirect::to('/chitietsanpham'.'/'.$maSP);
+    }
+
+    public function del_yeuthich($maSP) {
+
+        $maND = Session::get('nguoidung_id');
+
+        $data = array();
+        $data['maND'] = $maND;
+        $data['maSP'] = $maSP;
+
+        $result = DB::table('yeuthich')-> where('maND',$maND)->where('maSP', $maSP)->delete();
+
+        return Redirect::to('/yeuthich');
+    }
+
+
+
+    public function test(Request $request) {
+        $response = $request->bien;
+        $response = 'hè lố';
+        return $request;
     }
 }

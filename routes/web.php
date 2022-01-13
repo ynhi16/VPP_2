@@ -66,6 +66,9 @@ Route::get('/giohang','KhachHangController@giohang');
 Route::get('/thanhtoan','KhachHangController@thanhtoan');
 Route::get('/canhan','KhachHangController@canhan');
 Route::get('/matkhau','KhachHangController@matkhau');
+Route::get('/yeuthich','KhachHangController@yeuthich');
+Route::get('/update-yeuthich/{maSP}&{tym}','KhachHangController@update_yeuthich');
+Route::get('/del-yeuthich/{maSP}','KhachHangController@del_yeuthich');
 ///cập nhậT thông tin cá nhân
 Route::post('/capnhat-ttcn','KhachHangController@capnhat_ttcn');
 ///đổi mật khẩu
@@ -88,6 +91,15 @@ Route::get('/del-hoadon/{maHD}','GioHangController@del_hoadon');
 //đang nhập đăng ký
 Route::get('/dangnhap','trangchuController@dangnhap');
 Route::get('/dangky','trangchuController@dangky');
+//tạo tài khoản
+Route::post('/add-user','trangchuController@add_user');
+
+//Login  google
+Route::get('/login-google','trangchuController@login_google');
+Route::get('/google/callback','trangchuController@callback_google');
+
+
+
 //kiểm tra đăng nhập
 Route::post('/kiemtra-dangnhap','trangchuController@kiemtra_dangnhap');
 //đăng xuất
@@ -97,4 +109,13 @@ Route::get('/xtietsanpham','xTietSanPhamController@index');
 
 //timkiem
 Route::get('/find','TimKiemController@index');
+<<<<<<< HEAD
 Route::post('/timkiem','trangchuController@timkiem');
+=======
+
+
+
+
+
+Route::post('/test','KhachHangController@test');
+>>>>>>> ca74ea329c20acbc15d3be4c602c264838b5b330

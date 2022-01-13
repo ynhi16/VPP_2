@@ -68,16 +68,26 @@
 			<div class="col-md-5">
 				<div class="thongtin-dangnhap">
 					<h1>Đăng ký</h1>
+					
+					<form action="{{URL::to('/add-user')}}" method="post">
+					@csrf
 					<div class="inf">
-    					<input type="text" class="form-control input-trang  input-inf" placeholder="Họ tên">
-						<input type="text" class="form-control input-trang  input-inf" placeholder="Email">
-    					<input type="text" class="form-control input-trang  input-inf" placeholder="Tên đăng nhập">
-    					<input type="password" class="form-control input-trang  input-inf" placeholder="Mật khẩu">
+					<?php 
+						$msg = Session::get('msg');
+						if ($msg) {
+							echo $msg;
+							Session::put('msg', null);
+						}
+					?>
+    					<input type="text" class="form-control input-trang  input-inf" placeholder="Họ tên" name="hoten">
+						<input type="email" class="form-control input-trang  input-inf" placeholder="Email" name="email">
+    					<input type="text" class="form-control input-trang  input-inf" placeholder="Tên đăng nhập" name="taikhoan">
+    					<input type="password" class="form-control input-trang  input-inf" placeholder="Mật khẩu" name="matkhau">
 
-						<input type="submit" class="btn-hong btn-dangnhap" value="Tạo tài khoản">
+						<input type="submit" style="font-size: 18px;" class="btn-hong btn-dangnhap" value="Tạo tài khoản">
 						<p class="p-dangky"><a class="a-dangky" href="{{URL::to('/dangnhap')}}">Đăng nhập</a></p>
 					</div>
-					
+					</form>
 				</div>
 
 			</div>
