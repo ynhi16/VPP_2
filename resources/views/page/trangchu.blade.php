@@ -123,6 +123,21 @@
                 </div>
                 @endfor
             </div>
+            <div class="d-flex justify-content-between mb-5">
+                @for($i=4; $i<=7; $i++)
+                <div class="card" style="width: 300px; height: 300px;">
+                    <a href="{{URL::to('/chitietsanpham/'.$sanphambc[$i]->maSP)}}">
+                    <img src="{{asset('public/frontend/img/'.$sanphambc[$i]->tenHA)}}" class="card-img-top" alt="..." height="230px" width="98%"></a>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div class="card-text">{{$sanphambc[$i]->tenSP}}</div>
+                            
+                            <div class="d-flex align-items-start"><div class="text-end card-text price">{{$sanphambc[$i]->donGia}}đ</div></div>
+                        </div>
+                    </div>
+                </div>
+                @endfor
+            </div>
         </div>
         <div class="mt-4">
             <div class="d-flex justify-content-between mb-4">
@@ -130,90 +145,22 @@
                 <div class=""><a href="#">Xem thêm</a></div>
             </div>
             <div class="d-flex justify-content-between mb-5">
-                <!-- <div class="card" style="width: 300px; height: 300px;">
-                        <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="..." height="230px" width="98%">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <div class="card-text">60 Sticker cổ điển retro</div>
-                                <div class="text-end card-text price">24000</div>
-                            </div>
-                        </div>
-                    </div> -->
+                @foreach($sanphambc1 as $key => $cate)
                 <div class="card" style="width: 300px; height: 300px;">
-                    <img src="{{('public/frontend/img/dm7_Stamp.jpg')}}" class="card-img-top" alt="..." height="230px" width="98%">
+                    <a href="{{URL::to('/chitietsanpham/'.$cate->maSP)}}">
+                    <img src="{{asset('public/frontend/img/'.$cate->tenHA)}}" class="card-img-top" alt="..." height="230px" width="98%"></a>
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <div class="card-text">60 Sticker cổ điển retro</div>
-                            <div class="text-end card-text price">24000</div>
+                            <div class="card-text">{{$cate->tenSP}}</div>
+                            
+                            <div class="d-flex align-items-start"><div class="text-end card-text price">{{$cate->donGia}}đ</div></div>
                         </div>
                     </div>
                 </div>
-                <div class="card" style="width: 300px;">
-                    <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <div class="card-text">60 Sticker cổ điển retro</div>
-                            <div class="text-end card-text price">24000</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card" style="width: 300px;">
-                    <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <div class="card-text">60 Sticker cổ điển retro</div>
-                            <div class="text-end card-text price">24000</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="mt-4">
-            <div class="d-flex justify-content-between mb-4">
-                <div class="title-row">Sản phẩm giảm giá</div>
-                <div class=""><a href="#">Xem thêm</a></div>
-            </div>
-            <div class="d-flex justify-content-between mb-5">
-                <div class="card" style="width: 300px; height: 300px;">
-                    <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="..." height="230px" width="98%">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <div class="card-text">60 Sticker cổ điển retro</div>
-                            <div class="text-end card-text price">24000</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card" style="width: 300px; height: 300px;">
-                    <img src="{{('public/frontend/img/dm7_Stamp.jpg')}}" class="card-img-top" alt="..." height="230px" width="98%">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <div class="card-text">60 Sticker cổ điển retro</div>
-                            <div class="text-end card-text price">24000</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card" style="width: 300px;">
-                    <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="...">
-
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <div class="card-text">60 Sticker cổ điển retro</div>
-                            <div class="text-end card-text price">24000</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card" style="width: 300px;">
-                    <img src="{{('public/frontend/img/06f271855c0a9654cf1b.jpg')}}" class="card-img-top" alt="...">
-
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <div class="card-text">60 Sticker cổ điển retro</div>
-                            <div class="text-end card-text price">24000</div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection

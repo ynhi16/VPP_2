@@ -17,6 +17,7 @@ Route::get('/test', function () {
 
 //front
 Route::get('/','trangchuController@index');
+Route::post('/auto-ajax','trangchuController@auto_ajax');
 //chi tiết sản phẩm
 Route::get('/chitietsanpham/{maSP}','trangchuController@chitietsanpham');
 
@@ -37,13 +38,16 @@ Route::get('/danhmuc/{maDM}','CategoryProduct@show_category_home');
 Route::get('/add-product','ProductController@add_product');
 Route::get('/all-product','ProductController@all_product');
 Route::get('/all-product-home','ProductController@show_all_product');
-Route::get('/edit-product/{maDM}','ProductController@edit_product');
-Route::get('/del-product/{maDM}','ProductController@del_product');
 Route::post('/save-product','ProductController@save_product');
+Route::get('/edit-product/{maSP}','ProductController@edit_product');
 Route::post('/update-product/{maSP}','ProductController@update_product');
+Route::get('/del-product/{maSP}','ProductController@del_product');
 //
-Route::get('/all-bill','AdminController@show_all_bill');
-Route::get('/bill-detail','BillController@show_bill_detail');
+Route::get('/all-bill','BillController@show_all_bill');
+Route::get('/bill-detail/{maHD}','BillController@show_bill_detail');
+Route::get('/update-bill/{maHD}','BillController@update_bill');
+Route::get('/del-bill/{maHD}','BillController@del_bill');
+Route::get('/del-bill-detail/{maHD}','BillController@del_bill_detail');
 //
 Route::get('/account','AccountProduct@show_account');
 //
@@ -89,7 +93,8 @@ Route::post('/kiemtra-dangnhap','trangchuController@kiemtra_dangnhap');
 //đăng xuất
 Route::get('/dangxuat','trangchuController@dangxuat');
 
-Route::get('/chitietsanpham','ChiTietSanPhamController@index');
+Route::get('/xtietsanpham','xTietSanPhamController@index');
 
 //timkiem
 Route::get('/find','TimKiemController@index');
+Route::post('/timkiem','trangchuController@timkiem');

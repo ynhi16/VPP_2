@@ -24,41 +24,35 @@
         <table class="table align-middle">
             <thead>
                 <tr>
-                    <th scope="col">Tên khách hàng</th>
-                    <th scope="col">Ngày đặt hàng</th>
-                    <th scope="col">Tổng tiền</th>
-                    <th scope="col">Địa chỉ</th>
+                    <th scope="col">Mã hóa đơn</th>
+                    <th scope="col">Tên người dùng</th>
+                    <th scope="col">Ngày lập</th>
+                    <th scope="col">Người nhận</th>
                     <th scope="col">SĐT</th>
+                    <th scope="col">Địa chỉ</th>
                     <th scope="col">Trạng thái</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
+                @foreach($all_bill as $key => $cate)
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Calendar Calendar Calendar Calendar </td>
-                    <td>Calendar</td>
-                    <td>Calendar</td>
-                    <td>Calendar</td>
-                    <td>Calendar</td>
+                    <th scope="row">{{$cate -> maHD}}</th>
+                    <td>{{$cate -> tenND}}</td>
+                    <td>{{$cate -> ngayLap}}</td>
+                    <td>{{$cate -> nguoiNhan}}</td>
+                    <td>{{$cate -> SDT}}</td>
+                    <td>{{$cate -> diaChi}}</td>
+                    <td>{{$cate -> trangThai}}</td>
 
                     <td>
-                        <button type="button" class="btn btn-outline-success me-2"><a href="{{URL::to('/bill-detail')}}">Xem chi tiết</a></button>
-                        <button type="button" class="btn btn-outline-danger ms-2">Xóa</button>
+
+                        <button type="button" class="btn btn-outline-success me-2"><a href="{{URL::to('/bill-detail/'.$cate->maHD)}}">Xem chi tiết</a></button>
+                        <button type="submit" class="btn btn-outline-danger me-2"><a onclick="return confirm('Bạn có chắc chắn muốn xóa hóa đơn này?')" href="{{URL::to('/del-bill/'.$cate->maHD)}}">Xóa</a></button>
+
                     </td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Calendar/ Schedule</td>
-                    <td>Calendar/ Schedule</td>
-                    <td>Calendar/ Schedule</td>
-                    <td>Calendar/ Schedule</td>
-                    <td>Calendar/ Schedule</td>
-                    <td>
-                        <button type="button" class="btn btn-outline-success me-2">Xem chi tiết</button>
-                        <button type="button" class="btn btn-outline-danger ms-2">Xóa</button>
-                    </td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

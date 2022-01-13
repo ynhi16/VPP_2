@@ -21,11 +21,13 @@ class CategoryProduct extends Controller
         
     }
     public function save_category(Request $request) {
+        
         $data = array();
         $data['tenDM'] = $request -> category_name;
         DB::table('danhmuc')->insert($data);
         Session::put('message','Thêm danh mục sản phẩm thành công');
-        return Redirect::to('add-category-product');
+        return Redirect::to('all-category-product');
+        print('nhi');
     }
     public function edit_category($maDM) {
         $edit_category = DB::table('danhmuc')-> where('maDM',$maDM) -> get();

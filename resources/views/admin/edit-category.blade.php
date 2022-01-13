@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-8">
-            <h3 class="title-section">Thêm danh mục</h3>
+            <h3 class="title-section">Cập nhật danh mục</h3>
             <div>
                 @foreach($edit_category as $key => $value)
                 <form action="{{URL::to('/update-category/'.$value->maDM)}}" method="post">

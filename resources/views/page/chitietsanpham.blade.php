@@ -1,14 +1,5 @@
 @extends('layout')
 @section('trangchu')
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <style>
         .wp-chitiet {
             /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
@@ -316,41 +307,32 @@
     <!-- /// -->
     <div style="margin-top: 100px;"></div>
     <div style="width: 87%; margin-left: 90px;">
+        <p class="text-dendam" style="font-size: 25px;">Đánh giá</p>
+        @foreach($sanphamct as $key => $cate) 
+            <input type="type" name="nguoibl" class="nguoibl" value="{{$cate -> maSP}}" />
+            <div>tên</div>
+            <div>avatar</div>
+        @endforeach
+        <p class="text-dendam" style="font-size: 25px;">Sản phẩm bán chạy</p>
+        <div class="d-flex justify-content-between mb-5">
+            @foreach($sanphambc1 as $key => $cate)
+            <div class="card" style="width: 300px; height: 300px;">
+                <a href="{{URL::to('/chitietsanpham/'.$cate->maSP)}}">
+                    <img src="{{asset('public/frontend/img/'.$cate->tenHA)}}" class="card-img-top" alt="..." height="230px" width="98%"></a>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div class="card-text">{{$cate->tenSP}}</div>
 
-        <p class="text-dendam">Sản phẩm bán chạy</p>
-        <div class="row spbc">
-            @for($i=0; $i<=3; $i++) <div class="col-md-3 img-sp-bc">
-                <div class="row">
-                    <a href="{{URL::to('/chitietsanpham/'.$sanphambc[$i]->maSP)}}"><img src="{{asset('public/frontend/img/'.$sanphambc[$i]->tenHA)}}" class="img-thumbnail" alt="Cinque Terre"></a>
-                </div>
-                <div class="row" style="font-size: 16px; margin-top: 5px;">
-                    <div class="col-md-8">
-                        <p>{{$sanphambc[$i]->tenSP}}</p>
-                    </div>
-                    <div class="col-md-4 ">
-                        <p class="bg-xanh">{{$sanphambc[$i]->donGia}} đ</p>
+                        <div class="d-flex align-items-start">
+                            <div class="text-end card-text price">{{$cate->donGia}}đ</div>
+                        </div>
                     </div>
                 </div>
+            </div>
+            @endforeach
         </div>
-        @endfor
     </div>
 
-    <div class="row spbc">
-        @for($i=4; $i<=7; $i++) <div class="col-md-3 img-sp-bc">
-            <div class="row">
-                <a href="{{URL::to('/chitietsanpham/'.$sanphambc[$i]->maSP)}}"><img src="{{asset('public/frontend/img/'.$sanphambc[$i]->tenHA)}}" class="img-thumbnail" alt="Cinque Terre"></a>
-            </div>
-            <div class="row" style="font-size: 16px; margin-top: 5px;">
-                <div class="col-md-8">
-                    <p>{{$sanphambc[$i]->tenSP}}</p>
-                </div>
-                <div class="col-md-4 ">
-                    <p class="bg-xanh">{{$sanphambc[$i]->donGia}} đ</p>
-                </div>
-            </div>
-    </div>
-    @endfor
-    </div>
     </div>
 
 
@@ -417,9 +399,13 @@
             }
         };
     </script>
-</body>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var maND = $('.nguoibl').val();
+            // console.log(maND);
 
-</html>
+        });
+    </script>
 
 
 

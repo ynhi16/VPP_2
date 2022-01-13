@@ -1,7 +1,7 @@
 @extends('admin')
 @section('content')
 <div>
-    
+
     <h3 class="title-section">Chi tiết hóa đơn</h3>
     <div class="bg-light mb-2">
         <nav class="navbar navbar-light mb-2">
@@ -21,23 +21,29 @@
             <thead>
                 <tr>
                     <th scope="col">Tên sản phẩm</th>
+                    <th scope="col">Phân loại</th>
                     <th scope="col">Số lượng</th>
                     <th scope="col">Đơn giá </th>
-                    <th scope="col">Thành tiền</th>
+
                 </tr>
             </thead>
             <tbody>
+                @foreach($bill_detail as $key => $cate)
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Calendar Calendar Calendar Calendar </td>
-                    <td>Calendar</td>
-                    <td>Calendar</td>
+                    <td scope="row">{{$cate -> tenSP}}</td>
+                    <td>{{$cate -> phanLoai}}</td>
+                    <td>{{$cate -> soLuong}}</td>
+                    <td>{{$cate -> donGia}}</td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
         <div class="d-flex justify-content-end">
-            <button type="button" class="btn btn-outline-success me-2">Duyệt hóa đơn</button>
-            <button type="button" class="btn btn-outline-danger ms-2">Xóa</button>
+            <form action="{{URL::to('/update-bill/'.$cate->maHD)}}" method="post">
+            {{csrf_field()}}
+                <button type="submit" class="btn btn-outline-success me-2"><a onclick="return confirm('Bạn có chắc chắn muốn xác nhận hóa đơn này?')">Duyệt hóa đơn</a></button>
+                <button type="submit" class="btn btn-outline-danger me-2"><a onclick="return confirm('Bạn có chắc chắn muốn xóa thành phần hóa đơn này?')" href="{{URL::to('/del-bill/'.$cate->maHD)}}">Xóa</a></button>
+            </form>
         </div>
     </div>
 

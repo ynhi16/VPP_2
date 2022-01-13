@@ -26,17 +26,11 @@
         margin-left: 30px;
     }
 
-<<<<<<< HEAD
     .btn-thanhtoan {
         width: 100%;
         text-align: center;
     }
 
-    .thanhtoan {
-        width: 300px;
-        height: 40px;
-        margin-top: 25px;
-    }
 
 
     /* thông tin người nhận */
@@ -59,11 +53,7 @@
         text-decoration: none;
     }
 </style>
-
-
-<body>
-
-    <div class="wp-thanhtoan ms-5 me-5">
+    <div class="wp-thanhtoan">
         <h2>Thanh toán</h2>
         <div class="row">
             <div class="col-md-7">

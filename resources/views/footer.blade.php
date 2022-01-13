@@ -1,4 +1,4 @@
-<footer class="text-center text-lg-start bg-light mt-4">
+<footer class="text-center text-lg-start bg-light mt-4 ms-5 me-5">
     <div class="d-flex justify-content-between border_title">
         <h1 class="title p-2">Sahami</h1>
         <div class="p-2 bd-highlight">

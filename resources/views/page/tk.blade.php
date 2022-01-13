@@ -1,9 +1,11 @@
 @extends('layout')
 @section('trangchu')
-<div class="container">
 
+
+<div class="container">
+<div class="title-row mb-4">Kết quả tìm kiếm</div>
     <div class="row row-cols-4">
-        @foreach($sanphambc as $key => $cate)
+        @foreach($sanphambc1 as $key => $cate)
         <div class="col mb-4">
             <div class="card" style="width: 300px; height: 300px;">
                 <a href="{{URL::to('/chitietsanpham/'.$cate->maSP)}}">
@@ -18,7 +20,7 @@
                     </div>
                 </div>
             </div>
-
+           
 
         </div>
         @endforeach

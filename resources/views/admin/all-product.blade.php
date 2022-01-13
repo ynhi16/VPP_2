@@ -22,10 +22,11 @@
                     <th scope="col">Mã Sản Phẩm</th>
                     <th scope="col">Tên Sản Phẩm</th>
                     <th scope="col">Số lượng</th>
-                    <th scope="col">Đơn vị tính</th>
                     <th scope="col">Giá</th>
-                    <th scope="col">Nhà Cung Cấp</th>
-                    <th scope="col">Mã danh mục</th>
+
+                    <th scope="col">Tên danh mục</th>
+                    <th scope="col">Kích thước</th>
+                    <th scope="col">Mô tả</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -34,15 +35,15 @@
                 <tr>
                     <th scope="row">{{$cate -> maSP}}</th>
                     <td>{{$cate -> tenSP}}</td>
-                    <td>{{$cate -> donViTinh}}</td>
                     <td>{{$cate -> donGia}}</td>
                     <td>{{$cate -> soLuongCon}}</td>
-                    <td>{{$cate -> maNCC}}</td>
-                    <td>{{$cate -> maDM}}</td>
+                    <td>{{$cate -> tenDM}}</td>
+                    <td>{{$cate -> kichThuoc}}</td>
+                    <td>{{$cate -> moTa}}</td>
                     <td>
-                        <button type="button" class="btn btn-outline-success me-2">Xem</button>
-                        <button type="button" class="btn btn-outline-warning ms-2">Sửa</button>
-                        <button type="button" class="btn btn-outline-danger ms-2">Xóa</button>
+                        <button type="button" class="btn btn-outline-success me-2 mb-2">Xem</button>
+                        <button type="submit" class="btn btn-outline-warning me-2 mb-2"><a href="{{URL::to('/edit-product/'.$cate->maSP)}}"> Sửa </a></button>
+                        <button type="submit" class="btn btn-outline-danger me-2"><a onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')" href="{{URL::to('/del-product/'.$cate->maSP)}}">Xóa</a></button>
                     </td>
                 </tr>
                 @endforeach
@@ -51,6 +52,13 @@
 
         </nav>
     </div>
+    <?php
+    $message = Session::get('message');
+    if ($message) {
+        echo '<p>' . $message . '<p>';
+        Session::put('message', null);
+    }
+    ?>
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-end">
             <li class="page-item disabled">

@@ -15,8 +15,39 @@ class trangchuController extends Controller
     public function index()
     {
         $get = DB::table('sanpham')
-        -> join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')->get();
+            ->join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')
+            ->orderby('sanpham.maSP', 'desc')
+            ->get();
+        $orders = DB::table('sanpham')
+            ->join('chitiethoadon', 'chitiethoadon.maSP', '=', 'sanpham.maSP')
+            ->select('chitiethoadon.maSP', 'tenSP', DB::raw('SUM(soLuong) as tong'))
+            ->groupBy('chitiethoadon.maSP', 'tenSP')
+            ->limit(4)
+            ->get();
+        $distinct1 = array();
+        foreach ($orders as $key => $value) {
+            $orders_id = $value->maSP;
+            // echo $orders_id;
+            $get1 = DB::table('sanpham')
+                ->join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')
+                ->select('sanpham.maSP', 'sanpham.tenSP', 'sanpham.donGia', 'hinhanh.tenHA')
+                ->where('sanpham.maSP', $orders_id)
+                ->groupby('sanpham.maSP', 'sanpham.tenSP', 'sanpham.donGia', 'hinhanh.tenHA')
+                ->limit(1)
+                ->get();
+            // echo '<pre>';
+            // print_r($get1);
+            // echo '</pre>';
 
+            foreach ($get1 as $key => $value) {
+
+                $distinct1[] = $value;
+                // echo '<pre>';
+                // print_r($distinct1);
+                // echo '</pre>';
+            }
+        }
+        //exit;
         $distinct = null;
         foreach ($get as $key => $value) {
             if ($distinct != null) {
@@ -36,9 +67,9 @@ class trangchuController extends Controller
             }
         }
 
-        return view('page.trangchu')->with('sanphambc', $distinct);
-        
+        return view('page.trangchu')->with('sanphambc1', $distinct1)->with('sanphambc', $distinct);;
     }
+
     public function dangnhap()
     {
         return view('dangnhap');
@@ -114,25 +145,113 @@ class trangchuController extends Controller
             ->where('maDM', 2)
             ->join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')->get();
         //lọc danh sách sản phẩm bán chạy
-        $distinct = null;
-        foreach ($get as $key => $value) {
-            if ($distinct != null) {
-                $i = 0;
-                foreach ($distinct as $key => $dis) {
-                    if ($dis->maSP == $value->maSP) {
+        // $distinct = null;
+        // foreach ($get as $key => $value) {
+        //     if ($distinct != null) {
+        //         $i = 0;
+        //         foreach ($distinct as $key => $dis) {
+        //             if ($dis->maSP == $value->maSP) {
 
-                        $i = 1;
-                    }
-                }
-                if ($i == 0) {
-                    $distinct[] = $value;
-                }
-            } else {
-                $distinct = array();
-                $distinct[] = $value;
+        //                 $i = 1;
+        //             }
+        //         }
+        //         if ($i == 0) {
+        //             $distinct[] = $value;
+        //         }
+        //     } else {
+        //         $distinct = array();
+        //         $distinct[] = $value;
+        //     }
+        $get = DB::table('sanpham')
+            ->join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')
+            ->orderby('sanpham.maSP', 'desc')
+            ->get();
+        $orders = DB::table('sanpham')
+            ->join('chitiethoadon', 'chitiethoadon.maSP', '=', 'sanpham.maSP')
+            ->select('chitiethoadon.maSP', 'tenSP', DB::raw('SUM(soLuong) as tong'))
+            ->groupBy('chitiethoadon.maSP', 'tenSP')
+            ->limit(4)
+            ->get();
+        $distinct1 = array();
+        foreach ($orders as $key => $value) {
+            $orders_id = $value->maSP;
+            // echo $orders_id;
+            $get1 = DB::table('sanpham')
+                ->join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')
+                ->select('sanpham.maSP', 'sanpham.tenSP', 'sanpham.donGia', 'hinhanh.tenHA')
+                ->where('sanpham.maSP', $orders_id)
+                ->groupby('sanpham.maSP', 'sanpham.tenSP', 'sanpham.donGia', 'hinhanh.tenHA')
+                ->limit(1)
+                ->get();
+            // echo '<pre>';
+            // print_r($get1);
+            // echo '</pre>';
+
+            foreach ($get1 as $key => $value) {
+
+                $distinct1[] = $value;
+                // echo '<pre>';
+                // print_r($distinct1);
+                // echo '</pre>';
             }
         }
-
-        return view('page.chitietsanpham')->with('sanphamct', $sanphamct)->with('sanphambc', $distinct)->with('hinhanhs', $hinhanhs)->with('phanloaisp', $phanloaisp);
+        $maND = Session::get('nguoidung_id');
+        $nguoidung = DB::table('nguoidung')
+            ->where('maND', $maND)->get();
+        return view('page.chitietsanpham')->with('sanphamct', $sanphamct)->with('sanphambc1', $distinct1)->with('hinhanhs', $hinhanhs)->with('phanloaisp', $phanloaisp)->with('nguoidung', $nguoidung);
     }
+    public function timkiem(Request $request)
+    {
+        $key = $request->tk;
+        $all_category = DB::table('danhmuc')->get();
+        $search_product = DB::table('sanpham')
+            ->where('tenSP', 'like', '%' . $key . '%')->get();
+        // echo '<pre>';
+        // print_r($search_product);
+        // echo '</pre>';
+        $distinct1 = array();
+        foreach ($search_product as $key => $value) {
+            $orders_id = $value->maSP;
+            // echo $orders_id;
+            $get1 = DB::table('sanpham')
+                ->join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')
+                ->select('sanpham.maSP', 'sanpham.tenSP', 'sanpham.donGia', 'hinhanh.tenHA')
+                ->where('sanpham.maSP', $orders_id)
+                ->groupby('sanpham.maSP', 'sanpham.tenSP', 'sanpham.donGia', 'hinhanh.tenHA')
+                ->limit(1)
+                ->get();
+            // echo '<pre>';
+            // print_r($get1);
+            // echo '</pre>';
+
+            foreach ($get1 as $key => $value) {
+
+                $distinct1[] = $value;
+                // echo '<pre>';
+                // print_r($distinct1);
+                // echo '</pre>';
+            }
+        }
+        //exit;
+        return view('page.tk')->with('sanphambc1', $distinct1);
+    }
+    public function auto_ajax(Request $request)
+    {
+        $data = $request->all();
+        if ($request->get('query')) {
+            $query = $request->get('query');
+            $data = DB::table('sanpham')
+                ->where('tenSP', 'LIKE', "%{$query}%")
+                ->get();
+            $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
+            foreach ($data as $row) {
+                $output .= '
+               <li><a href="#" style="text-decoration: none; color: black">' . $row->tenSP . '</a></li>
+               ';
+            }
+            $output .= '</ul>';
+            echo $output;
+        }
+    }
+
 }

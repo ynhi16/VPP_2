@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{asset('public/frontend/css/khachhang.css')}}">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -23,6 +24,39 @@
 
         @include('footer')
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#key').keyup(function() { //bắt sự kiện keyup khi người dùng gõ từ khóa tim kiếm
+                var query = $(this).val(); //lấy gía trị ng dùng gõ
+                if (query != '') //kiểm tra khác rỗng thì thực hiện đoạn lệnh bên dưới
+                {
+                    var _token = $('input[name="_token"]').val(); // token để mã hóa dữ liệu
+                    $.ajax({
+                        url: "{{url('/auto-ajax')}}", // đường dẫn khi gửi dữ liệu đi 'search' là tên route mình đặt bạn mở route lên xem là hiểu nó là cái j.
+                        method: "POST", // phương thức gửi dữ liệu.
+                        data: {
+                            query: query,
+                            _token: _token
+                        },
+                        success: function(data) { //dữ liệu nhận về
+                            $('#search_ajax').fadeIn();
+                            $('#search_ajax').html(data); //nhận dữ liệu dạng html và gán vào cặp thẻ có id là countryList
+                        },
+                        error: function(xhr) {
+                            console.log(xhr.responseText);
+                        }
+                    });
+                }
+            });
+        });
+        $(document).on('click', 'li', function() {
+            $('#key').val($(this).text());
+            $('#search_ajax').fadeOut();
+        });
+    </script>
+    
+
 </body>
 
 </html>
