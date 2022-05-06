@@ -22,7 +22,9 @@
                                         
 
                                         <div class="text-xs font-weight-bold text-uppercase mb-1">Khách hàng</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                                        @foreach($user as $key => $user)
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{$user -> tong}}</div>
+                                        @endforeach
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -40,7 +42,9 @@
                                     <div class="col mr-2">
                                        
                                         <div class="text-xs font-weight-bold text-uppercase mb-1">Đơn hàng</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                                        @foreach($order as $key => $order)
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{$order -> tong}}</div>
+                                        @endforeach
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -57,7 +61,9 @@
                                     <div class="col mr-2">
                                     
                                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Doanh thu trong ngày</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                                        @foreach($date as $key => $date)
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{$date -> tong}}</div>
+                                        @endforeach
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -72,7 +78,9 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">      
                                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Sản phẩm</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                                        @foreach($product as $key => $product)
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{$product -> tong}}</div>
+                                        @endforeach
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>

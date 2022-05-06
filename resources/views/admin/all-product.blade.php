@@ -28,7 +28,7 @@
                     <td>{{$cate -> kichThuoc}}</td>
                     <td>{{$cate -> moTa}}</td>
                     <td>
-                        <button type="button" class="btn btn-outline-success me-2 mb-2">Xem</button>
+                        <button type="button" class="btn btn-outline-success me-2 mb-2"><a href="{{URL::to('/chitietsanpham/'.$cate->maSP)}}"> Xem </a></button>
                         <button type="submit" class="btn btn-outline-warning me-2 mb-2"><a href="{{URL::to('/edit-product/'.$cate->maSP)}}"> Sửa </a></button>
                         <button type="submit" class="btn btn-outline-danger me-2"><a onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')" href="{{URL::to('/del-product/'.$cate->maSP)}}">Xóa</a></button>
                     </td>

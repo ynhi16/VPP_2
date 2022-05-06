@@ -33,7 +33,7 @@ return [
     'google' => [
         'client_id' => '451491828772-drevol7jogqjg6nh9uc4k2ngak25svht.apps.googleusercontent.com',
         'client_secret' => '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',
-        'redirect' => 'http://localhost:8080/VPP/VPP/google/callback'
+        'redirect' => 'http://localhost/VPP_ver2/VPP/google/callback'
     ],
 
 ];

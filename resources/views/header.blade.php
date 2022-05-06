@@ -33,32 +33,46 @@
         margin-top: 10px;
         width: 100px;
     }
+
+    .input-search {
+
+        width: 100%;
+
+        border-radius: 10px;
+
+        padding: 8px;
+
+
+
+        }
 </style>
 <div class="navbar_style">
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{URL::to('/')}}">
-                <h1 class="title">Sahami</h1>
-                <p class="title_font">Văn phòng phẩm</p>
-            </a>
+            <div class="d-flex flex-column bd-highlight mb-3" style="height: 100px">
+                <a class="navbar-brand" href="{{URL::to('/')}}">
+                    <h1 class="title">Sahami</h1>
+                </a>
+            </div>
+           
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="d-flex flex-column bd-highlight mb-3">
-                <div class="p-2 bd-highlight">
+                <div class="p-2 bd-highlight ">
                     <form action="{{URL::to('/timkiem')}}" autocomplete="off" method="post" class="d-flex">
                         {{csrf_field()}}
-                        <input class="form-control me-2" type="search" placeholder="Tìm kiếm" name="tk" id="key">
+                        <input class="input-search me-2" type="search" placeholder="Tìm kiếm" name="tk" id="key">
                         <button class="btn btn-outline-success" type="submit">
                             <i class="fas fa-search"></i>
                         </button>
                     </form>
                 </div>
-
-                <div class="p-2 bd-highlight">
+            
+                <div class="p-2">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         @foreach ($categories as $category)
-                        <li class="nav-item">
+                        <li class="nav-item me-2">
                             <a class="nav-link" href="{{URL::to('/danhmuc/'. $category -> maDM )}}">{{ $category -> tenDM }}</a>
                         </li>
                         @endforeach

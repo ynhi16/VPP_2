@@ -9,7 +9,7 @@ class Login extends Model
     //
     public $timestamps = false;
     protected $fillable = [
-          'tenND', 'gioiTinh', 'ngaySinh', 'SDT', 'email', 'diaChi', 'taiKhoan', 'matKhau', 'maPX', 'maQuyen'
+          'tenND', 'gioiTinh', 'ngaySinh', 'SDT', 'email', 'diaChi', 'taiKhoan', 'matKhau', 'maPX', 'maQuyen','trangThai'
     ];
  
     protected $primaryKey = 'maND';

@@ -1,54 +1,46 @@
 @extends('layout')
 @section('trangchu')
 
-<!DOCTYPE html>
-<html lang="en">
+<style>
+	.btn-den {
+		background-color: black;
+		color: white;
+		height: 45px;
+		border-radius: 5px;
+		font-size: 16px;
+	}
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<style>
-		.btn-den {
-			background-color: black;
-			color: white;
-			height: 45px;
-			border-radius: 5px;
-			font-size: 16px;
-		}
+	.btn-vienden {
+		background-color: black;
+		color: white;
+		height: 45px;
+		border-radius: 5px;
+		font-size: 16px;
+	}
 
-		.btn-vienden {
-			background-color: black;
-			color: white;
-			height: 45px;
-			border-radius: 5px;
-			font-size: 16px;
-		}
+	.tab-khongchon {
+		text-decoration: none;
+		padding-top: 10px;
+	}
 
-		.tab-khongchon {
-			text-decoration: none;
-			padding-top: 10px;
-		}
+	.tab-khongchon:hover {
+		text-decoration: none;
+		color: black;
+		font-size: 18px;
+	}
 
-		.tab-khongchon:hover {
-			text-decoration: none;
-			color: black;
-			font-size: 18px;
-		}
+	.tab-duocchon {
+		text-decoration: none;
+		padding-top: 10px;
+	}
 
-		.tab-duocchon {
-			text-decoration: none;
-			padding-top: 10px;
-		}
+	.tab-duocchon:hover {
+		text-decoration: none;
+		color: white;
+		font-size: 18px;
+	}
+</style>
 
-		.tab-duocchon:hover {
-			text-decoration: none;
-			color: white;
-			font-size: 18px;
-		}
-	</style>
-</head>
 
 <body>
 	<div class="container">
@@ -80,7 +72,7 @@
 					<div class="row" style="margin-top: 50px;">
 
 						<label for="pwd"><strong>Mật khẩu hiện tại</strong></label>
-						<input type="text" class="form-control input-canhan" name="mkcu">
+						<input type="password" class="form-control input-canhan" name="mkcu">
 						<label for="pwd"><strong>Mật khẩu mới</strong></label>
 						<input type="password" class="form-control input-canhan" name="mkmoi">
 						<label for="pwd"><strong>Nhập lại mật khẩu</strong></label>

@@ -13,7 +13,8 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
 </head>
 
 <body>
@@ -22,9 +23,9 @@
         @include('header')
 
         @yield('trangchu')
-
-        @include('footer')
     </div>
+
+    @include('footer')
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -51,10 +52,86 @@
                 }
             });
         });
-        $(document).on('click','.search', function() {
+        $(document).on('click', '.search', function() {
             $('#key').val($(this).text());
             $('#search_ajax').fadeOut();
         });
+    </script>
+
+    <script>
+
+        var usd = document.getElementById("vnd_to_usd").value;
+
+        paypal.Button.render({
+
+        // Configure environment
+
+        env: 'sandbox',
+
+        client: {
+
+        sandbox: 'demo_sandbox_client_id',
+
+        production: 'demo_production_client_id'
+
+        },
+
+        // Customize button (optional)
+
+        locale: 'en_US',
+
+        style: {
+
+        size: 'small',
+
+        color: 'gold',
+
+        shape: 'pill',
+
+        },
+        // Enable Pay Now checkout flow (optional)
+
+        commit: true,
+
+
+
+        // Set up a payment
+
+        payment: function(data, actions) {
+
+            return actions.payment.create({
+
+                transactions: [{
+
+                amount: {
+
+                    total: `${usd}`,
+
+                    currency: 'USD'
+
+                }
+
+                }]
+
+            });
+
+        },
+
+        // Execute the payment
+
+        onAuthorize: function(data, actions) {
+
+            return actions.payment.execute().then(function() {
+
+                // Show a confirmation message to the buyer
+
+                window.alert('Bạn đã thanh toán thành công');
+
+            });
+
+        }
+
+        }, '#paypal-button');
     </script>
     
 

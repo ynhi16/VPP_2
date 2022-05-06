@@ -94,6 +94,52 @@
 
                 <hr style="border-width: 0.5px;">
                 <p style="text-align: right;">Tổng tiền: <?php echo $tongtien ?> đ</p>
+                @php
+
+            $vnd_to_usd = $tongtien/23083
+
+            @endphp
+             @php
+
+                    $vnd_to_usd = $tongtien/23083
+
+                @endphp
+                <div class="d-flex justify-content-evenly mt-4">
+
+                    <div id="paypal-button"></div>
+
+                    <input type="hidden" id="vnd_to_usd" value="{{round($vnd_to_usd,2)}}"/>
+
+                    <form action="{{url('/vnpay_payment')}}" method="POST">
+
+                        @csrf
+
+                        <input type="hidden" name="tong_vnpay" value="{{$tongtien}}"/>
+
+                        <button type="submit" class="btn btn-warning btn-sm" name="redirect">Thanh toán bằng VNPAY</button>
+
+                    </form>
+
+                    <form action="{{url('/momo_payment')}}" method="POST">
+
+                        @csrf
+
+                        <input type="hidden" name="tong_momo" value="{{$tongtien}}"/>
+
+                        <button type="submit" class="btn btn-warning btn-sm" name="redirect">Thanh toán bằng MOMO</button>
+
+                    </form>
+                    <form action="{{url('/onepay_payment')}}" method="POST">
+
+                        @csrf
+
+                        <input type="hidden" name="tong_onepay" value="{{$tongtien}}"/>
+
+                        <button type="submit" class="btn btn-warning btn-sm" name="redirect">Thanh toán bằng ONEPAY</button>
+
+                    </form>
+
+                </div>
             </div>
 
             <!-- ket thuc item san pham -->

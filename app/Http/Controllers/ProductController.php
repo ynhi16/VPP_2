@@ -76,7 +76,7 @@ class ProductController extends Controller
         $data['maDM'] = $request->product_maDM;
         $data['kichThuoc'] = $request->product_kichThuoc;
         $data['moTa'] = $request->product_moTa;
-        DB::table('sanpham')->where('maSP',$maSP)->update($data);
+        DB::table('sanpham')->where('maSP', $maSP)->update($data);
         $dataimage = array();
         $get_image = $request->file('files');
         if ($get_image) {
@@ -85,7 +85,7 @@ class ProductController extends Controller
                 $image->move('public/frontend/img', $name);
                 $dataimage['maSP'] =  $maSP;
                 $dataimage['tenHA'] = $name;
-                DB::table('hinhanh')->where('maSP',$maSP)->update($dataimage);
+                DB::table('hinhanh')->where('maSP', $maSP)->update($dataimage);
             }
         }
         Session::put('message', 'Cập nhật sản phẩm thành công');
@@ -102,9 +102,30 @@ class ProductController extends Controller
     public function show_all_product()
     {
         $get = DB::table('sanpham')
-            ->join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')->get();
+            ->join('hinhanh', 'sanpham.maSP', '=', 'hinhanh.maSP')
+            ->orderby('sanpham.maSP','desc')
+            ->paginate(8);
+        // echo '<pre>';
+        // print_r($get);
+        // echo '</pre>';
+        // $distinct = null;
+        // foreach ($get as $key => $value) {
+        //     if ($distinct != null) {
+        //         $i = 0;
+        //         foreach ($distinct as $key => $dis) {
+        //             if ($dis->maSP == $value->maSP) {
 
-
+        //                 $i = 1;
+        //             }
+        //         }
+        //         if ($i == 0) {
+        //             $distinct[] = $value;
+        //         }
+        //     } else {
+        //         $distinct = array();
+        //         $distinct[] = $value;
+        //     }
+        // }
         return view('page.show_all_product')->with('sanphambc', $get);
     }
 }

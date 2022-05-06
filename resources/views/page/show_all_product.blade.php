@@ -5,7 +5,7 @@
     <div class="row row-cols-4">
         @foreach($sanphambc as $key => $cate)
         <div class="col mb-4">
-            <div class="card" style="width: 300px; height: 300px;">
+            <div class="card " style="width: 250px; height: 250px;">
                 <a href="{{URL::to('/chitietsanpham/'.$cate->maSP)}}">
                     <img src="{{asset('public/frontend/img/'.$cate->tenHA)}}" class="card-img-top" alt="..." height="230px" width="98%"></a>
                 <div class="card-body">
@@ -22,6 +22,7 @@
 
         </div>
         @endforeach
+        {{$sanphambc->links()}}
     </div>
 </div>
 </div>

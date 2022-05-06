@@ -73,6 +73,7 @@ class GioHangController extends Controller
         $data['diaChi'] = $request->sonha;
         $data['trangthai'] = "Chờ xác nhận";
         $data['maPX'] = $request->phuongxa;
+        $data['ngayGiao'] = null;
 
         if ($data['nguoiNhan'] == null || $data['SDT'] == null || $data['diaChi'] == null || $data['maPX'] == null) {
             Session::put("msg", "Thông tin không hợp lệ.");
@@ -98,7 +99,19 @@ class GioHangController extends Controller
                 $item['donGia'] = $value->price;
                 $item['phanLoai'] = $value->options->phanloai;
 
+                //add hoá đơn
                 $result = DB::table('chitiethoadon')->insert($item);
+
+                //lấy phân loại sản phẩm
+                $itempl = DB::table('phanloai')
+                ->where('maSP', $item['maSP'])
+                ->where('tenPL', $item['phanLoai'])
+                ->first();
+                $newsl = $itempl->soLuong - $item['soLuong'];
+                //giảm số lượng của phân loại vừa lấy
+                $rs = DB::table('phanloai')
+                ->where('maPL', $itempl->maPL)
+                ->update(['soLuong' => $newsl]);
             }
 
             if($maND) {
@@ -124,6 +137,29 @@ class GioHangController extends Controller
             ->where('maHD', $maHD)
             ->update(['trangthai' => "Đơn đã huỷ"]);
 
+        $chitiet = DB::table('chitiethoadon')->where('maHD', $maHD)->get();
+        foreach($chitiet as $key => $value){
+            //lấy phân loại sản phẩm
+            $itempl = DB::table('phanloai')
+            ->where('maSP', $value->maSP)
+            ->where('tenPL', $value->phanLoai)
+            ->first();
+            $newsl = $itempl->soLuong + $value->soLuong;
+            //tăng số lượng của phân loại vừa lấy
+            $rs = DB::table('phanloai')
+            ->where('maPL', $itempl->maPL)
+            ->update(['soLuong' => $newsl]);
+        }
+
         return Redirect::to('/donmua');
+    }
+
+    //đánh giá
+    public function danhgia($maHD) {
+        $get = DB::table('hoadon')
+        ->join('chitiethoadon', 'hoadon.maDH', '=', 'chitiethoadon.maHD')
+        ->where('maHD', $maHD);
+
+        return view('khachhang.danhgia');
     }
 }
